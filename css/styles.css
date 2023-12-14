@@ -9,19 +9,122 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    overflow-x: hidden ;
+    overflow-y: hidden;
+}
 body{
     height: 100vh;
     width: 100vw;
-    background-image: url("../images/background.PNG");
+    /* background-image: url("../images/background.PNG"); */
     background-repeat: no-repeat;
     background-size: cover;
 
 }
+button{
+    border: unset ;
+    background-color: transparent;
+}
 /* SECION ESTATICA */
 .Static-page{
+    
+
+} /* Estilo para .mainButtons */
+.mainButtons {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    margin: 10px; /* Agrega un margen para separar del borde del contenedor */
+    height: 100vh;
 }
-/* SECIONES DINAMICA */
-.Dinamic-page{
+
+/* Estilos para .Ayuda, .Musica, .Cuento, .Idioma */
+.Ayuda,
+.Musica,
+.Cuento,
+.Idioma {
+    position: absolute;
+    margin: 5px; /* Agrega un margen entre los botones y el borde del contenedor */
+}
+
+.Ayuda {
+    top: 0;
+    left: 0;
+}
+
+.Musica {
+    top: 0;
+    right: 0;
+}
+
+.Cuento {
+    bottom: -2%;
+    left: 0;
+    scale: 0.7;
+    margin-left: -80px;
+}
+
+.Idioma {
+    bottom: -5%;
+    right: 0;
+    scale: 0.55;
+    margin-right: -140px;
+}
+
+/* Estilos para .Heading y .Header */
+.Heading {
+    position: absolute;
+    top: 10%;
     display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Estilos adicionales para .Juego */
+.Juego {
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.Juego input{
+    scale: 0.8;
+}
+/* Estilos para los modales */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 30%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+}
+
+.playButton img, .stopButton img {
+    scale: 0.2;
 }

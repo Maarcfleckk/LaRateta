@@ -1,37 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Joc de la Rateta</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
     <main>
         <section class="Static-page">
             <div class="Heading">
-                <h1 class="Header">La Rateta que escombrava l'escaleta</h1>
+                <h1 class="Header">
+                    <img class="headerImage" src="./images/titulo.png" alt="" srcset="">
+                </h1>
             </div>
-            <div class="Trophies">
-                <h2 class="trophies">*</h2>
-                <img src="" alt="Trofeu" class="Trophies_image">
-            </div>
-            <div class="Ayuda">
-                <input type="submit" name="jugar" id="jugar" class="listen" value="AJUDA"> <!--poner centro abajo -->
+            <div class="mainButtons">
+                <div class="Ayuda">
+                    <button type="button" id="ayuda" class="ayuda" onclick="openModal('modalAyuda')">
+                        <img src="./images/ayuda.png" alt="Ayuda">
+                    </button>
+                </div>
+                <div class="Musica">
+                    <button type="button" id="music" class="music" onclick="openModal('modalMusica')">
+                        <img src="./images/musica.png" alt="Música">
+                    </button>
+                </div>
+                <div class="Cuento">
+                    <button type="button" id="cuento" class="cuento" onclick="openModal('modalCuento')">
+                        <img src="./images/llegir el conta.png" alt="Cuento">
+                    </button>
+                </div>
+                <div class="Idioma">
+                    <button type="button" id="idioma" class="idioma" onclick="openModal('modalIdioma')">
+                        <img src="./images/idioma.png" alt="Idioma">
+                    </button>
+                </div>
             </div>
             <div class="Juego">
-                <input type="submit" name="jugar" id="jugar" class="play" value="JUGAR"> <!--poner centro abajo -->
+                <button type="button" id="jugar" class="play" onclick="openModal('modalJuego')">
+                    <img src="./images/boton.png" alt="Jugar">
+                </button>
             </div>
-            <div class="Cuento">
-                <input type="submit" name="jugar" id="jugar" class="listen" value="ESCOLTAR EL COMPTE"> <!--poner centro abajo -->
+        </section>
+
+        <div id="modalAyuda" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalAyuda')">&times;</span>
+                <h2>AJUDA</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, illum fugiat? Facilis, laudantium, ipsa tenetur amet dolorem deleniti ducimus accusamus, dicta sapiente suscipit eos consequatur iusto ea molestiae voluptate mollitia!</p>
             </div>
-        </section>
-        <section class="Dinamic-page visible"> <!--clase visible modificar con js-->
+        </div>
 
-        </section>
-        <section class="Dinamic-page ">
+        <div id="modalMusica" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalMusica')">&times;</span>
+                <button id="playButton" onclick="toggleAudio()">
+                    <img src="./images/play.png" alt="musicImage" srcset="">
+                </button>
+                <button id="stopButton" onclick="stopAudio()">
+                    <img src="./images/pausa.png" alt="musicImage" srcset="">    
+                </button>
+            </div>
+        </div>
 
-        </section>
+        <div id="modalCuento" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalCuento')">&times;</span>
+                <p>Contenido del modal de Cuento...</p>
+            </div>
+        </div>
+
+        <div id="modalIdioma" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalIdioma')">&times;</span>
+                <p>Contenido del modal de Idioma...</p>
+            </div>
+        </div>
     </main>
 </body>
+
+<script src="custom.js"></script>
+
 </html>
