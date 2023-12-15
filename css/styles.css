@@ -35,17 +35,16 @@ button{
     justify-content: space-between;
     align-items: flex-end;
     position: relative;
-    margin: 10px; /* Agrega un margen para separar del borde del contenedor */
-    height: 100vh;
+    margin: 10px;
+    height: 99vh;
 }
 
-/* Estilos para .Ayuda, .Musica, .Cuento, .Idioma */
 .Ayuda,
 .Musica,
 .Cuento,
 .Idioma {
     position: absolute;
-    margin: 5px; /* Agrega un margen entre los botones y el borde del contenedor */
+    margin: 5px;
 }
 
 .Ayuda {
@@ -59,20 +58,15 @@ button{
 }
 
 .Cuento {
-    bottom: -2%;
+    bottom: 0;
     left: 0;
-    scale: 0.7;
-    margin-left: -80px;
 }
 
 .Idioma {
-    bottom: -5%;
+    bottom: 0;
     right: 0;
-    scale: 0.55;
-    margin-right: -140px;
 }
 
-/* Estilos para .Heading y .Header */
 .Heading {
     position: absolute;
     top: 10%;
@@ -81,7 +75,6 @@ button{
     width: 100%;
 }
 
-/* Estilos adicionales para .Juego */
 .Juego {
     position: absolute;
     bottom: 10%;
@@ -92,7 +85,7 @@ button{
 .Juego input{
     scale: 0.8;
 }
-/* Estilos para los modales */
+
 .modal {
     display: none;
     position: fixed;
