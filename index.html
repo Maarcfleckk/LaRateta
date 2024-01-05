@@ -68,7 +68,12 @@
         <div id="modalCuento" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('modalCuento')">&times;</span>
-                <p>Contenido del modal de Cuento...</p>
+                <button id="playButton" onclick="toggleAudio()">
+                    <img src="./images/play.png" alt="musicImage" srcset="">
+                </button>
+                <button id="stopButton" onclick="stopAudio()">
+                    <img src="./images/pausa.png" alt="musicImage" srcset="">    
+                </button>
             </div>
         </div>
 
@@ -76,6 +81,15 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('modalIdioma')">&times;</span>
                 <p>Contenido del modal de Idioma...</p>
+                <button id="langCat" >
+                    <img src="" alt="">
+                </button>
+                <button id="langEs" >
+                    <img src="" alt="">
+                </button>
+                <button id="langAr" >
+                    <img src="" alt="">
+                </button>
             </div>
         </div>
     </main>
