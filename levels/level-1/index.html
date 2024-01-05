@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Minijuego de Pintar</title>
 </head>
 <body>
-    <main class="container">
-        <canvas id="main-canvas" width="700" height="700">
+  <div id="canvas-container">
+    <canvas id="canvas" width="400" height="400" style="background-color: white;"></canvas>
+  </div>
+  
+  <div id="color-buttons">
+    <button class="color-button" onclick="selectColor('pink')">Rosa</button>
+    <button class="color-button" onclick="selectColor('blue')">Azul</button>
+    <button class="color-button" onclick="selectColor('green')">Verde</button>
+    <button class="color-button" onclick="selectColor('yellow')">Amarillo</button>
+  </div>
 
-        </canvas>
-    </main>
-    <script src="script.js"></script>
+  <button onclick="playAudio()">Reproducir MP3</button>
+  <button onclick="checkDrawing()">Corrección</button>
+  <button onclick="clearCanvas()">Borrar</button>
+
+  <script src="script.js"></script>
 </body>
 </html>

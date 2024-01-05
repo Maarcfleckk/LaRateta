@@ -2,14 +2,27 @@
     margin: 0;
     padding: 0;
 }
-.container{
-    background-color: lightblue;
-    height: 100vh;
+body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: red;
 }
+
+#canvas-container {
+    margin-top: 20px;
+}
+
 canvas{
-    background-image: ;
-    background-color: #fff;
+    
 }
+
+#color-buttons {
+    margin-top: 10px;
+}
+
+.color-button {
+    margin-right: 10px;
+}
+  
