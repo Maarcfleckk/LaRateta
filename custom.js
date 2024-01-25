@@ -1,7 +1,7 @@
 // Función para abrir el modal
 function openModal(modalId) {
   var modal = document.getElementById(modalId);
-  modal.style.display = "block";
+  modal.style.display = "flex";
 }
 
 // Función para cerrar el modal
