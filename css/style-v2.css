@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -11,7 +13,9 @@ body{
     height: 100vh;
     width: 100vw;
 }
-
+h1, h2, h3, h4, h5, h6, a, p{
+    font-family: 'Irish Grover', system-ui;
+}
 .Heading {
     position: absolute;
     top: 0;

@@ -1,123 +1,248 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-transform: uppercase;
-}
-html{
-    overflow-x: hidden ;
-    overflow-y: hidden;
-}
-body{
-    height: 100vh;
-    width: 100vw;
-    /* background-image: url("../images/background.PNG"); */
-    background-repeat: no-repeat;
-    background-size: cover;
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-family: "Irish Grover", system-ui;
 }
-button{
-    border: unset ;
-    background-color: transparent;
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  /* background-image: url("../images/background.PNG"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  font-family: "Irish Grover", system-ui;
+}
+button {
+  border: unset;
+  background-color: transparent;
 }
 /* SECION ESTATICA */
-.Static-page{
-    
-
+.Static-page {
 } /* Estilo para .mainButtons */
 .mainButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: relative;
-    margin: 10px;
-    height: 99vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  margin: 10px;
+  height: 99vh;
 }
 
 .Ayuda,
 .Musica,
 .Cuento,
 .Idioma {
-    position: absolute;
-    margin: 5px;
+  position: absolute;
+  margin: 5px;
 }
 
 .Ayuda {
-    top: 0;
-    left: 0;
+  top: 0;
+  left: 0;
 }
 
 .Musica {
-    top: 0;
-    right: 0;
+  top: 0;
+  right: 0;
 }
 
 .Cuento {
-    bottom: 0;
-    left: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .Idioma {
-    bottom: 0;
-    right: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .Heading {
-    position: absolute;
-    top: 10%;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  position: absolute;
+  top: 10%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .Juego {
-    position: absolute;
-    bottom: 45%;
-    display: flex;
-    justify-content: center;
-    height: 10%;
-    width: 100%;
+  position: absolute;
+  bottom: 45%;
+  display: flex;
+  justify-content: center;
+  height: 10%;
+  width: 100%;
 }
-.Juego input{
-    scale: 0.8;
+.Juego input {
+  scale: 0.8;
 }
 
 .modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 70%;
-    height: 70%;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+  height: 70%;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+  color: black;
 }
 
-.playButton img, .stopButton img {
-    scale: 0.2;
+.playButton img,
+.stopButton img {
+  scale: 0.2;
 }
 
-/* BOTON IDIOMAS */
+/* IDIOMAS */
+#modalIdioma .languageBtnGrid {
+  height: 90%;
+  width: 80%;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  margin: auto;
+}
+#modalIdioma .modal-content h2 {
+  text-align: center;
+}
+.btnLanguage {
+  appearance: button;
+  background-color: #1899d6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+
+.btnLanguage:after {
+  background-position-x: center;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+.languageCa::after {
+  background-image: url(/images/bandera-cataluña.png);
+  background-size: 87%;
+  background-position-y: center;
+}
+.languageEs::after {
+  background-image: url(/images/bandera-españa.png);
+  background-size: 77%;
+}
+.languageEn::after {
+  background-image: url(/images/bandera-reinounido.png);
+  background-size: 107%;
+  background-position-y: center;
+  background-position-x: center;
+}
+.languageAr::after {
+  background-image: url(/images/bandera-arabiasaudita.png);
+  background-size: 104%;
+  background-position-y: center;
+}
+
+
+.languageCa p{
+    font-size: 30px;
+    position: absolute;
+}
+.languageEs p{
+    font-size: 30px;
+    position: absolute;
+}
+.languageEn p{
+    font-size: 30px;
+    position: absolute;
+}
+.languageAr p{
+    font-size: 30px;
+    position: absolute;
+}
+
+
+
+.btnLanguage:main,
+.btnLanguage:focus {
+  user-select: auto;
+}
+
+.btnLanguage:hover:not(:disabled) {
+  filter: brightness(0.7);
+  -webkit-filter: brightness(0.9);
+}
+
+.btnLanguage:disabled {
+  cursor: auto;
+}
+
+.btnLanguage:active {
+  border-width: 4px 0 0;
+  background: none;
+}
