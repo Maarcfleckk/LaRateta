@@ -78,6 +78,7 @@ function toggleMusic() {
         document.getElementById('musicHeading').innerText = "PAUSAR MÚSICA";
     }
     isMusicPlaying = !isMusicPlaying;
+    musicAudio.volume=(0.1); //VOLUMEN MUSICA
 }
 
 // Pausa la música al cerrar el modal
