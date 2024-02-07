@@ -109,8 +109,8 @@ button {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
 }
 
 .close {
@@ -173,7 +173,6 @@ button {
   width: 100%;
 }
 
-
 .btnLanguage:after {
   background-position-x: center;
   border: solid transparent;
@@ -208,34 +207,25 @@ button {
   background-position-y: center;
 }
 
-
-.languageCa p{
-    font-size: 30px;
-    position: absolute;
+.languageCa p,
+.languageAr p,
+.languageEn p,
+.languageEs p {
+  font-size: 30px;
+  margin-top: 170px;
+  display: block;
 }
-.languageEs p{
-    font-size: 30px;
-    position: absolute;
-}
-.languageEn p{
-    font-size: 30px;
-    position: absolute;
-}
-.languageAr p{
-    font-size: 30px;
-    position: absolute;
-}
-
-
 
 .btnLanguage:main,
 .btnLanguage:focus {
   user-select: auto;
 }
 
-.btnLanguage:hover:not(:disabled) {
-  filter: brightness(0.7);
-  -webkit-filter: brightness(0.9);
+.btnLanguage:hover {
+  filter: brightness(0.5);
+}
+.btnLanguage:hover p {
+  filter: brightness(1);
 }
 
 .btnLanguage:disabled {
@@ -248,10 +238,10 @@ button {
 }
 
 /* ESCOLTAR LLIBRE */
-.topBar img{
+.topBar img {
   display: none;
 }
-.topBar{
+.topBar {
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
@@ -259,20 +249,60 @@ button {
   align-items: center;
   gap: 30px;
 }
-.topBar button{
-  background-color: #821D1D;
+.topBar button {
+  background-color: #821d1d;
   color: white;
   letter-spacing: 3px;
   padding: 5px 10px;
   border-radius: 10px;
 }
 .scrollableText {
-  max-height: 450px; 
-  overflow-y: auto;  
-  padding: 10px;     
+  max-height: 450px;
+  overflow-y: auto;
+  padding: 10px;
 }
-.bottomText{
-  font-family: Georgia, 'Times New Roman', Times, serif !important;
+.bottomText {
+  font-family: Georgia, "Times New Roman", Times, serif !important;
   text-transform: uppercase;
+  margin-top: 30px;
 }
 /* ESCOLTAR MUSICA */
+
+/* CARRUSSEL */
+.carousel-container {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  margin-top: 20px; /* Ajusta según sea necesario */
+}
+
+.carousel-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slider img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-container button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+}
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
+}
