@@ -271,20 +271,24 @@ button {
 /* CARRUSSEL */
 .carousel-container {
   position: relative;
-  width: 80%;
+  width: 30%;
+  max-height: 500px;
   margin: auto;
   overflow: hidden;
-  margin-top: 20px; /* Ajusta según sea necesario */
+  margin-top: 60px;
 }
 
 .carousel-slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  max-height: 100%; /* Ajusta la altura máxima del carrusel según sea necesario */
 }
 
 .carousel-slider img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
+  max-width: 100%; /* Ajusta el ancho máximo de las imágenes */
+  object-fit: contain; /* Ajusta el comportamiento de escalado */
 }
 
 .carousel-container button {
@@ -298,11 +302,36 @@ button {
   background-color: #3498db;
   color: #fff;
 }
+#prevBtn,
+#nextBtn {
+  font-size: 0; /* Oculta el texto de los botones */
+}
 
 #prevBtn {
-  left: 10px;
+  left: 0;
 }
 
 #nextBtn {
-  right: 10px;
+  right: 0;
+}
+
+.carousel-container button:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#prevBtn:before {
+  border-width: 10px 15px 10px 0;
+  border-color: transparent #fff transparent transparent;
+  margin-right: 5px; /* Ajusta el margen entre el botón y el carrusel */
+}
+
+#nextBtn:before {
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 5px; /* Ajusta el margen entre el botón y el carrusel */
 }

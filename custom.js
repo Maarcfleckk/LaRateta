@@ -125,22 +125,21 @@ document.addEventListener("DOMContentLoaded", function () {
   showSlide(0);
 });
 
-
 let isTextVisible = true;
 
 function toggleContent() {
   const carouselContainer = document.querySelector(".carousel-container");
   const scrollableText = document.getElementById("scrollableText");
+  const toggleTextImg = document.getElementById("toggleTextImg");
 
   if (isTextVisible) {
     carouselContainer.style.display = "block"; // Mostrar carrusel
     scrollableText.style.display = "none"; // Ocultar scrollableText
-    document.getElementById("toggleTextImg").innerText = "Mostrar Texto";
+    toggleTextImg.textContent = "Esconder Carrusel"; // Cambiar el atributo alt
   } else {
     carouselContainer.style.display = "none"; // Ocultar carrusel
     scrollableText.style.display = "block"; // Mostrar scrollableText
-    document.getElementById("toggleTextImg").innerText =
-      "Mostrar Carrusel";
+    toggleTextImg.textContent = "Mostrar Carrusel"; // Cambiar el atributo alt
   }
 
   isTextVisible = !isTextVisible;

@@ -106,29 +106,43 @@
           <span class="close" onclick="closeModal('modalCuento')">&times;</span>
           <div class="content">
             <div class="topBar">
-                <button id="playButton" onclick="toggleAudio()">
-                    <img
-                    id="playPauseIcon"
-                    src="./images/play.png"
-                    alt="musicImage"
-                    />
-                    <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
-                </button>
-                <button id="stopButton" onclick="stopAudio()">
-                    <img src="./images/pausa.png" alt="musicImage" />
-                    <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
-                </button>
-                <button id="increaseButton" onclick="increaseSize()">
-                    <h2 id="increaseText">+ AUGMENTAR</h2>
-                </button>
-                <button id="reduceButton" onclick="reduceSize()">
-                    <h2 id="reduceText">- REDUÏR</h2>
-                </button>
-                <button id="toggleContentButton" onclick="toggleContent()">
-                  <h2 id="toggleTextImg">Mostrar Texto</h2>
-                </button>
+              <button id="playButton" onclick="toggleAudio()">
+                <img
+                  id="playPauseIcon"
+                  src="./images/play.png"
+                  alt="musicImage"
+                />
+                <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
+              </button>
+              <button id="stopButton" onclick="stopAudio()">
+                <img src="./images/pausa.png" alt="musicImage" />
+                <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
+              </button>
+              <button id="increaseButton" onclick="increaseSize()">
+                <h2 id="increaseText">+ AUGMENTAR</h2>
+              </button>
+              <button id="reduceButton" onclick="reduceSize()">
+                <h2 id="reduceText">- REDUÏR</h2>
+              </button>
+              <button id="toggleContentButton" onclick="toggleContent()">
+                <h2 id="toggleTextImg">Mostrar Carrusel</h2>
+              </button>
             </div>
             <div class="bottomText">
+              <div class="carousel-container" style="display: none">
+                <div class="carousel-slider">
+                  <img src="/images//llibre/llibre1.PNG" alt="" srcset="" />
+                  <img src="/images//llibre/llibre2.PNG" alt="" srcset="" />
+                  <img src="/images//llibre/llibre3.PNG" alt="" srcset="" />
+                  <img src="/images//llibre/llibre4.PNG" alt="" srcset="" />
+                  <img src="/images//llibre/llibre5.PNG" alt="" srcset="" />
+                  <img src="/images//llibre/llibre6.PNG" alt="" srcset="" />
+                  <img src="/images//llibre/llibre7.PNG" alt="" srcset="" />
+                  <img src="/images//llibre/llibre8.PNG" alt="" srcset="" />
+                </div>
+                <button id="prevBtn" onclick="prevSlide()">Anterior</button>
+                <button id="nextBtn" onclick="nextSlide()">Siguiente</button>
+              </div>
               <div id="scrollableText" class="scrollableText">
                 La Rateta que escombrava l'escaleta<br />
                 <br />
@@ -198,17 +212,6 @@
                 acabat.<br />
                 <br />
                 <br />
-              </div>
-              <div class="carousel-container" style="display: none">
-                <div class="carousel-slider">
-                  <img src="/images/bandera-cataluña.png" alt="Imagen 1" />
-                  <img src="/images/bandera-españa.png" alt="Imagen 2" />
-                  <img src="/images/bandera-cataluña.png" alt="Imagen 3" />
-                  <img src="/images/bandera-reinounido.png" alt="Imagen 4" />
-                  <img src="/images/bandera-cataluña.png" alt="Imagen 5" />
-                </div>
-                <button id="prevBtn" onclick="prevSlide()">Anterior</button>
-                <button id="nextBtn" onclick="nextSlide()">Siguiente</button>
               </div>
             </div>
           </div>
