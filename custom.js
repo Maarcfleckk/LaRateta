@@ -35,6 +35,7 @@ function stopAudio() {
   audio.currentTime = 0;
   document.getElementById("playPauseIcon").src = "./images/play.png";
   isPlaying = false;
+  document.getElementById("topBarHeading").innerText = "INICIAR AUDIO";
 }
 
 var maxSize = 200;
