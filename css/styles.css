@@ -255,6 +255,7 @@ button {
   letter-spacing: 3px;
   padding: 5px 10px;
   border-radius: 10px;
+  
 }
 .scrollableText {
   max-height: 450px;
@@ -334,4 +335,15 @@ button {
   border-width: 10px 0 10px 15px;
   border-color: transparent transparent transparent #fff;
   margin-left: 5px; /* Ajusta el margen entre el botón y el carrusel */
+}
+
+.imgAfter {
+  content: "";
+  clip-path: polygon(0 25%, 0 0, 100% 75%, 100% 100%);
+  background-color: #821D1D;
+  position: absolute;
+  height: 105px;
+  width: 90px;
+  left: 61%;
+  top: 15%;
 }

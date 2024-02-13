@@ -36,9 +36,10 @@
               type="button"
               id="music"
               class="music"
-              onclick="openModal('modalMusica')"
+              onclick="toggleMusic()"
             >
               <img src="./images/musica.png" alt="Música" height="150px" />
+              <div class="imgAfter"></div>
             </button>
           </div>
           <div class="Cuento">
@@ -86,7 +87,7 @@
         </div>
       </div>
 
-      <div id="modalMusica" class="modal">
+      <!-- <div id="modalMusica" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal('modalMusica')">&times;</span>
           <audio
@@ -99,7 +100,7 @@
             <h2 id="musicHeading" class="audioBtn">INICIAR MÚSICA</h2>
           </button>
         </div>
-      </div>
+      </div> -->
 
       <div id="modalCuento" class="modal">
         <div class="modal-content">
@@ -125,7 +126,7 @@
                 <h2 id="reduceText">- REDUÏR</h2>
               </button>
               <button id="toggleContentButton" onclick="toggleContent()">
-                <h2 id="toggleTextImg">Mostrar Carrusel</h2>
+                <h2 id="toggleTextImg">IMATGES</h2>
               </button>
             </div>
             <div class="bottomText">

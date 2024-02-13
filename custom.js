@@ -65,19 +65,26 @@ function reduceSize() {
 
 var musicAudio = new Audio("./audio/musica-fondo.mp3");
 var isMusicPlaying = false;
+var musicButton = document.getElementById("music");
 
 function toggleMusic() {
   if (isMusicPlaying) {
     musicAudio.pause();
-    document.getElementById("musicIcon").src = "./images/play.png";
-    document.getElementById("musicHeading").innerText = "INICIAR MÚSICA";
   } else {
     musicAudio.play();
-    document.getElementById("musicIcon").src = "./images/pausa.png";
-    document.getElementById("musicHeading").innerText = "PAUSAR MÚSICA";
   }
   isMusicPlaying = !isMusicPlaying;
   musicAudio.volume = 0.3; //VOLUMEN MUSICA
+  updateAfterVisibility();
+}
+
+function updateAfterVisibility() {
+  var afterElement = musicButton.querySelector('.imgAfter');
+  if (isMusicPlaying) {
+    afterElement.style.display = 'none';
+  } else {
+    afterElement.style.display = 'block';
+  }
 }
 
 // Pausa la música al cerrar el modal
@@ -136,11 +143,11 @@ function toggleContent() {
   if (isTextVisible) {
     carouselContainer.style.display = "block"; // Mostrar carrusel
     scrollableText.style.display = "none"; // Ocultar scrollableText
-    toggleTextImg.textContent = "Esconder Carrusel"; // Cambiar el atributo alt
+    toggleTextImg.textContent = "CONTE"; // Cambiar el atributo alt
   } else {
     carouselContainer.style.display = "none"; // Ocultar carrusel
     scrollableText.style.display = "block"; // Mostrar scrollableText
-    toggleTextImg.textContent = "Mostrar Carrusel"; // Cambiar el atributo alt
+    toggleTextImg.textContent = "IMATGES"; // Cambiar el atributo alt
   }
 
   isTextVisible = !isTextVisible;
