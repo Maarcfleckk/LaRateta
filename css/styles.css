@@ -145,7 +145,6 @@ button {
 }
 .btnLanguage {
   appearance: button;
-  background-color: #1899d6;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
@@ -197,7 +196,7 @@ button {
 }
 .languageEn::after {
   background-image: url(/images/bandera-reinounido.png);
-  background-size: 107%;
+  background-size: 117%;
   background-position-y: center;
   background-position-x: center;
 }
@@ -230,16 +229,17 @@ button {
   position: absolute;
   color: white;
   font-size: 30px;
-  display: none;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
-.btnLanguage:hover .textCa,
-.btnLanguage:hover .textEs,
-.btnLanguage:hover .textEn,
-.btnLanguage:hover .textAr {
-  display: block;
+.languageCa:hover ~ .textCa,
+.languageEs:hover ~ .textEs,
+.languageEn:hover ~ .textEn,
+.languageAr:hover ~ .textAr {
+  opacity: 1;
 }
 
-.btnLanguage:main,
+.btnLanguage:active,
 .btnLanguage:focus {
   user-select: auto;
 }
