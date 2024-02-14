@@ -273,7 +273,7 @@ button {
   border-radius: 10px;
 }
 .scrollableText {
-  max-height: 450px;
+  max-height: 500px;
   overflow-y: auto;
   padding: 10px;
 }
@@ -315,7 +315,6 @@ button {
   padding: 10px;
   cursor: pointer;
   border: none;
-  background-color: #3498db;
   color: #fff;
 }
 #prevBtn,
@@ -342,13 +341,13 @@ button {
 
 #prevBtn:before {
   border-width: 10px 15px 10px 0;
-  border-color: transparent #fff transparent transparent;
+  border-color: transparent #821d1d transparent transparent;
   margin-right: 5px; /* Ajusta el margen entre el botón y el carrusel */
 }
 
 #nextBtn:before {
   border-width: 10px 0 10px 15px;
-  border-color: transparent transparent transparent #fff;
+  border-color: transparent transparent transparent #821d1d;
   margin-left: 5px; /* Ajusta el margen entre el botón y el carrusel */
 }
 

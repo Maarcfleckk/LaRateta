@@ -141,13 +141,15 @@ function toggleContent() {
   const toggleTextImg = document.getElementById("toggleTextImg");
 
   if (isTextVisible) {
-    carouselContainer.style.display = "block"; // Mostrar carrusel
-    scrollableText.style.display = "none"; // Ocultar scrollableText
-    toggleTextImg.textContent = "CONTE"; // Cambiar el atributo alt
+    carouselContainer.style.display = "block"; 
+    scrollableText.style.maxHeight = "125px";
+    scrollableText.style.textAlign = "center";
+    toggleTextImg.textContent = "CONTE"; 
   } else {
-    carouselContainer.style.display = "none"; // Ocultar carrusel
-    scrollableText.style.display = "block"; // Mostrar scrollableText
-    toggleTextImg.textContent = "IMATGES"; // Cambiar el atributo alt
+    carouselContainer.style.display = "none";
+    scrollableText.style.maxHeight = "450px";
+    scrollableText.style.textAlign = "justify";
+    toggleTextImg.textContent = "IMATGES";  
   }
 
   isTextVisible = !isTextVisible;
