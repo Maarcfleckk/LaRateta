@@ -6,6 +6,7 @@ function openModal(modalId) {
 function closeModal(modalId) {
   var modal = document.getElementById(modalId);
   modal.style.display = "none";
+  stopAudio();
 }
 
 window.onclick = function (event) {
@@ -87,14 +88,6 @@ function updateAfterVisibility() {
   }
 }
 
-// Pausa la música al cerrar el modal
-function closeModalWithMusic(modalId) {
-  closeModal(modalId);
-  if (isMusicPlaying) {
-    toggleMusic();
-  }
-}
-
 // Agrega un event listener para cuando el audio termine
 musicAudio.addEventListener("ended", function () {
   // Vuelve a reproducir el audio al finalizar
@@ -141,13 +134,15 @@ function toggleContent() {
   const toggleTextImg = document.getElementById("toggleTextImg");
 
   if (isTextVisible) {
-    carouselContainer.style.display = "block"; // Mostrar carrusel
-    scrollableText.style.display = "none"; // Ocultar scrollableText
-    toggleTextImg.textContent = "CONTE"; // Cambiar el atributo alt
+    carouselContainer.style.display = "block"; 
+    scrollableText.style.maxHeight = "125px";
+    scrollableText.style.textAlign = "center";
+    toggleTextImg.textContent = "CONTE"; 
   } else {
-    carouselContainer.style.display = "none"; // Ocultar carrusel
-    scrollableText.style.display = "block"; // Mostrar scrollableText
-    toggleTextImg.textContent = "IMATGES"; // Cambiar el atributo alt
+    carouselContainer.style.display = "none";
+    scrollableText.style.maxHeight = "450px";
+    scrollableText.style.textAlign = "justify";
+    toggleTextImg.textContent = "IMATGES";  
   }
 
   isTextVisible = !isTextVisible;
