@@ -207,12 +207,35 @@ button {
   background-position-y: center;
 }
 
-.languageCa p,
-.languageAr p,
-.languageEn p,
-.languageEs p {
+.textCa {
+  top: 42%;
+  left: 30%;
+}
+.textEs {
+  top: 42%;
+  right: 30%;
+}
+.textEn {
+  top: 77%;
+  left: 30%;
+}
+.textAr {
+  top: 77%;
+  right: 32%;
+}
+.textCa,
+.textEs,
+.textEn,
+.textAr {
+  position: absolute;
+  color: white;
   font-size: 30px;
-  margin-top: 170px;
+  display: none;
+}
+.btnLanguage:hover .textCa,
+.btnLanguage:hover .textEs,
+.btnLanguage:hover .textEn,
+.btnLanguage:hover .textAr {
   display: block;
 }
 
@@ -223,13 +246,6 @@ button {
 
 .btnLanguage:hover {
   filter: brightness(0.5);
-}
-.btnLanguage:hover p {
-  filter: brightness(1);
-}
-
-.btnLanguage:disabled {
-  cursor: auto;
 }
 
 .btnLanguage:active {
@@ -255,7 +271,6 @@ button {
   letter-spacing: 3px;
   padding: 5px 10px;
   border-radius: 10px;
-  
 }
 .scrollableText {
   max-height: 450px;
@@ -340,7 +355,7 @@ button {
 .imgAfter {
   content: "";
   clip-path: polygon(0 25%, 0 0, 100% 75%, 100% 100%);
-  background-color: #821D1D;
+  background-color: #821d1d;
   position: absolute;
   height: 105px;
   width: 90px;
