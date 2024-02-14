@@ -1,45 +1,262 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>El Joc de la Rateta</title>
-</head>
-<body>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      #canvas-container {
+        border: 1px solid #000;
+        overflow: hidden;
+        margin-right: 10px;
+      }
+
+      #canvas {
+        cursor: crosshair;
+      }
+
+      #color-palette {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .color-button {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+
+      .color-button span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+      }
+
+      .headerImage {
+        margin-left: -40%;
+      }
+
+      .Heading {
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
     <main>
-    <section class="topSide">
+      <section class="topSide">
         <div class="Heading">
-            <h1 class="Header">
-                <img class="headerImage" src="/images/titulo-nivel1.PNG" alt="NIVELLS" srcset="">
-            </h1>
+          <h1 class="Header">
+            <img
+              class="headerImage"
+              src="/images/titulo-nivel1.PNG"
+              alt="NIVELLS"
+              srcset=""
+            />
+          </h1>
         </div>
         <div class="btn-back">
-            <a class="link-back " href="/game-screen.html">
-                <img src="/images/volver.png" alt="">
-            </a>
+          <a class="link-back" href="/game-screen.html">
+            <img src="/images/volver.png" alt="" />
+          </a>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <section>
-      
-    </section>
-  </main> 
-   <!-- <div id="canvas-container">
-    <canvas id="canvas" width="400" height="400" style="background-color: white;"></canvas>
-  </div>
-  
-  <div id="color-buttons">
-    <button class="color-button" onclick="selectColor('pink')">Rosa</button>
-    <button class="color-button" onclick="selectColor('blue')">Azul</button>
-    <button class="color-button" onclick="selectColor('green')">Verde</button>
-    <button class="color-button" onclick="selectColor('yellow')">Amarillo</button>
-  </div>
+    <div id="canvas-container">
+      <canvas id="canvas" width="600" height="400"></canvas>
+    </div>
 
-  <button onclick="playAudio()">Reproducir MP3</button>
-  <button onclick="checkDrawing()">Corrección</button>
-  <button onclick="clearCanvas()">Borrar</button> -->
+    <div id="color-palette">
+      <div
+        class="color-button"
+        style="background-color: pink"
+        onclick="selectColor(1)"
+      >
+        <span>1</span>
+      </div>
+      <div
+        class="color-button"
+        style="background-color: yellow"
+        onclick="selectColor(2)"
+      >
+        <span>2</span>
+      </div>
+      <div
+        class="color-button"
+        style="background-color: green"
+        onclick="selectColor(3)"
+      >
+        <span>3</span>
+      </div>
+      <div
+        class="color-button"
+        style="background-color: blue"
+        onclick="selectColor(4)"
+      >
+        <span>4</span>
+      </div>
+      <div
+        class="color-button"
+        style="background-color: white"
+        onclick="selectColor(5)"
+      >
+        <span>5</span>
+      </div>
+      <div
+        class="color-button"
+        style="background-color: black"
+        onclick="selectColor(6)"
+      >
+        <span>6</span>
+      </div>
+      <div
+        class="color-button"
+        style="background-color: red"
+        onclick="selectColor(7)"
+      >
+        <span>7</span>
+      </div>
+      <div
+        class="color-button"
+        style="background-color: orange"
+        onclick="selectColor(8)"
+      >
+        <span>8</span>
+      </div>
+    </div>
 
-  <script src="script.js"></script>
-</body>
+    <button onclick="selectColor(0)">Borrador</button>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      let selectedColor = 1;
+      let isDrawing = false;
+
+      const formasRectangulares = [
+        { x: 350, y: 185, side: 160, angle: 30, numero: 1 },
+        { x: 260, y: 150, width: 80, height: 70, numero: 2 },
+        { x: 250, y: 185, side: 160, angle: 210, numero: 1 },
+      ];
+
+      function drawFormasRectangulares() {
+        formasRectangulares.forEach((forma) => {
+          const fillColor =
+            forma.numero === 1 || forma.numero === 3
+              ? "white"
+              : forma.numero === 2
+                ? "white"
+                : "white";
+
+          context.fillStyle = forma.numero === 0 ? "white" : fillColor;
+
+          if (forma.side) {
+            drawTriangle(forma.x, forma.y, forma.side, forma.angle);
+          } else {
+            context.fillRect(forma.x, forma.y, forma.width, forma.height);
+            context.strokeRect(forma.x, forma.y, forma.width, forma.height);
+          }
+
+          if (forma.numero !== 0) {
+            context.fillStyle = "black";
+            context.font = "18px Arial";
+            const textX = forma.x + forma.width / 2 - 8;
+            const textY = forma.y + forma.height / 2 + 6;
+            context.fillText(forma.numero, textX, textY);
+          }
+        });
+      }
+
+      function drawTriangle(x, y, side, angle) {
+        context.save();
+        context.translate(x, y);
+        context.rotate((angle * Math.PI) / 180);
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(side / 2, -(side * Math.sqrt(3)) / 2);
+        context.lineTo(side, 0);
+        context.closePath();
+        context.fill();
+        context.stroke();
+
+        context.restore();
+      }
+
+      function selectColor(color) {
+        selectedColor = color;
+      }
+
+      function clearCanvas() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        drawFormasRectangulares();
+      }
+
+      function draw(e) {
+        if (!isDrawing) return;
+
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        formasRectangulares.forEach((forma) => {
+          if (
+            mouseX >= forma.x &&
+            mouseX <= forma.x + (forma.side || forma.width) &&
+            mouseY >= forma.y &&
+            mouseY <=
+              forma.y +
+                (forma.side ? (forma.side * Math.sqrt(3)) / 2 : forma.height)
+          ) {
+            if (forma.numero === selectedColor || selectedColor === 0) {
+              context.fillStyle =
+                selectedColor === 0 ? "white" : getColorByNumero(selectedColor);
+
+              if (forma.side) {
+                drawTriangle(forma.x, forma.y, forma.side, forma.angle);
+              } else {
+                context.fillRect(forma.x, forma.y, forma.width, forma.height);
+                context.strokeRect(forma.x, forma.y, forma.width, forma.height);
+              }
+            }
+          }
+        });
+      }
+
+      function getColorByNumero(numero) {
+        switch (numero) {
+          case 1:
+            return "pink";
+          case 2:
+            return "yellow";
+          case 3:
+            return "pink";
+        }
+      }
+
+      canvas.addEventListener("mousedown", () => (isDrawing = true));
+      canvas.addEventListener("mouseup", () => (isDrawing = false));
+      canvas.addEventListener("mousemove", draw);
+
+      drawFormasRectangulares();
+    </script>
+  </body>
 </html>
