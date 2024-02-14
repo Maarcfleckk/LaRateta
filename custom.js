@@ -6,6 +6,7 @@ function openModal(modalId) {
 function closeModal(modalId) {
   var modal = document.getElementById(modalId);
   modal.style.display = "none";
+  stopAudio();
 }
 
 window.onclick = function (event) {
@@ -84,14 +85,6 @@ function updateAfterVisibility() {
     afterElement.style.display = 'none';
   } else {
     afterElement.style.display = 'block';
-  }
-}
-
-// Pausa la música al cerrar el modal
-function closeModalWithMusic(modalId) {
-  closeModal(modalId);
-  if (isMusicPlaying) {
-    toggleMusic();
   }
 }
 
