@@ -1,3 +1,8 @@
+
+// EXPLICACION FUTURA
+// AÑADIR CLASE DE MURO
+// AÑADIR SPRINTS PARA EL JUGADOR, PARED I CELDA
+// NO ALERTAS
 document.addEventListener("DOMContentLoaded", function() {
   const laberinto = document.getElementById("maze");
 

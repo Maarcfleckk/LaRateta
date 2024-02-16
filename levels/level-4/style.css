@@ -24,16 +24,23 @@
     height: 150px;
 }
 
-.maze {
+.gameBox{
+    
     width: 80vw;
     height: 80vh;
     margin: 0 auto;
     margin-top: 10vh;
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(5, 50px);
-    grid-gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.maze {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(55px * 5);
+    height: calc(55px * 5);
 }
 .celda {
     width: 50px;
