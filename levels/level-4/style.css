@@ -39,8 +39,8 @@
 .maze {
     display: flex;
     flex-wrap: wrap;
-    width: calc(55px * 5);
-    height: calc(55px * 5);
+    width: calc(55px * 10);
+    height: calc(55px * 8);
 }
 .celda {
     width: 50px;
@@ -56,3 +56,7 @@
   .meta {
     background-color: #0f0;
   }
+.pared {
+    background-color: transparent;
+    border-color: transparent;
+}

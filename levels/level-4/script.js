@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const laberinto = document.getElementById("maze");
 
   // Define el tamaño del laberinto (en este caso, 5x5)
-  const filas = 5;
-  const columnas = 5;
+  const columnas = 10;
+  const filas = 8;
 
   // Crea el laberinto
   for (let i = 0; i < filas * columnas; i++) {
@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
     celda.classList.add("celda");
     laberinto.appendChild(celda);
   }
+
+  
 
   const celdas = document.querySelectorAll(".celda");
   let jugadorPosicion = 0; // Inicializa al jugador en la esquina superior izquierda
@@ -35,37 +37,45 @@ document.addEventListener("DOMContentLoaded", function() {
     celdas[jugadorPosicion].classList.add("jugador");
   }
 
-  // Maneja los eventos del teclado
-  document.addEventListener("keydown", function(event) {
-    switch (event.key) {
-      case "ArrowUp":
-        if (jugadorPosicion - columnas >= 0) {
-          jugadorPosicion -= columnas;
-        }
-        break;
-      case "ArrowDown":
-        if (jugadorPosicion + columnas < filas * columnas) {
-          jugadorPosicion += columnas;
-        }
-        break;
-      case "ArrowLeft":
-        if (jugadorPosicion % columnas !== 0) {
-          jugadorPosicion -= 1;
-        }
-        break;
-      case "ArrowRight":
-        if ((jugadorPosicion + 1) % columnas !== 0) {
-          jugadorPosicion += 1;
-        }
-        break;
-    }
+// Añade la clase 'vacio' a las celdas 10, 11 y 12
+celdas[10].classList.add("pared");
+celdas[11].classList.add("pared");
+celdas[12].classList.add("pared");
 
+// Modifica la función de manejo de eventos del teclado
+document.addEventListener("keydown", function(event) {
+  let nuevaPosicion = jugadorPosicion;
+  switch (event.key) {
+    case "ArrowUp":
+      if (jugadorPosicion - columnas >= 0) {
+        nuevaPosicion = jugadorPosicion - columnas;
+      }
+      break;
+    case "ArrowDown":
+      if (jugadorPosicion + columnas < filas * columnas) {
+        nuevaPosicion = jugadorPosicion + columnas;
+      }
+      break;
+    case "ArrowLeft":
+      if (jugadorPosicion % columnas !== 0) {
+        nuevaPosicion = jugadorPosicion - 1;
+      }
+      break;
+    case "ArrowRight":
+      if ((jugadorPosicion + 1) % columnas !== 0) {
+        nuevaPosicion = jugadorPosicion + 1;
+      }
+      break;
+  }
+
+  // Solo actualiza la posición del jugador si la celda no tiene la clase 'vacio'
+  if (!celdas[nuevaPosicion].classList.contains("pared")) {
+    jugadorPosicion = nuevaPosicion;
     actualizarJugador();
+  }
 
-    // Verifica si el jugador ha alcanzado la meta
-    if (jugadorPosicion === metaPosicion) {
-      alert("¡Felicidades! Has llegado a la meta.");
-      
-    }
-  });
-});
+  // Verifica si el jugador ha alcanzado la meta
+  if (jugadorPosicion === metaPosicion) {
+    alert("¡Felicidades! Has llegado a la meta.");
+  }
+});});
