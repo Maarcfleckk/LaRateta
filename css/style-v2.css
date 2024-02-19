@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6, a, p{
         }
 
         .vibrate:hover img {
-            animation: vibrateAnimation 0.5s ease infinite;
+            animation: vibrateAnimation 0.5s ease;
         }
 
         @keyframes vibrateAnimation {
