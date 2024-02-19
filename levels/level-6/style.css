@@ -9,6 +9,9 @@
     justify-content: center;
     width: 100%;
 }
+.Header {
+    font-size: 70px;
+}
 .btn-back{
     position: absolute;
     top: 0;

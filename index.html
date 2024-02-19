@@ -1,231 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>El Joc de la Rateta</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
 
-  <body>
-    <main>
-      <section class="Static-page">
-        <div class="Heading">
-          <h1 class="Header">
-            <img
-              class="headerImage"
-              src="./images/titulo.png"
-              alt=""
-              srcset=""
-            />
-          </h1>
-        </div>
-        <div class="mainButtons">
-          <div class="Ayuda">
-            <button
-              type="button"
-              id="ayuda"
-              class="ayuda"
-              onclick="openModal('modalAyuda')"
-            >
-              <img src="./images/ayuda.png" alt="Ayuda" height="150px" />
-            </button>
-          </div>
-          <div class="Musica">
-            <button
-              type="button"
-              id="music"
-              class="music"
-              onclick="toggleMusic()"
-            >
-              <img src="./images/musica.png" alt="Música" height="150px" />
-              <div class="imgAfter"></div>
-            </button>
-          </div>
-          <div class="Cuento">
-            <button
-              type="button"
-              id="cuento"
-              class="cuento"
-              onclick="openModal('modalCuento')"
-            >
-              <img
-                src="./images/llegir el conta.png"
-                alt="Cuento"
-                height="150px"
-              />
-            </button>
-          </div>
-          <div class="Idioma">
-            <button
-              type="button"
-              id="idioma"
-              class="idioma"
-              onclick="openModal('modalIdioma')"
-            >
-              <img src="./images/idioma.png" alt="Idioma" height="150px" />
-            </button>
-          </div>
-        </div>
-        <div class="Juego">
-          <a href="game-screen.html">
-            <img src="./images/boton.png" alt="Jugar" />
-          </a>
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Joc de la Rateta</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+</head>
 
-      <div id="modalAyuda" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('modalAyuda')">&times;</span>
-          <h2>AJUDA</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
-            illum fugiat? Facilis, laudantium, ipsa tenetur amet dolorem
-            deleniti ducimus accusamus, dicta sapiente suscipit eos consequatur
-            iusto ea molestiae voluptate mollitia!
-          </p>
+<body>
+  <main>
+    <section class="Static-page">
+      <div class="Heading">
+        <h1 class="Header">
+          <img class="headerImage" src="images/titulo.png" alt="" srcset="" />
+        </h1>
+      </div>
+      <div class="mainButtons">
+        <div class="Ayuda">
+          <button type="button" id="ayuda" class="ayuda" onclick="openModal('modalAyuda')">
+            <img src="images/ayuda.png" alt="Ayuda" height="150px" />
+          </button>
+        </div>
+        <div class="Musica">
+          <button type="button" id="music" class="music" onclick="toggleMusic()">
+            <img src="images/musica.png" alt="Música" height="150px" />
+            <div class="imgAfter"></div>
+          </button>
+        </div>
+        <div class="Cuento">
+          <button type="button" id="cuento" class="cuento" onclick="openModal('modalCuento')">
+            <img src="images/llegir el conta.png" alt="Cuento" height="150px" />
+          </button>
+        </div>
+        <div class="Idioma">
+          <button type="button" id="idioma" class="idioma" onclick="openModal('modalIdioma')">
+            <img src="images/idioma.png" alt="Idioma" height="150px" />
+          </button>
         </div>
       </div>
+      <div class="Juego">
+        <a href="game-screen.html">
+          <img src="images/boton.png" alt="Jugar" />
+        </a>
+      </div>
+    </section>
 
-      <div id="modalCuento" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('modalCuento')">&times;</span>
-          <div class="content">
-            <div class="topBar">
-              <button id="playButton" onclick="toggleAudio()">
-                <img
-                  id="playPauseIcon"
-                  src="./images/play.png"
-                  alt="musicImage"
-                />
-                <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
-              </button>
-              <button id="stopButton" onclick="stopAudio()">
-                <img src="./images/pausa.png" alt="musicImage" />
-                <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
-              </button>
-              <button id="increaseButton" onclick="increaseSize()">
-                <h2 id="increaseText">+ AUGMENTAR</h2>
-              </button>
-              <button id="reduceButton" onclick="reduceSize()">
-                <h2 id="reduceText">- REDUÏR</h2>
-              </button>
-              <button id="toggleContentButton" onclick="toggleContent()">
-                <h2 id="toggleTextImg">IMATGES</h2>
-              </button>
+    <div id="modalAyuda" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalAyuda')">&times;</span>
+        <h2>AJUDA</h2>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
+          illum fugiat? Facilis, laudantium, ipsa tenetur amet dolorem
+          deleniti ducimus accusamus, dicta sapiente suscipit eos consequatur
+          iusto ea molestiae voluptate mollitia!
+        </p>
+      </div>
+    </div>
+
+    <div id="modalCuento" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalCuento')">&times;</span>
+        <div class="content">
+          <div class="topBar">
+            <button id="playButton" onclick="toggleAudio()">
+              <img id="playPauseIcon" src="images/play.png" alt="musicImage" />
+              <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
+            </button>
+            <button id="stopButton" onclick="stopAudio()">
+              <img src="images/pausa.png" alt="musicImage" />
+              <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
+            </button>
+            <button id="increaseButton" onclick="increaseSize()">
+              <h2 id="increaseText">+ AUGMENTAR</h2>
+            </button>
+            <button id="reduceButton" onclick="reduceSize()">
+              <h2 id="reduceText">- REDUÏR</h2>
+            </button>
+            <button id="toggleContentButton" onclick="toggleContent()">
+              <h2 id="toggleTextImg">IMATGES</h2>
+            </button>
+          </div>
+          <div class="bottomText">
+            <div class="carousel-container" style="display: none">
+              <div class="carousel-slider">
+                <img src="images//llibre/llibre1.PNG" alt="" srcset="" />
+                <img src="images//llibre/llibre2.PNG" alt="" srcset="" />
+                <img src="images//llibre/llibre3.PNG" alt="" srcset="" />
+                <img src="images//llibre/llibre4.PNG" alt="" srcset="" />
+                <img src="images//llibre/llibre5.PNG" alt="" srcset="" />
+                <img src="images//llibre/llibre6.PNG" alt="" srcset="" />
+                <img src="images//llibre/llibre7.PNG" alt="" srcset="" />
+                <img src="images//llibre/llibre8.PNG" alt="" srcset="" />
+              </div>
+              <button id="prevBtn" onclick="prevSlide()">Anterior</button>
+              <button id="nextBtn" onclick="nextSlide()">Siguiente</button>
             </div>
-            <div class="bottomText">
-              <div class="carousel-container" style="display: none">
-                <div class="carousel-slider">
-                  <img src="/images//llibre/llibre1.PNG" alt="" srcset="" />
-                  <img src="/images//llibre/llibre2.PNG" alt="" srcset="" />
-                  <img src="/images//llibre/llibre3.PNG" alt="" srcset="" />
-                  <img src="/images//llibre/llibre4.PNG" alt="" srcset="" />
-                  <img src="/images//llibre/llibre5.PNG" alt="" srcset="" />
-                  <img src="/images//llibre/llibre6.PNG" alt="" srcset="" />
-                  <img src="/images//llibre/llibre7.PNG" alt="" srcset="" />
-                  <img src="/images//llibre/llibre8.PNG" alt="" srcset="" />
-                </div>
-                <button id="prevBtn" onclick="prevSlide()">Anterior</button>
-                <button id="nextBtn" onclick="nextSlide()">Siguiente</button>
-              </div>
-              <div id="scrollableText" class="scrollableText">
-                La Rateta que escombrava l'escaleta<br />
-                <br />
-                Hi havia una vegada una Rateta que cada dia escombrava
-                l'escaleta i un dia es va trobar un dineret.<br />
-                <br />
-                -Oh, quina sort que he tingut!! I què en podria fer? Si em
-                compro ametlletes em cauran les dentetes. <br />
-                I si em compro un llacet per la cueta. Sí, sí, em compraré un
-                llacet ben bonic per posar-me'l a la cueta!!<br />
-                <br />
-                I així ho va fer.<br />
-                Va anar a la botiga de la senyora conilla i es estar mirant
-                molts llacets. Finalment es va decidir per un llaç de setí de
-                color rosa.<br />
-                -Sí aquest si que m'agrada! Seré l'enveja del barri, segur que
-                tothom em mirarà - pensava la rateta -Ui, no me l'emboliqui que
-                me l'emporto posat!<br />
-                <br />
-                Es va posar a davant de casa seva per lluir el llacet. I així
-                s'estava quan va passar el Senyor Ànec, que veient-la tan bonica
-                li va dir:<br />
-                -Ai rateta, rateta, tu que n'ets tan boniqueta no et voldries
-                pas casar amb mi, jo que sóc tan bon fadrí?<br />
-                -Ai, no ho sé pas. A veure quina veu fas?<br />
-                -Quac, quac, quac!!<br />
-                -Ui, que m'eixordes. No et vull per marit.<br />
-                <br />
-                També va passar un gall amb les plomes estarrufades que li va
-                dir:<br />
-                -Rateta, Rateta, tu que n'ets tan boniqueta, no et voldries pas
-                casar amb mi, jo que sóc tan bon fadrí?<br />
-                -Ai no ho sé pas. A veure quina veu fas?<br />
-                -Kikirikí, kikirikí !!!<br />
-                -Ui, no, quin xivarri no et vull per marit.<br />
-                <br />
-                I el gall se'n va anar amb el cap cot. Després va passar un
-                gosset i li va passar el mateix.<br />
-                Una estona després va passar un burret que en veure la rateta
-                tan bonica no es va poder estar de dir-li:<br />
-                -Rateta, rateta, tu que n'ets tan boniqueta, no et voldries pas
-                casar amb mi, jo que sóc tan bon fadrí.<br />
-                I la rateta, fent-se pregar li va dir:<br />
-                -Ai no ho sé pas,a veure quina veu fas?<br />
-                -Iiiiaaaa, iiiiiaaaaaa!!!<br />
-                -Fuig, fuig, que m'eixordes!!<br />
-                <br />
-                Quan la Rateta ja començava a pensar que mai no trobaria ningú
-                que li fes el pes va passar un gatet que li va dir:<br />
-                -Miau Rateta, tu que n'ets tan boniqueta, no et voldries pas
-                casar amb mi, jo que sóc tan bon fadrí?<br />
-                I la Rateta, fent-se l'estreta:<br />
-                -Ai no ho sé pas. A veure quina veu fas?<br />
-                -Miauu, miauuu!<br />
-                -Sí, amb tu sí que em vull casar!<br />
-                -Miauu, miauuu !!!<br />
-                I així ho van fer. Ben aviat es van casar i tothom hi va ser
-                convidat.<br />
-                Aquell dia tothom li deia a la rateta:<br />
-                -Vés amb compte amb aquest gat!<br />
-                -Vigila que quan estiguis despistada no et clavi queixalada!!<br />
-                I la Rateta reia per sota el nas perquè només ella i el seu
-                maridet sabien el secret: que aquest gat era vegetarià i no
-                menjava rates !!!<br />
-                <br />
-                I vet aquí un gos i vet aquí un gat que aquest conte ja s'ha
-                acabat.<br />
-                <br />
-                <br />
-              </div>
+            <div id="scrollableText" class="scrollableText">
+              La Rateta que escombrava l'escaleta<br />
+              <br />
+              Hi havia una vegada una Rateta que cada dia escombrava
+              l'escaleta i un dia es va trobar un dineret.<br />
+              <br />
+              -Oh, quina sort que he tingut!! I què en podria fer? Si em
+              compro ametlletes em cauran les dentetes. <br />
+              I si em compro un llacet per la cueta. Sí, sí, em compraré un
+              llacet ben bonic per posar-me'l a la cueta!!<br />
+              <br />
+              I així ho va fer.<br />
+              Va anar a la botiga de la senyora conilla i es estar mirant
+              molts llacets. Finalment es va decidir per un llaç de setí de
+              color rosa.<br />
+              -Sí aquest si que m'agrada! Seré l'enveja del barri, segur que
+              tothom em mirarà - pensava la rateta -Ui, no me l'emboliqui que
+              me l'emporto posat!<br />
+              <br />
+              Es va posar a davant de casa seva per lluir el llacet. I així
+              s'estava quan va passar el Senyor Ànec, que veient-la tan bonica
+              li va dir:<br />
+              -Ai rateta, rateta, tu que n'ets tan boniqueta no et voldries
+              pas casar amb mi, jo que sóc tan bon fadrí?<br />
+              -Ai, no ho sé pas. A veure quina veu fas?<br />
+              -Quac, quac, quac!!<br />
+              -Ui, que m'eixordes. No et vull per marit.<br />
+              <br />
+              També va passar un gall amb les plomes estarrufades que li va
+              dir:<br />
+              -Rateta, Rateta, tu que n'ets tan boniqueta, no et voldries pas
+              casar amb mi, jo que sóc tan bon fadrí?<br />
+              -Ai no ho sé pas. A veure quina veu fas?<br />
+              -Kikirikí, kikirikí !!!<br />
+              -Ui, no, quin xivarri no et vull per marit.<br />
+              <br />
+              I el gall se'n va anar amb el cap cot. Després va passar un
+              gosset i li va passar el mateix.<br />
+              Una estona després va passar un burret que en veure la rateta
+              tan bonica no es va poder estar de dir-li:<br />
+              -Rateta, rateta, tu que n'ets tan boniqueta, no et voldries pas
+              casar amb mi, jo que sóc tan bon fadrí.<br />
+              I la rateta, fent-se pregar li va dir:<br />
+              -Ai no ho sé pas,a veure quina veu fas?<br />
+              -Iiiiaaaa, iiiiiaaaaaa!!!<br />
+              -Fuig, fuig, que m'eixordes!!<br />
+              <br />
+              Quan la Rateta ja començava a pensar que mai no trobaria ningú
+              que li fes el pes va passar un gatet que li va dir:<br />
+              -Miau Rateta, tu que n'ets tan boniqueta, no et voldries pas
+              casar amb mi, jo que sóc tan bon fadrí?<br />
+              I la Rateta, fent-se l'estreta:<br />
+              -Ai no ho sé pas. A veure quina veu fas?<br />
+              -Miauu, miauuu!<br />
+              -Sí, amb tu sí que em vull casar!<br />
+              -Miauu, miauuu !!!<br />
+              I així ho van fer. Ben aviat es van casar i tothom hi va ser
+              convidat.<br />
+              Aquell dia tothom li deia a la rateta:<br />
+              -Vés amb compte amb aquest gat!<br />
+              -Vigila que quan estiguis despistada no et clavi queixalada!!<br />
+              I la Rateta reia per sota el nas perquè només ella i el seu
+              maridet sabien el secret: que aquest gat era vegetarià i no
+              menjava rates !!!<br />
+              <br />
+              I vet aquí un gos i vet aquí un gat que aquest conte ja s'ha
+              acabat.<br />
+              <br />
+              <br />
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div id="modalIdioma" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('modalIdioma')">&times;</span>
-          <h2>ESCULL EL TEU IDIOMA PREFERIT</h2>
-          <div class="languageBtnGrid">
-            <button class="btnLanguage languageCa" role="button">
-            </button>
-            <button class="btnLanguage languageEs" role="button">
-            </button>
-            <button class="btnLanguage languageEn" role="button">
-            </button>
-            <button class="btnLanguage languageAr" role="button">
-            </button>
-            <p class="textCa">CATALÀ</p>
-            <p class="textEs">CASTELLÀ</p>
-            <p class="textEn">ANGLÈS</p>
-            <p class="textAr">ÀRAB</p>
-          </div>
+    <div id="modalIdioma" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalIdioma')">&times;</span>
+        <h2>ESCULL EL TEU IDIOMA PREFERIT</h2>
+        <div class="languageBtnGrid">
+          <button class="btnLanguage languageCa" role="button">
+          </button>
+          <button class="btnLanguage languageEs" role="button">
+          </button>
+          <button class="btnLanguage languageEn" role="button">
+          </button>
+          <button class="btnLanguage languageAr" role="button">
+          </button>
+          <p class="textCa">CATALÀ</p>
+          <p class="textEs">CASTELLÀ</p>
+          <p class="textEn">ANGLÈS</p>
+          <p class="textAr">ÀRAB</p>
         </div>
       </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
 
-  <script src="custom.js"></script>
+<script src="custom.js"></script>
+
 </html>
