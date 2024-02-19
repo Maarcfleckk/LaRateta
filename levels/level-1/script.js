@@ -1,111 +1,211 @@
 const canvas = document.getElementById("canvas");
-      const context = canvas.getContext("2d");
-      let selectedColor = 1;
-      let isDrawing = false;
+const context = canvas.getContext("2d");
+let selectedColor = 5; // Color inicial (blanco)
+let isDrawing = false;
 
-      const formasRectangulares = [
-        { x: 350, y: 185, side: 160, angle: 30, numero: 1 },
-        { x: 260, y: 150, width: 80, height: 70, numero: 2 },
-        { x: 250, y: 185, side: 160, angle: 210, numero: 1 },
-      ];
+const formasRectangulares = [
+  {
+    x: 360,
+    y: 185,
+    side: 190,
+    angle: 30,
+    tipo: "triangulo",
+    color: 5,
+  },
+  {
+    x: 250,
+    y: 185,
+    side: 190,
+    angle: 210,
+    tipo: "triangulo",
+    color: 5,
+  },
+  {
+    x: 240,
+    y: 150,
+    width: 130,
+    height: 70,
+    tipo: "cuadrado",
+    color: 5,
+  },
+];
 
-      function drawFormasRectangulares() {
-        formasRectangulares.forEach((forma) => {
-          const fillColor =
-            forma.numero === 1 || forma.numero === 3
-              ? "white"
-              : forma.numero === 2
-                ? "white"
-                : "white";
+function drawFormasRectangulares() {
+  formasRectangulares.forEach((forma) => {
+    if (forma.tipo === "triangulo") {
+      context.fillStyle = getColorByNumero(forma.color);
+      drawTriangle(forma.x, forma.y, forma.side, forma.angle, forma.color);
+    } else {
+      context.fillStyle = getColorByNumero(forma.color);
+      drawSquare(forma.x, forma.y, forma.width, forma.height, forma.color);
+    }
+  });
+}
 
-          context.fillStyle = forma.numero === 0 ? "white" : fillColor;
+function drawSquare(x, y, width, height, color) {
+  context.fillStyle = color;
+  context.fillRect(x, y, width, height);
+  context.strokeRect(x, y, width, height);
+}
 
-          if (forma.side) {
-            drawTriangle(forma.x, forma.y, forma.side, forma.angle);
-          } else {
-            context.fillRect(forma.x, forma.y, forma.width, forma.height);
-            context.strokeRect(forma.x, forma.y, forma.width, forma.height);
-          }
+function selectColor(color) {
+  selectedColor = color;
+}
 
-          if (forma.numero !== 0) {
-            context.fillStyle = "black";
-            context.font = "18px Arial";
-            const textX = forma.x + forma.width / 2 - 8;
-            const textY = forma.y + forma.height / 2 + 6;
-            context.fillText(forma.numero, textX, textY);
-          }
-        });
-      }
+function clearCanvas() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  drawFormasRectangulares();
+}
 
-      function drawTriangle(x, y, side, angle) {
-        context.save();
-        context.translate(x, y);
-        context.rotate((angle * Math.PI) / 180);
+function drawTriangle(x, y, side, angle, color) {
+  context.save();
+  context.translate(x, y);
+  context.rotate((angle * Math.PI) / 180);
 
-        context.beginPath();
-        context.moveTo(0, 0);
-        context.lineTo(side / 2, -(side * Math.sqrt(3)) / 2);
-        context.lineTo(side, 0);
-        context.closePath();
-        context.fill();
-        context.stroke();
+  context.beginPath();
+  context.moveTo(0, 0);
+  context.lineTo(side / 2, -(side * Math.sqrt(3)) / 2);
+  context.lineTo(side, 0);
+  context.closePath();
+  context.fill();
+  context.stroke();
 
-        context.restore();
-      }
+  context.restore();
 
-      function selectColor(color) {
-        selectedColor = color;
-      }
+  context.fillStyle = "black";
+  context.font = "18px Arial";
+  const textWidth = context.measureText("1").width;
+  const textX = x - textWidth / 2;
+  const textY = y + (side * Math.sqrt(3)) / 2 / 2 + 4; // Ajusta el valor de "+ 4" según tus preferencias
+  context.fillText("1", textX, textY);
+}
 
-      function clearCanvas() {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        drawFormasRectangulares();
-      }
+function isPointInsideForma(mouseX, mouseY, forma) {
+  if (forma.tipo === "triangulo") {
+    const centerX = forma.x;
+    const centerY = forma.y - (forma.side * Math.sqrt(3)) / 2 / 2;
+    const distance =
+      (Math.sqrt((mouseX - centerX) ** 2 + (mouseY - centerY) ** 2) * 2) /
+      Math.sqrt(3);
+    return distance <= forma.side;
+  } else {
+    return (
+      mouseX >= forma.x &&
+      mouseX <= forma.x + forma.width &&
+      mouseY >= forma.y &&
+      mouseY <= forma.y + forma.height
+    );
+  }
+}
 
-      function draw(e) {
-        if (!isDrawing) return;
+function getColorByNumero(numero) {
+  switch (numero) {
+    case 1:
+      return "red";
+    case 2:
+      return "yellow";
+    case 3:
+      return "green";
+    case 4:
+      return "blue";
+    case 5:
+      return "white";
+    case 6:
+      return "black";
+    case 7:
+      return "pink";
+    case 8:
+      return "orange";
+    default:
+      return "white";
+  }
+}
 
-        const rect = canvas.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
+function draw(e) {
+  if (!isDrawing) return;
 
-        formasRectangulares.forEach((forma) => {
-          if (
-            mouseX >= forma.x &&
-            mouseX <= forma.x + (forma.side || forma.width) &&
-            mouseY >= forma.y &&
-            mouseY <=
-              forma.y +
-                (forma.side ? (forma.side * Math.sqrt(3)) / 2 : forma.height)
-          ) {
-            if (forma.numero === selectedColor || selectedColor === 0) {
-              context.fillStyle =
-                selectedColor === 0 ? "white" : getColorByNumero(selectedColor);
+  const rect = canvas.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
 
-              if (forma.side) {
-                drawTriangle(forma.x, forma.y, forma.side, forma.angle);
-              } else {
-                context.fillRect(forma.x, forma.y, forma.width, forma.height);
-                context.strokeRect(forma.x, forma.y, forma.width, forma.height);
-              }
-            }
-          }
-        });
-      }
+  formasRectangulares.forEach((forma, index) => {
+    if (isPointInsideForma(mouseX, mouseY, forma)) {
+      forma.color = selectedColor;
+      clearCanvas();
+    }
+  });
+}
 
-      function getColorByNumero(numero) {
-        switch (numero) {
-          case 1:
-            return "pink";
-          case 2:
-            return "yellow";
-          case 3:
-            return "pink";
-        }
-      }
+function toggleColorPalette() {
+  const colorPalette = document.getElementById("color-palette");
+  const currentState = colorPalette.style.display;
 
-      canvas.addEventListener("mousedown", () => (isDrawing = true));
-      canvas.addEventListener("mouseup", () => (isDrawing = false));
-      canvas.addEventListener("mousemove", draw);
+  if (currentState === "none" || currentState === "") {
+    colorPalette.style.display = "flex";
+  } else {
+    colorPalette.style.display = "none";
+  }
+}
 
-      drawFormasRectangulares();
+function hideColorPalette() {
+  const colorPalette = document.getElementById("color-palette");
+  colorPalette.style.display = "none";
+}
+
+canvas.addEventListener("mousedown", () => (isDrawing = true));
+canvas.addEventListener("mouseup", () => (isDrawing = false));
+canvas.addEventListener("mousemove", draw);
+
+drawFormasRectangulares();
+hideColorPalette();
+
+function refreshPage() {
+  location.reload();
+}
+
+function checkColors() {
+  let forma1PintadaCorrectamente = false;
+  let forma2PintadaCorrectamente = false;
+
+  formasRectangulares.forEach((forma) => {
+    if (forma.tipo === "triangulo" && forma.color === 1) {
+      forma1PintadaCorrectamente = true;
+    } else if (forma.tipo === "cuadrado" && forma.color === 1) {
+      forma2PintadaCorrectamente = true;
+    }
+  });
+
+  console.log("Forma 1 pintada correctamente:", forma1PintadaCorrectamente);
+  console.log("Forma 2 pintada correctamente:", forma2PintadaCorrectamente);
+
+  if (forma1PintadaCorrectamente && forma2PintadaCorrectamente) {
+    // Muestra el recuadro de mensaje de victoria
+    showWinMessage();
+
+    // Oculta el botón "Check"
+    const checkButton = document.querySelector(".check-button");
+    checkButton.style.display = "none";
+  } else {
+    // Muestra el recuadro de mensaje de error
+    const errorMessage = document.getElementById("error-message");
+    errorMessage.style.display = "block";
+  }
+}
+
+function showNextLevel() {
+  // Puedes personalizar este mensaje o realizar otra acción
+  const resultContainer = document.getElementById("result-container");
+  resultContainer.innerHTML =
+    "<div>¡Ganaste el nivel! Pasando al siguiente nivel...</div>";
+}
+
+function showWinMessage() {
+  const winMessage = document.getElementById("win-message");
+  winMessage.style.display = "block";
+}
+
+function closeErrorMessage() {
+  const errorMessage = document.getElementById("error-message");
+  errorMessage.style.display = "none";
+}
+

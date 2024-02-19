@@ -1,27 +1,112 @@
-const mainCanvas = document.getElementById("main-canvas");
-const context = mainCanvas.getContext("2d");
+document.addEventListener("DOMContentLoaded", () => {
+  const puzzleSection = document.getElementById("puzzle-section");
+  const puzzleDropArea = document.getElementById("puzzle-drop-area");
+  const dropSlots = document.querySelectorAll(".drop-slot");
+  const puzzlePieces = [];
+  const imageURLs = [
+    "/images/puzle1.png",
+    "/images/puzle3.png",
+    "/images/puzle2.png",
+    "/images/puzle4.png",
+  ];
 
-let initialX;
-let initialY;
+  function loadImages() {
+    imageURLs.forEach((url, index) => {
+      const piece = document.createElement("img");
+      piece.src = url;
+      piece.alt = `Piece ${index + 1}`;
+      piece.classList.add("puzzle-piece");
+      piece.dataset.piece = index + 1;
+      piece.draggable = true;
+      piece.addEventListener("dragstart", (event) =>
+        handleDragStart(event, piece)
+      );
+      puzzleSection.appendChild(piece);
+      puzzlePieces.push(piece);
+    });
+  }
 
-const dibujar = (cursorX, cursorY) => {
-  context.beginPath();
-  context.moveTo(initialX, initialY);
-  context.lineWidth = 8000;
-  context.strokeStyle = "";
-  context.lineCap = "square";
-  context.lineJoin = "round";
-  context.lineTo(cursorX, cursorY);
-  context.stroke();
+  function handleDragStart(event, piece) {
+    event.dataTransfer.setData("text/plain", piece.dataset.piece);
+  }
 
-  initialX = cursorX;
-  initialY = cursorY;
-};
+  puzzleDropArea.addEventListener("dragover", (event) =>
+    event.preventDefault()
+  );
 
-const mouseClick = (evt) => {
-  initialX = evt.offsetX;
-  initialY = evt.offsetY;
-  dibujar(initialX, initialY);
-};
+  dropSlots.forEach((slot) => {
+    slot.addEventListener("dragover", (event) => event.preventDefault());
 
-mainCanvas.addEventListener("mousedown", mouseClick);
+    slot.addEventListener("drop", (event) => {
+      event.preventDefault();
+      const droppedPieceNumber = event.dataTransfer.getData("text/plain");
+      const droppedPiece = puzzlePieces.find(
+        (piece) => piece.dataset.piece === droppedPieceNumber
+      );
+
+      droppedPiece.style.width = "200px";
+      droppedPiece.style.height = "150px";
+
+      slot.appendChild(droppedPiece);
+    });
+  });
+
+  loadImages();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  function check() {
+    const slots = document.querySelectorAll(".drop-slot");
+
+    const correctOrderForSlots = {
+      slot1: 1, // Asigna el número de la pieza correcta para el slot1
+      slot2: 2, // Asigna el número de la pieza correcta para el slot2
+      slot3: 4, // Asigna el número de la pieza correcta para el slot3
+      slot4: 3, // Asigna el número de la pieza correcta para el slot4
+    };
+
+    const isCorrectOrder = Array.from(slots).every((slot) => {
+      const slotId = slot.id;
+      const correctPieceNumber = correctOrderForSlots[slotId];
+      const droppedPieceNumber =
+        slot.children.length > 0 ? parseInt(slot.children[0].dataset.piece) : 0;
+
+      return correctPieceNumber === droppedPieceNumber;
+    });
+
+    if (isCorrectOrder) {
+      showMessage("¡Ganaste!");
+    } else {
+      showError(" Debes colocar las piezas en los slots correctos.");
+    }
+  }
+
+  function showMessage(message) {
+    const winMessage = document.getElementById("win-message");
+    const errorText = document.getElementById("error-text");
+    errorText.textContent = "";
+    winMessage.style.display = "block";
+  }
+
+  function showError(message) {
+    const errorMessage = document.getElementById("error-message");
+    const errorText = document.getElementById("error-text");
+    errorText.textContent = message;
+    errorMessage.style.display = "block";
+  }
+
+  function hideMessages() {
+    const winMessage = document.getElementById("win-message");
+    const errorMessage = document.getElementById("error-message");
+    winMessage.style.display = "none";
+    errorMessage.style.display = "none";
+  }
+
+  const checkButton = document.querySelector(".check");
+  checkButton.addEventListener("click", check);
+
+  const okButton = document.querySelector("#error-message button");
+  if (okButton) {
+    okButton.addEventListener("click", hideMessages);
+  }
+});

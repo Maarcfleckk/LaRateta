@@ -1,29 +1,355 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
     <title>El Joc de la Rateta</title>
-</head>
-<body>
+  </head>
+    <style>
+     @import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.btn-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+.btn-back img {
+  height: 150px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#canvas-container {
+  border: 1px solid #000;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+#canvas {
+  cursor: crosshair;
+}
+
+#color-palette {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.color-button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.color-button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.Heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.Header {
+  font-size: 70px;
+}
+
+.btn-back {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: -5px;
+  margin-left: -5px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#canvas-container {
+  border: 4px solid #000;
+  overflow: hidden;
+  margin-left: 10px; /* Ajusta el margen según tus preferencias */
+}
+
+#color-palette {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 120px;
+
+  margin-right: -10px; /* Ajusta el margen según tus preferencias */
+}
+
+.color-button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.color-button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.color-palette-button {
+  position: absolute;
+  bottom: 18px;
+  left: 460px;
+  cursor: pointer;
+}
+
+#result-container {
+  margin-top: 20px;
+}
+
+h1 {
+  font-family: "Irish Grover", system-ui;
+}
+
+.refresh-button {
+  position: absolute;
+  bottom: 10px; /* Ajusta la posición inferior según tus preferencias */
+  left: 700px; /* Ajusta la posición izquierda según tus preferencias */
+  padding: 10px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.check-button {
+  position: absolute;
+  bottom: 10px; /* Ajusta la posición inferior según tus preferencias */
+  left: 990px; /* Ajusta la posición izquierda según tus preferencias */
+  padding: 10px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#error-message {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: -9%;
+  transform: translate(78%, -150%);
+  padding: 20px;
+  background-color: #ff4444; /* color de fondo rojo */
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#error-message button {
+  padding: 10px;
+  background-color: #fff;
+  color: #ff4444; /* color de texto rojo */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+     #win-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(76, 175, 80, 2.8); /* Fondo verde con opacidad */
+  color: white;
+  font-size: 250%;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* Ajusta según sea necesario para que esté por encima del contenido */
+}
+
+#win-message button {
+  padding: 10px;
+  background-color: #fff;
+  color: #4caf50; /* color de texto verde */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 60%;
+  width: 12%;
+  height: 10vh;
+  margin-top: 222px;
+}
+
+
+
+      .puzzle-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5px;
+        align-items: baseline;
+        margin-left: 110%;
+        margin-top: -70%;
+        float: left;
+      }
+
+      .puzzle-piece {
+        width: 50px;
+        height: 37.5px;
+        cursor: grab;
+        transition: transform 0.5s ease-out, width 0.5s ease-out,
+          height 0.5s ease-out;
+        border: 2px solid black;
+        box-sizing: border-box;
+      }
+
+      .puzzle-piece:active {
+        cursor: grabbing;
+        transform: scale(1.333);
+        width: 150px;
+        height: 112.5px;
+      }
+
+      .puzzle-drop-area {
+        width: 620px;
+        height: 470px;
+        position: relative;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .drop-slot {
+        width: 150px;
+        height: 150px;
+        border: 2px solid black;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+
+
+   .buttons {
+    display: flex;
+    justify-content:center;
+    margin-top: 113px;
+    margin-left: 20%;
+}
+
+.sonido,
+.reiniciar {
+    padding: 0 20%; /* Puedes ajustar el valor según tus necesidades */
+}
+
+.check {
+    padding: 0 30%; /* Puedes ajustar el valor según tus necesidades */
+}
+
+
+    </style>
+  </head>
+
+  <body>
     <main>
-    <section class="topSide">
+         <section class="topSide">
         <div class="Heading">
-            <h1 class="Header">
-                <img class="headerImage" src="/images/titulo-nivel3.PNG" alt="NIVELLS" srcset="">
-            </h1>
+          <h1 class="Header">NIVELL 3</h1>
         </div>
         <div class="btn-back">
-            <a class="link-back " href="/game-screen.html">
-                NIVELL 3
-            </a>
+          <a class="link-back" href="/game-screen.html">
+            <img src="/images/volver.png" alt="" />
+          </a>
         </div>
-    </section>
+      </section>
+  <section class="puzzle-drop-area" id="puzzle-drop-area" style="position: relative; width: 400px; height: 300px;">
+    <div class="drop-slot" id="slot1" style="position: absolute; top: 0; left: 0; width: 50%; height: 50%;"></div>
+    <div class="drop-slot" id="slot2" style="position: absolute; top: 0; left: 50%; width: 50%; height: 50%;"></div>
+    <div class="drop-slot" id="slot3" style="position: absolute; top: 50%; left: 0; width: 50%; height: 50%;"></div>
+    <div class="drop-slot" id="slot4" style="position: absolute; top: 50%; left: 50%; width: 50%; height: 50%;"></div>
+</section>
 
-    <section>
-      
-    </section>
-  </main> 
-</body>
+
+      <section id="puzzle-section" class="puzzle-container">
+        <!-- Las imágenes del puzle se cargarán dinámicamente aquí con JavaScript -->
+      </section>
+
+
+
+       <section class="buttons">
+        <img src="/images/sonido.png" class="sonido" onclick="playSound()" />
+        <a href="/levels/level-3/index.html"><img
+          src="/images/reiniciar.png"
+          class="reiniciar"
+          onclick="reloadPage()"
+        /></a>
+        <img src="/images/check.png" class="check" onclick="check()" />
+      </section>
+
+
+
+
+
+  <div id="win-message">
+      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+        ¡ Has Guanyat !
+      </h1>
+      <a href="/levels/level-4/index.html">
+        <button onclick="nextLevel()">Següent nivell</button></a
+      >
+    </div>
+
+<div id="error-message">
+  <p id="error-text"></p>
+  <button onclick="hideMessages()">OK</button>
+</div>
+
+
+    </main>
+
+
+
+
+
+<script src="/levels/level-3/script.js">
+   
+
+</script>
+    
+  </body>
 </html>

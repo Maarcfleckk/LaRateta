@@ -1,29 +1,95 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/levels/level-2/style.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
     <title>El Joc de la Rateta</title>
-</head>
-<body>
+  
+  </head>
+
+  <body>
     <main>
-    <section class="topSide">
+      <section class="topSide">
         <div class="Heading">
-            <h1 class="Header">
-                <img class="headerImage" src="./images/titulo2.png" alt="NIVELLS" srcset="">
-            </h1>
+          <h1 class="Header">NIVELL 2</h1>
         </div>
         <div class="btn-back">
-            <a class="link-back " href="/game-screen.html">
-                NIVELL 2
-            </a>
+          <a class="link-back" href="/game-screen.html">
+            <img src="/images/volver.png" alt="" />
+          </a>
         </div>
-    </section>
+      </section>
 
-    <section>
-      
-    </section>
-  </main> 
-</body>
+      <section class="levels-grid">
+        <div class="level">
+          <a
+            class="vibrate"
+            onclick="selectCharacter('rata', this)"
+            data-character="rata"
+          >
+            <img
+              src="/images/rata.png"
+              height="210px"
+              alt=""
+              style="margin-top: 40%; margin-left: -50%"
+            />
+          </a>
+        </div>
+        <div class="level">
+          <a
+            class="vibrate"
+            onclick="selectCharacter('burra', this)"
+            data-character="burra"
+          >
+            <img
+              src="/images/burra.png"
+              height="240px"
+              style="margin-top: 30%"
+            />
+          </a>
+        </div>
+        <div class="level">
+          <a
+            class="vibrate"
+            onclick="selectCharacter('perrito', this)"
+            data-character="perrito"
+          >
+            <img
+              src="/images/perrito.png"
+              height="150px"
+              style="margin-top: 60%; padding-left: 40%"
+            />
+          </a>
+        </div>
+      </section>
+
+      <section class="buttons">
+        <img src="/images/sonido.png" class="sonido" onclick="playSound()" />
+        <img
+          src="/images/reiniciar.png"
+          class="reiniciar"
+          onclick="reloadPage()"
+        />
+        <img src="/images/check.png" class="check" onclick="check()" />
+      </section>
+    </main>
+
+  <div id="win-message">
+      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+        ¡ Has Guanyat !
+      </h1>
+      <a href="/levels/level-3/index.html">
+        <button onclick="nextLevel()">Següent nivell</button></a
+      >
+    </div>
+
+    <div id="error-message">
+      ¡Te equivocaste de personje!
+      <button onclick="closeErrorMessage()">OK</button>
+    </div>
+
+   <script src="/levels/level-2/script.js"></script>
+  </body>
 </html>

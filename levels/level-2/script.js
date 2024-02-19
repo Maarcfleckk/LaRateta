@@ -1,27 +1,45 @@
-const mainCanvas = document.getElementById("main-canvas");
-const context = mainCanvas.getContext("2d");
+function playSound() {
+  // Lógica para reproducir sonido
+  alert("Reproducir sonido");
+}
 
-let initialX;
-let initialY;
+function reloadPage() {
+  // Lógica para recargar la página
+  location.reload();
+}
 
-const dibujar = (cursorX, cursorY) => {
-  context.beginPath();
-  context.moveTo(initialX, initialY);
-  context.lineWidth = 8000;
-  context.strokeStyle = "";
-  context.lineCap = "square";
-  context.lineJoin = "round";
-  context.lineTo(cursorX, cursorY);
-  context.stroke();
+function check() {
+  // Lógica para checkear
+  var selectedCharacter = document.querySelector(".vibrate.active");
+  if (selectedCharacter && selectedCharacter.dataset.character === "burra") {
+    showWinMessage();
+  } else {
+    showErrorMessage();
+  }
+}
 
-  initialX = cursorX;
-  initialY = cursorY;
-};
+function selectCharacter(character) {
+  var elements = document.querySelectorAll(".vibrate");
+  elements.forEach(function (element) {
+    element.classList.remove("active");
+  });
 
-const mouseClick = (evt) => {
-  initialX = evt.offsetX;
-  initialY = evt.offsetY;
-  dibujar(initialX, initialY);
-};
+  var selectedElement = document.querySelector(
+    '.vibrate[data-character="' + character + '"]'
+  );
+  if (selectedElement) {
+    selectedElement.classList.add("active");
+  }
+}
 
-mainCanvas.addEventListener("mousedown", mouseClick);
+function showWinMessage() {
+  document.getElementById("win-message").style.display = "block";
+}
+
+function showErrorMessage() {
+  document.getElementById("error-message").style.display = "block";
+}
+
+function closeErrorMessage() {
+  document.getElementById("error-message").style.display = "none";
+}

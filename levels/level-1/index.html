@@ -1,18 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
     <title>El Joc de la Rateta</title>
   </head>
+
   <body>
     <main>
       <section class="topSide">
         <div class="Heading">
-          <h1 class="Header">
-            NIVELL 1
-          </h1>
+          <h1 class="Header">NIVELL 1</h1>
         </div>
         <div class="btn-back">
           <a class="link-back" href="/game-screen.html">
@@ -29,63 +29,79 @@
     <div id="color-palette">
       <div
         class="color-button"
-        style="background-color: pink"
+        style="
+          background-image: url(/images/color-rojo1.png);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          width: 390%;
+        "
         onclick="selectColor(1)"
-      >
-        <span>1</span>
-      </div>
+      ></div>
       <div
         class="color-button"
-        style="background-color: yellow"
+        style="
+          background-image: url(/images/color-amarillo.png);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          width: 390%;
+        "
         onclick="selectColor(2)"
-      >
-        <span>2</span>
-      </div>
+      ></div>
       <div
         class="color-button"
-        style="background-color: green"
+        style="
+          background-image: url(/images/color-verde.png);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          width: 390%;
+        "
         onclick="selectColor(3)"
-      >
-        <span>3</span>
-      </div>
+      ></div>
       <div
         class="color-button"
-        style="background-color: blue"
+        style="
+          background-image: url(/images/color-azul.png);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          width: 390%;
+        "
         onclick="selectColor(4)"
-      >
-        <span>4</span>
-      </div>
-      <div
-        class="color-button"
-        style="background-color: white"
-        onclick="selectColor(5)"
-      >
-        <span>5</span>
-      </div>
-      <div
-        class="color-button"
-        style="background-color: black"
-        onclick="selectColor(6)"
-      >
-        <span>6</span>
-      </div>
-      <div
-        class="color-button"
-        style="background-color: red"
-        onclick="selectColor(7)"
-      >
-        <span>7</span>
-      </div>
-      <div
-        class="color-button"
-        style="background-color: orange"
-        onclick="selectColor(8)"
-      >
-        <span>8</span>
-      </div>
+      ></div>
     </div>
 
-    <button onclick="selectColor(0)">Borrador</button>
-    <script src="script.js"></script>
+    <img
+      class="color-palette-button"
+      src="/images/paleta.png"
+      alt="Mostrar Colores"
+      onclick="toggleColorPalette()"
+    />
+
+    <img
+      class="refresh-button"
+      src="/images/reiniciar.png"
+      onclick="refreshPage()"
+    />
+
+    <img class="check-button" src="/images/check.png" onclick="checkColors()" />
+
+    <button id="next-button" style="display: none" onclick="showNextLevel()">
+      Next
+    </button>
+
+    <div id="win-message">
+      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+        ¡ Has Guanyat !
+      </h1>
+      <a href="/levels/level-2/index.html">
+        <button onclick="nextLevel()">Següent nivell</button></a
+      >
+    </div>
+
+    <div id="error-message">
+      Algunes formes no estan pintades correctament.
+      <button onclick="closeErrorMessage()">Tancar</button>
+    </div>
+
+    <script src="/levels/level-1/script.js"></script>
   </body>
 </html>
