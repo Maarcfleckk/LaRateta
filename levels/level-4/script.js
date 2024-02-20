@@ -1,89 +1,112 @@
 document.addEventListener("DOMContentLoaded", function () {
   const laberinto = document.getElementById("maze");
+  const columnas = 11;
+  const filas = 8;
+  let jugadorPosicion = 0;
+  const metaPosicion = filas * columnas - 1;
 
-  // Define el tamaño del laberinto (en este caso, 5x5)
-  const columnas = 10;
-  const filas = 10;
-
-  // Crea el laberinto
-  for (let i = 0; i < filas * columnas; i++) {
+  function crearCelda() {
     const celda = document.createElement("div");
     celda.classList.add("celda");
-    laberinto.appendChild(celda);
+    return celda;
   }
 
-  const celdas = document.querySelectorAll(".celda");
-  let jugadorPosicion = 0; // Inicializa al jugador en la esquina superior izquierda
-
-  // Establece la posición de la meta (esquina inferior derecha)
-  const metaPosicion = filas * columnas - 1;
-  celdas[metaPosicion].classList.add("meta");
-
-  // Muestra al jugador en la posición inicial
-  actualizarJugador();
-
   function actualizarJugador() {
-    // Limpia la posición anterior del jugador
     celdas.forEach((celda) => celda.classList.remove("jugador"));
-
-    // Muestra al jugador en su nueva posición
     celdas[jugadorPosicion].classList.add("jugador");
   }
 
   function crearParedesAleatorias() {
     const totalCeldas = filas * columnas;
-    const cantidadParedes = Math.floor(totalCeldas * 0.2); // Puedes ajustar el porcentaje de paredes
+    const cantidadParedes = Math.floor(totalCeldas * 0.2);
 
     for (let i = 0; i < cantidadParedes; i++) {
       const indiceAleatorio = Math.floor(Math.random() * totalCeldas);
+      const celda = celdas[indiceAleatorio];
       if (
-        celdas[indiceAleatorio].classList.contains("meta") ||
-        celdas[indiceAleatorio].classList.contains("jugador") ||
-        celdas[indiceAleatorio].classList.contains("pared")
+        !celda.classList.contains("meta") &&
+        !celda.classList.contains("jugador") &&
+        !celda.classList.contains("pared")
       ) {
-      } else {
-        celdas[indiceAleatorio].classList.add("pared");
+        celda.classList.add("pared");
       }
+      protegirJugador();
+      protegirMeta();
     }
   }
 
-  crearParedesAleatorias();
+  function protegirJugador() {
+    celdas[1].classList.remove("pared");
+    celdas[1].classList.add("celda");
+    celdas[11].classList.remove("pared");
+    celdas[11].classList.add("celda");
+    celdas[12].classList.remove("pared");
+    celdas[12].classList.add("celda");
+  }
 
-  // Modifica la función de manejo de eventos del teclado
-  document.addEventListener("keydown", function (event) {
+  function protegirMeta() {
+    celdas[75].classList.remove("pared");
+    celdas[75].classList.add("celda");
+    celdas[76].classList.remove("pared");
+    celdas[76].classList.add("celda");
+    celdas[86].classList.remove("pared");
+    celdas[86].classList.add("celda");
+  }
+
+  function verificarMetaAlcanzada() {
+    if (jugadorPosicion === metaPosicion) {
+      showWinMessage();
+    }
+  }
+
+  function moverJugador(event) {
     let nuevaPosicion = jugadorPosicion;
     switch (event.key) {
       case "ArrowUp":
-        if (jugadorPosicion - columnas >= 0) {
-          nuevaPosicion = jugadorPosicion - columnas;
-        }
+        nuevaPosicion = jugadorPosicion - columnas;
         break;
       case "ArrowDown":
-        if (jugadorPosicion + columnas < filas * columnas) {
-          nuevaPosicion = jugadorPosicion + columnas;
-        }
+        nuevaPosicion = jugadorPosicion + columnas;
         break;
       case "ArrowLeft":
-        if (jugadorPosicion % columnas !== 0) {
-          nuevaPosicion = jugadorPosicion - 1;
-        }
+        nuevaPosicion =
+          jugadorPosicion % columnas !== 0
+            ? jugadorPosicion - 1
+            : jugadorPosicion;
         break;
       case "ArrowRight":
-        if ((jugadorPosicion + 1) % columnas !== 0) {
-          nuevaPosicion = jugadorPosicion + 1;
-        }
+        nuevaPosicion =
+          (jugadorPosicion + 1) % columnas !== 0
+            ? jugadorPosicion + 1
+            : jugadorPosicion;
         break;
     }
 
-    // Solo actualiza la posición del jugador si la celda no tiene la clase 'vacio'
     if (!celdas[nuevaPosicion].classList.contains("pared")) {
       jugadorPosicion = nuevaPosicion;
       actualizarJugador();
+      verificarMetaAlcanzada();
     }
+  }
 
-    // Verifica si el jugador ha alcanzado la meta
-    if (jugadorPosicion === metaPosicion) {
-      alert("¡Felicidades! Has llegado a la meta.");
-    }
-  });
+  function showWinMessage() {
+    const winMessage = document.getElementById("win-message");
+    winMessage.style.display = "block";
+  }
+
+  // Crear el laberinto
+  for (let i = 0; i < filas * columnas; i++) {
+    const celda = crearCelda();
+    laberinto.appendChild(celda);
+  }
+
+  const celdas = document.querySelectorAll(".celda");
+  celdas[metaPosicion].classList.add("meta");
+  actualizarJugador();
+  crearParedesAleatorias();
+  document.addEventListener("keydown", moverJugador);
 });
+
+function refreshPage() {
+  location.reload();
+}

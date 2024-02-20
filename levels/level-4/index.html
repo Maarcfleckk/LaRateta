@@ -24,8 +24,28 @@
         <section id="maze" class="maze">
       
         </section>
+        <section class="gameControls">
+            <div class="controls">
+                <button id="up" class="btn-up">↑</button>
+                <button id="left" class="btn-left">←</button>
+                <button id="right" class="btn-right">→</button>
+                <button id="down" class="btn-down">↓</button>
+            </div>
+            <div class="btns">
+                <img
+                    class="refresh-button"
+                    src="/images/reiniciar.png"
+                    onclick="refreshPage()"
+                />
+            </div>
     </section>
-    
+    <section id="win-message">
+      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+        ¡ Has Guanyat !
+      </h1>
+      <a href="/levels/level-5/index.html"><button>Següent nivell</button></a>
+      <a href=""><button>Repetir nivell</button></a>
+    </section>
   </main> 
   <script src="script.js"></script>
 </body>
