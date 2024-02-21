@@ -26,10 +26,12 @@
         </section>
         <section class="gameControls">
             <div class="controls">
-                <button id="up" class="btn-up">↑</button>
-                <button id="left" class="btn-left">←</button>
-                <button id="right" class="btn-right">→</button>
-                <button id="down" class="btn-down">↓</button>
+                <button class="d-none"></button>
+                <button id="up" class="btn-up" onclick="goTop()">↑</button>
+                <button class="d-none"></button>
+                <button id="left" class="btn-left" onclick="goLeft()">←</button>
+                <button id="down" class="btn-down" onclick="goBot()">↓</button>
+                <button id="right" class="btn-right" onclick="goRight()">→</button>
             </div>
             <div class="btns">
                 <img

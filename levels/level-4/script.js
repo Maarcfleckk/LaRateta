@@ -86,12 +86,46 @@ document.addEventListener("DOMContentLoaded", function () {
       jugadorPosicion = nuevaPosicion;
       actualizarJugador();
       verificarMetaAlcanzada();
+    } else if (celdas[nuevaPosicion].classList.contains("pared")) {
+      refreshPage();
     }
   }
 
   function showWinMessage() {
     const winMessage = document.getElementById("win-message");
     winMessage.style.display = "block";
+  }
+
+  function goTop() {
+    const nuevaPosicion = jugadorPosicion - columnas;
+    moverJugadorEnDireccion(nuevaPosicion);
+  }
+
+  function goLeft() {
+    const nuevaPosicion =
+      jugadorPosicion % columnas !== 0 ? jugadorPosicion - 1 : jugadorPosicion;
+    moverJugadorEnDireccion(nuevaPosicion);
+  }
+
+  function goBot() {
+    const nuevaPosicion = jugadorPosicion + columnas;
+    moverJugadorEnDireccion(nuevaPosicion);
+  }
+
+  function goRight() {
+    const nuevaPosicion =
+      (jugadorPosicion + 1) % columnas !== 0
+        ? jugadorPosicion + 1
+        : jugadorPosicion;
+    moverJugadorEnDireccion(nuevaPosicion);
+  }
+
+  function moverJugadorEnDireccion(nuevaPosicion) {
+    if (!celdas[nuevaPosicion].classList.contains("pared")) {
+      jugadorPosicion = nuevaPosicion;
+      actualizarJugador();
+      verificarMetaAlcanzada();
+    }
   }
 
   // Crear el laberinto
@@ -105,6 +139,10 @@ document.addEventListener("DOMContentLoaded", function () {
   actualizarJugador();
   crearParedesAleatorias();
   document.addEventListener("keydown", moverJugador);
+  document.getElementById("up").addEventListener("click", goTop);
+  document.getElementById("left").addEventListener("click", goLeft);
+  document.getElementById("down").addEventListener("click", goBot);
+  document.getElementById("right").addEventListener("click", goRight);
 });
 
 function refreshPage() {

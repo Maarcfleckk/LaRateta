@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+.d-none {
+  visibility: hidden;
+}
 .Heading {
   position: absolute;
   top: 0;
@@ -33,6 +36,13 @@
   z-index: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.gameControls {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
   align-items: center;
 }
 .maze {
@@ -98,4 +108,37 @@
   width: 12%;
   height: 10vh;
   margin-top: 222px;
+}
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.btn-up {
+  border-color: transparent transparent #ccc transparent;
+}
+
+.btn-left {
+  border-color: transparent #ccc transparent transparent;
+}
+
+.btn-down {
+  border-color: #ccc transparent transparent transparent;
+}
+
+.btn-right {
+  border-color: transparent transparent transparent #ccc;
 }
