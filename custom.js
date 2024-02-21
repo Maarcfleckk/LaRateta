@@ -80,11 +80,11 @@ function toggleMusic() {
 }
 
 function updateAfterVisibility() {
-  var afterElement = musicButton.querySelector('.imgAfter');
+  var afterElement = musicButton.querySelector(".imgAfter");
   if (isMusicPlaying) {
-    afterElement.style.display = 'none';
+    afterElement.style.display = "none";
   } else {
-    afterElement.style.display = 'block';
+    afterElement.style.display = "block";
   }
 }
 
@@ -134,15 +134,15 @@ function toggleContent() {
   const toggleTextImg = document.getElementById("toggleTextImg");
 
   if (isTextVisible) {
-    carouselContainer.style.display = "block"; 
-    scrollableText.style.maxHeight = "125px";
+    carouselContainer.style.display = "block";
+    scrollableText.style.display = "none";
     scrollableText.style.textAlign = "center";
-    toggleTextImg.textContent = "CONTE"; 
+    toggleTextImg.textContent = "CONTE";
   } else {
     carouselContainer.style.display = "none";
-    scrollableText.style.maxHeight = "450px";
+    scrollableText.style.display = "block";
     scrollableText.style.textAlign = "justify";
-    toggleTextImg.textContent = "IMATGES";  
+    toggleTextImg.textContent = "IMATGES";
   }
 
   isTextVisible = !isTextVisible;
