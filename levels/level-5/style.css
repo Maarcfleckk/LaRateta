@@ -43,6 +43,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .gameControls {
   width: 50%;
@@ -81,7 +82,7 @@
 /* IMAGENES */
 
 .itemImg {
-  height: 70px;
+  height: 33%;
 }
 .result {
   border: 1px solid #000;
@@ -114,15 +115,15 @@ input[type="number"] {
 #error-message {
   display: none;
   position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(78%, -150%);
   padding: 20px;
-  background-color: #ff4444; /* color de fondo rojo */
+  background-color: #ff4444;
   color: white;
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  top: 20%;
+  left: 34%;
 }
 
 #error-message button {
