@@ -21,9 +21,31 @@
         </div>
     </section>
 
-    <section>
-      
+    <section class="gameBox">
+        <section class="gameItemContainer">
+            
+        </section>
+        <section class="gameControls">
+            <img class="refresh-button" src="/images/reiniciar.png" onclick="refreshPage()"/>
+            <div class="result">
+                <button onclick="handleDecrement()">-</button>
+                <input class="resultInput" type="number" min="1" max="10" step="1" value="0">
+                <button onclick="handleIncrement()">+</button>
+            </div>
+            <img class="check-button" src="/images/check.png" onclick="checkResult()" />
     </section>
+    <section id="win-message">
+      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+        ¡ Has Guanyat !
+      </h1>
+      <a href="/levels/level-5/index.html"><button>Següent nivell</button></a>
+      <a href=""><button>Repetir nivell</button></a>
+    </section>
+    <div id="error-message">
+      Estas segur? Torna-ho a intentar!
+      <button onclick="closeErrorMessage()">Tancar</button>
+    </div>
   </main> 
+    <script src="script.js"></script>
 </body>
 </html>
