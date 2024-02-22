@@ -74,11 +74,7 @@
   background-position: center;
 }
 .pared {
-  background-color: red;
-  border-color: transparent;
-  box-shadow: inset 0px 0px 25px 5px rgb(255, 255, 255);
-  /* background-image: url("/images/level4/pared-laberint.png");
-  background-size: cover; */
+  background-color: black;
 }
 
 #win-message {

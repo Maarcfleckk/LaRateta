@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const laberinto = document.getElementById("maze");
   const columnas = 11;
   const filas = 8;
-  let jugadorPosicion = 0;
-  const metaPosicion = filas * columnas - 1;
+  let jugadorPosicion = Math.floor(Math.random() * (filas * columnas));
+  const metaPosicion = Math.floor(Math.random() * (filas * columnas));
 
   function crearCelda() {
     const celda = document.createElement("div");
