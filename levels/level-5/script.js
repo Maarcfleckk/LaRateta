@@ -15,12 +15,13 @@ function refreshPage() {
 }
 function randomImg() {
   const imgNumber = Math.floor(Math.random() * 3);
+  const image = document.querySelector(".itemImg");
   if (imgNumber === 0) {
     return "../../images/level5/lazo.png";
   } else if (imgNumber === 1) {
     return "../../images/level5/moneda.png";
   }
-  return "../../images/level5/escoba.png";
+  return "../../images/casa.png";
 }
 function handleIncrement() {
   const resultInput = document.querySelector(".resultInput");
