@@ -1,40 +1,45 @@
-
 function reloadPage() {
   // Lógica para recargar la página
   location.reload();
 }
+let currentCharacter = "";
+
 function randomizeCharacters() {
   const characterNumber = Math.floor(Math.random() * 3);
-  let  rightCharacter = "";
   if (characterNumber === 0) {
-    rightCharacter = "burra";
+    currentCharacter = "rata";
   } else if (characterNumber === 1) {
-    rightCharacter = "perrito";
+    currentCharacter = "burra";
   } else {
-    rightCharacter = "rata";
+    currentCharacter = "perrito";
   }
-  return characterNumber
+  return currentCharacter;
 }
-function playSound(characterNumber) {
+
+function playSound() {
   let audio = new Audio("");
-  if (characterNumber == 0) {
-    audio = new Audio("../../audio/burro.mp3");
-  } else if (characterNumber == 1) {
-    audio = new Audio("../../audio/Gos.mp3");
-  } else if (characterNumber == 2){
+  if (currentCharacter === "rata") {
     audio = new Audio("../../audio/rateta.mp3");
+  } else if (currentCharacter === "burra") {
+    audio = new Audio("../../audio/burro.mp3");
+  } else {
+    audio = new Audio("../../audio/gos.mp3");
   }
   audio.play();
 }
-function check(rightCharacter) {
-  // Lógica para checkear
+
+function check() {
   var selectedCharacter = document.querySelector(".vibrate.active");
-  if (selectedCharacter && selectedCharacter.dataset.character === rightCharacter) {
+  if (
+    selectedCharacter &&
+    selectedCharacter.dataset.character === currentCharacter
+  ) {
     showWinMessage();
   } else {
     showErrorMessage();
   }
 }
+
 
 function selectCharacter(character) {
   var elements = document.querySelectorAll(".vibrate");
