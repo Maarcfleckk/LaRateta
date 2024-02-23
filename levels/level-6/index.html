@@ -1,29 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>El Joc de la Rateta</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-    <section class="topSide">
+      <section class="topSide">
         <div class="Heading">
-            <h1 class="Header">
-                NIVELL 6
-            </h1>
+          <h1 class="Header">NIVELL 6</h1>
         </div>
         <div class="btn-back">
-            <a class="link-back " href="/game-screen.html">
-                <img src="/images/volver.png" alt="" />
-            </a>
+          <a class="link-back" href="/game-screen.html">
+            <img src="/images/volver.png" alt="" />
+          </a>
         </div>
-    </section>
+      </section>
 
-    <section>
-      
-    </section>
-  </main> 
-</body>
+      <section class="gameBox">
+        <div class="game">
+          <div class="controls">
+            <button>Start</button>
+            <div class="stats">
+              <div class="moves">0 MOVIMENTS</div>
+              <div class="timer">TEMPS: 0 sec</div>
+            </div>
+          </div>
+          <div class="board-container">
+            <div class="board" data-dimension="4"></div>
+            <div class="win">You won!</div>
+          </div>
+        </div>
+      </section>
+      <section id="win-message">
+        <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+          ¡ Has Guanyat !
+        </h1>
+        <a href="/levels/level-6/index.html"><button>Següent nivell</button></a>
+        <a href=""><button>Repetir nivell</button></a>
+      </section>
+      <div id="error-message">
+        Estas segur? Torna-ho a intentar!
+        <button onclick="closeErrorMessage()">Tancar</button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
