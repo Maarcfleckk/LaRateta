@@ -205,105 +205,70 @@
 
   <body>
     <main>
-      <section class="Static-page">
-        <div class="Heading">
-          <h1 class="Header">
-            <img class="headerImage" src="images/titulo.png" alt="" srcset="" />
-          </h1>
+    <section class="Static-page">
+      <div class="Heading">
+        <h1 class="Header">
+          <img class="headerImage" src="images/titulo.png" alt="" srcset="" />
+        </h1>
+      </div>
+      <div class="mainButtons">
+        <div class="Ayuda">
+          <button type="button" id="ayuda" class="ayuda" onclick="openModal('modalAyuda')">
+            <img src="images/ayuda.png" alt="Ayuda" height="150px" />
+          </button>
         </div>
-        <div class="mainButtons">
-          <div class="Ayuda">
-            <button
-              type="button"
-              id="ayuda"
-              class="ayuda"
-              onclick="openModal('modalAyuda')"
-            >
-              <img src="images/ayuda.png" alt="Ayuda" height="150px" />
-            </button>
-          </div>
-          <div class="Musica">
-            <button
-              type="button"
-              id="music"
-              class="music"
-              onclick="toggleMusic()"
-            >
-              <img src="images/musica.png" alt="Música" height="150px" />
-              <div class="imgAfter"></div>
-            </button>
-          </div>
-          <div class="Cuento">
-            <button
-              type="button"
-              id="cuento"
-              class="cuento"
-              onclick="openModal('modalCuento')"
-            >
-              <img
-                src="images/llegir el conta.png"
-                alt="Cuento"
-                height="150px"
-              />
-            </button>
-          </div>
-          <div class="Idioma">
-            <button
-              type="button"
-              id="idioma"
-              class="idioma"
-              onclick="openModal('modalIdioma')"
-            >
-              <img src="images/idioma.png" alt="Idioma" height="150px" />
-            </button>
-          </div>
+        <div class="Musica">
+          <button type="button" id="music" class="music" onclick="toggleMusic()">
+            <img src="images/musica.png" alt="Música" height="150px" />
+            <div class="imgAfter"></div>
+          </button>
         </div>
-        <div class="Juego">
-          <a href="game-screen.html">
-            <img class="boton-jugar" src="images/boton.png" alt="Jugar" />
-          </a>
+        <div class="Cuento">
+          <button type="button" id="cuento" class="cuento" onclick="openModal('modalCuento')">
+            <img src="images/llegir el conta.png" alt="Cuento" height="150px" />
+          </button>
         </div>
-      </section>
-
-      <div id="modalAyuda" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('modalAyuda')"
-            ><img src="images/tancar.png"
-          /></span>
-          <h2>AJUDA</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
-            illum fugiat? Facilis, laudantium, ipsa tenetur amet dolorem
-            deleniti ducimus accusamus, dicta sapiente suscipit eos consequatur
-            iusto ea molestiae voluptate mollitia!
-          </p>
+        <div class="Idioma">
+          <button type="button" id="idioma" class="idioma" onclick="openModal('modalIdioma')">
+            <img src="images/idioma.png" alt="Idioma" height="150px" />
+          </button>
         </div>
       </div>
+      <div class="Juego">
+        <a href="game-screen.html">
+          <img class="boton-jugar" src="images/boton.png" alt="Jugar" />
+        </a>
+      </div>
+    </section>
 
-      <div id="modalCuento" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('modalCuento')"
-            ><img src="images/tancar.png"
-          /></span>
-          <div class="content">
-            <div class="topBar">
-              <button id="playButton" onclick="toggleAudio()">
-                <img
-                  id="playPauseIcon"
-                  src="images/play.png"
-                  alt="musicImage"
-                />
-                <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
-              </button>
-              <button id="stopButton" onclick="stopAudio()">
-                <img src="images/pausa.png" alt="musicImage" />
-                <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
-              </button>
-            </div>
+    <div id="modalAyuda" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalAyuda')">
+          <img src="images/tancar.png" />
+        </span>
+        <h2>AJUDA</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit...</p>
+      </div>
+    </div>
 
-            <!-- solo modificar esta parte-->
+    <div id="modalCuento" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalCuento')">
+          <img src="images/tancar.png" />
+        </span>
+        <div class="content">
+          <div class="topBar">
+            <button id="playButton" onclick="toggleAudio()">
+              <img id="playPauseIcon" src="images/play.png" alt="musicImage" />
+              <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
+            </button>
+            <button id="stopButton" onclick="stopAudio()">
+              <img src="images/pausa.png" alt="musicImage" />
+              <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
+            </button>
+          </div>
 
-            <div class="book">
+          <div class="book">
               <div id="page-1" class="page no-anim">
                 <div class="side-1" id="p1">
                   <div class="content">
@@ -455,9 +420,11 @@
             <!--asta aqui -->
           </div>
         </div>
+        </div>
       </div>
+    </div>
 
-      <div id="modalIdioma" class="modal">
+    <div id="modalIdioma" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal('modalIdioma')">
             <img src="images/tancar.png"
@@ -474,7 +441,8 @@
           </div>
         </div>
       </div>
-    </main>
+  </main>
+
   </body>
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
