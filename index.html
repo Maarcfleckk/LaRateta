@@ -6,6 +6,201 @@
     <title>El Joc de la Rateta</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <style>
+      *,
+      *:before,
+      *:after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #222;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ::selection {
+        background: #222;
+        color: white;
+      }
+
+      ::-moz-selection {
+        background: #222;
+        color: white;
+      }
+
+      body * {
+        transform-style: preserve-3d;
+        /* am i doing this wrong? */
+      }
+
+      body {
+        color: #222;
+        font-family: "Gabriela", serif;
+        perspective: 70em;
+        /*in your face*/
+        overflow-y: hidden;
+      }
+
+      h1,
+      p {
+        margin: 5% 0;
+      }
+
+      .book {
+        height: 80%;
+        max-height: 550px;
+        min-height: 450px;
+        width: 800px;
+        background-image: linear-gradient(
+            90deg,
+            hsla(0, 100%, 50%, 0.6),
+            hsla(0, 97%, 12%, 0.9),
+            hsla(0, 99%, 40%, 0.4) 90%
+          ),
+          url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+        position: absolute;
+        top: 340px;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        border: 3px solid hsla(30, 10%, 20%, 1);
+        border-radius: 5px;
+        box-shadow: 0 0 150px hsla(170, 0%, 0%, 0.4);
+      }
+
+      .page {
+        height: 100%;
+        width: 50%;
+        line-height: 1.5;
+        border-right: 10px solid transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform-origin: 0 50%;
+        transition: 0.8s;
+        /*animation: unflip .3s linear;*/
+      }
+
+      [class*="side"] {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-color: hsl(0, 3%, 93%);
+        background-image: url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+        background-size: 100% 100%;
+        backface-visibility: hidden;
+        overflow: auto;
+        padding: 5% 8%;
+      }
+
+      .side-1 {
+        z-index: 2;
+        box-shadow: inset 50px 0 50px rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
+      }
+
+      .side-2 {
+        transform: rotateY(180deg);
+        box-shadow: inset -50px 0 50px rgba(0, 0, 0, 0.5);
+      }
+
+      .flipped > .side-1 {
+        box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.8);
+        transition: 0.6s;
+      }
+
+      .flipped > [class*="side"] {
+        pointer-events: auto;
+      }
+
+      .page:after {
+        width: 100px;
+        height: 50px;
+        background-color: #555;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -100px;
+        margin: auto;
+        color: white;
+        text-shadow: 0 -1px 0 #222;
+        line-height: 50px;
+        text-align: center;
+        font-family: monospace;
+        content: "next-page";
+        animation: hide 0.8s linear;
+      }
+
+      .page.flipped:after {
+        content: "prev-page";
+        transform: rotateY(180deg);
+        pointer-events: auto;
+      }
+
+      /* to hide on flip animation */
+      @keyframes hide {
+        0% {
+          opacity: 0;
+        }
+
+        85% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .flipped {
+        transform: rotateY(-180deg);
+        pointer-events: none;
+        /*animation: flip .3s linear;
+  animation-fill-mode: forwards;*/
+      }
+
+      .no-anim,
+      .no-anim:after {
+        animation: none;
+        /* disable animation when page loads */
+      }
+
+      @keyframes flip {
+        to {
+          transform: rotateY(-180deg);
+        }
+      }
+
+      @keyframes unflip {
+        from {
+          transform: rotateY(-180deg);
+        }
+
+        to {
+          transform: rotateY(0deg);
+        }
+      }
+
+      .content {
+        font-size: 14px;
+        /* Ajusta el tamaño de fuente según tus necesidades */
+      }
+
+      .boton-jugar {
+        margin-top: 2%;
+      }
+    </style>
   </head>
 
   <body>
@@ -65,14 +260,16 @@
         </div>
         <div class="Juego">
           <a href="game-screen.html">
-            <img src="images/boton.png" alt="Jugar" />
+            <img class="boton-jugar" src="images/boton.png" alt="Jugar" />
           </a>
         </div>
       </section>
 
       <div id="modalAyuda" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal('modalAyuda')">&times;</span>
+          <span class="close" onclick="closeModal('modalAyuda')"
+            ><img src="images/tancar.png"
+          /></span>
           <h2>AJUDA</h2>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
@@ -85,7 +282,9 @@
 
       <div id="modalCuento" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal('modalCuento')">&times;</span>
+          <span class="close" onclick="closeModal('modalCuento')"
+            ><img src="images/tancar.png"
+          /></span>
           <div class="content">
             <div class="topBar">
               <button id="playButton" onclick="toggleAudio()">
@@ -100,109 +299,169 @@
                 <img src="images/pausa.png" alt="musicImage" />
                 <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
               </button>
-              <button id="increaseButton" onclick="increaseSize()">
-                <h2 id="increaseText">+ AUGMENTAR</h2>
-              </button>
-              <button id="reduceButton" onclick="reduceSize()">
-                <h2 id="reduceText">- REDUÏR</h2>
-              </button>
-              <button id="toggleContentButton" onclick="toggleContent()">
-                <h2 id="toggleTextImg">IMATGES</h2>
-              </button>
             </div>
-            <div class="bottomText">
-              <div class="carousel-container" style="display: none">
-                <div class="carousel-slider">
-                  <img src="images//llibre/llibre1.PNG" alt="" srcset="" />
-                  <img src="images//llibre/llibre2.PNG" alt="" srcset="" />
-                  <img src="images//llibre/llibre3.PNG" alt="" srcset="" />
-                  <img src="images//llibre/llibre4.PNG" alt="" srcset="" />
-                  <img src="images//llibre/llibre5.PNG" alt="" srcset="" />
-                  <img src="images//llibre/llibre6.PNG" alt="" srcset="" />
-                  <img src="images//llibre/llibre7.PNG" alt="" srcset="" />
-                  <img src="images//llibre/llibre8.PNG" alt="" srcset="" />
+
+            <!-- solo modificar esta parte-->
+
+            <div class="book">
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/portada.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
                 </div>
-                <button id="prevBtn" onclick="prevSlide()">Anterior</button>
-                <button id="nextBtn" onclick="nextSlide()">Siguiente</button>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-0.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
               </div>
-              <div id="scrollableText" class="scrollableText">
-                La Rateta que escombrava l'escaleta<br />
-                <br />
-                Hi havia una vegada una Rateta que cada dia escombrava
-                l'escaleta i un dia es va trobar un dineret.<br />
-                <br />
-                -Oh, quina sort que he tingut!! I què en podria fer? Si em
-                compro ametlletes em cauran les dentetes. <br />
-                I si em compro un llacet per la cueta. Sí, sí, em compraré un
-                llacet ben bonic per posar-me'l a la cueta!!<br />
-                <br />
-                I així ho va fer.<br />
-                Va anar a la botiga de la senyora conilla i es estar mirant
-                molts llacets. Finalment es va decidir per un llaç de setí de
-                color rosa.<br />
-                -Sí aquest si que m'agrada! Seré l'enveja del barri, segur que
-                tothom em mirarà - pensava la rateta -Ui, no me l'emboliqui que
-                me l'emporto posat!<br />
-                <br />
-                Es va posar a davant de casa seva per lluir el llacet. I així
-                s'estava quan va passar el Senyor Ànec, que veient-la tan bonica
-                li va dir:<br />
-                -Ai rateta, rateta, tu que n'ets tan boniqueta no et voldries
-                pas casar amb mi, jo que sóc tan bon fadrí?<br />
-                -Ai, no ho sé pas. A veure quina veu fas?<br />
-                -Quac, quac, quac!!<br />
-                -Ui, que m'eixordes. No et vull per marit.<br />
-                <br />
-                També va passar un gall amb les plomes estarrufades que li va
-                dir:<br />
-                -Rateta, Rateta, tu que n'ets tan boniqueta, no et voldries pas
-                casar amb mi, jo que sóc tan bon fadrí?<br />
-                -Ai no ho sé pas. A veure quina veu fas?<br />
-                -Kikirikí, kikirikí !!!<br />
-                -Ui, no, quin xivarri no et vull per marit.<br />
-                <br />
-                I el gall se'n va anar amb el cap cot. Després va passar un
-                gosset i li va passar el mateix.<br />
-                Una estona després va passar un burret que en veure la rateta
-                tan bonica no es va poder estar de dir-li:<br />
-                -Rateta, rateta, tu que n'ets tan boniqueta, no et voldries pas
-                casar amb mi, jo que sóc tan bon fadrí.<br />
-                I la rateta, fent-se pregar li va dir:<br />
-                -Ai no ho sé pas,a veure quina veu fas?<br />
-                -Iiiiaaaa, iiiiiaaaaaa!!!<br />
-                -Fuig, fuig, que m'eixordes!!<br />
-                <br />
-                Quan la Rateta ja començava a pensar que mai no trobaria ningú
-                que li fes el pes va passar un gatet que li va dir:<br />
-                -Miau Rateta, tu que n'ets tan boniqueta, no et voldries pas
-                casar amb mi, jo que sóc tan bon fadrí?<br />
-                I la Rateta, fent-se l'estreta:<br />
-                -Ai no ho sé pas. A veure quina veu fas?<br />
-                -Miauu, miauuu!<br />
-                -Sí, amb tu sí que em vull casar!<br />
-                -Miauu, miauuu !!!<br />
-                I així ho van fer. Ben aviat es van casar i tothom hi va ser
-                convidat.<br />
-                Aquell dia tothom li deia a la rateta:<br />
-                -Vés amb compte amb aquest gat!<br />
-                -Vigila que quan estiguis despistada no et clavi queixalada!!<br />
-                I la Rateta reia per sota el nas perquè només ella i el seu
-                maridet sabien el secret: que aquest gat era vegetarià i no
-                menjava rates !!!<br />
-                <br />
-                I vet aquí un gos i vet aquí un gat que aquest conte ja s'ha
-                acabat.<br />
-                <br />
-                <br />
+              <!-- .page -->
+
+              <div id="page-3" class="page no-anim">
+                <div class="side-1" id="p3">
+                  <div class="content">
+                    <p>
+                      I així ho va fer.<br />
+                      Va anar a la botiga de la senyora conilla i es estar
+                      mirant molts llacets. Finalment es va decidir per un llaç
+                      de setí de color rosa.<br />
+                      -Sí aquest si que m'agrada! Seré l'enveja del barri, segur
+                      que tothom em mirarà - pensava la rateta -Ui, no me
+                      l'emboliqui que me l'emporto posat!<br />
+                      <br />
+                    </p>
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p4">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-1.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
               </div>
+              <!-- #page-2 -->
+
+              <div id="page-4" class="page no-anim">
+                <div class="side-1" id="p5">
+                  <div class="content">
+                    <h2>blablabla</h2>
+                    <p>blabla</p>
+                    <p>blabla</p>
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p6">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-2.png"
+                      style="height: 230%; width: 90%; margin-top: 80px"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- #page-3 -->
+
+              <div id="page-5" class="page no-anim">
+                <div class="side-1" id="p7">
+                  <div class="content">
+                    <h2>blablabla</h2>
+                    <p>blablabla</p>
+                    <p>blablabla</p>
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p8">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-3.png"
+                      style="height: 230%; width: 90%; margin-top: 80px"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+               <div id="page-6" class="page no-anim">
+                <div class="side-1" id="p5">
+                  <div class="content">
+                    <h2>blablabla</h2>
+                    <p>blabla</p>
+                    <p>blabla</p>
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p6">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-4.png"
+                      style="height: 230%; width: 90%; margin-top: 80px"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+              <!-- #page-4 -->
+
+
+              
             </div>
+          <div id="page-7" class="page no-anim">
+                <div class="side-1" id="p5">
+                  <div class="content">
+                    <h2>blablabla</h2>
+                    <p>blabla</p>
+                    <p>blabla</p>
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p6">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-5.png"
+                      style="height: 230%; width: 90%; margin-top: 80px"
+                    />
+                  </div>
+                  
+                  <!-- .content -->
+                </div>
+                
+                
+
+                
+                
+            <!--asta aqui -->
           </div>
         </div>
       </div>
 
       <div id="modalIdioma" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal('modalIdioma')">&times;</span>
+          <span class="close" onclick="closeModal('modalIdioma')">
+            <img src="images/tancar.png"
+          /></span>
           <div class="languageBtnGrid">
             <button class="btnLanguage languageCa" role="button"></button>
             <button class="btnLanguage languageEs" role="button"></button>
@@ -218,5 +477,33 @@
     </main>
   </body>
 
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    // Wrapping the script in a document ready function
+    $(document).ready(function () {
+      $(".page").click(function () {
+        $(this).removeClass("no-anim").toggleClass("flipped");
+        $(".page > div").click(function (e) {
+          e.stopPropagation();
+        });
+        reorder();
+      });
+
+      function reorder() {
+        $(".book").each(function () {
+          var pages = $(this).find(".page");
+          var pages_flipped = $(this).find(".flipped");
+          pages.each(function (i) {
+            $(this).css("z-index", pages.length - i);
+          });
+          pages_flipped.each(function (i) {
+            $(this).css("z-index", i + 1);
+          });
+        });
+      }
+
+      reorder();
+    });
+  </script>
   <script src="custom.js"></script>
 </html>
