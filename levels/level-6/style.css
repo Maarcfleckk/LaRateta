@@ -1,25 +1,221 @@
-*{
-    margin: 0;
-    padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
 }
 .Heading {
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .Header {
-    font-size: 70px;
+  font-size: 70px;
 }
-.btn-back{
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: -5px;
-    margin-left: -5px ;
+.btn-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -5px;
+  margin-left: -5px;
 }
 
-.btn-back img{
-    height: 150px;
+.btn-back img {
+  height: 150px;
+}
+.gameBox {
+  width: 80vw;
+  height: 80vh;
+  margin: 0 auto;
+  margin-top: 10vh;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.gameControls {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#error-message {
+  display: none;
+  position: absolute;
+  transform: translate(78%, -150%);
+  padding: 20px;
+  background-color: #ff4444;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  top: 20%;
+  left: 34%;
+}
+
+#error-message button {
+  padding: 10px;
+  background-color: #fff;
+  color: #ff4444; /* color de texto rojo */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#win-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(76, 175, 80, 2.8); /* Fondo verde con opacidad */
+  color: white;
+  font-size: 250%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* Ajusta según sea necesario para que esté por encima del contenido */
+}
+
+#win-message button {
+  padding: 10px;
+  background-color: #fff;
+  color: #4caf50; /* color de texto verde */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 60%;
+  width: 12%;
+  height: 10vh;
+  margin-top: 222px;
+}
+
+/* JUEGO */
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  height: 500px;
+  background-color: #ccc;
+  gap: 10px;
+}
+.memory-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.memory-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+
+.wrapper {
+  padding: 25px;
+}
+.cards,
+.card,
+.view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cards {
+  height: 400px;
+  width: 400px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cards .card {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: calc(100% / 4 - 10px);
+  width: calc(100% / 4 - 10px);
+}
+.card.shake {
+  animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-13px);
+  }
+  40% {
+    transform: translateX(13px);
+  }
+  60% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+}
+.card .view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #fff;
+  pointer-events: none;
+  backface-visibility: hidden;
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s linear;
+}
+.card .front-view img {
+  width: 19px;
+}
+.card .back-view img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.card .back-view {
+  transform: rotateY(-180deg);
+}
+.card.flip .back-view {
+  transform: rotateY(0);
+}
+.card.flip .front-view {
+  transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 700px) {
+  .cards {
+    height: 350px;
+    width: 350px;
+  }
+  .card .front-view img {
+    width: 17px;
+  }
+  .card .back-view img {
+    max-width: 100%;
+    max-height: 100%;
+    max-width: 40px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .cards {
+    height: 300px;
+    width: 300px;
+  }
+  .card .front-view img {
+    width: 15px;
+  }
+  .card .back-view img {
+    max-width: 35px;
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
