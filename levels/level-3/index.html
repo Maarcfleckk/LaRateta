@@ -10,7 +10,7 @@
 
   <body>
     <main>
-         <section class="topSide">
+      <section class="topSide">
         <div class="Heading">
           <h1 class="Header">NIVELL 3</h1>
         </div>
@@ -20,55 +20,71 @@
           </a>
         </div>
       </section>
-  <section class="puzzle-drop-area" id="puzzle-drop-area" style="position: relative; width: 400px; height: 300px;">
-    <div class="drop-slot" id="slot1" style="position: absolute; top: 0; left: 0; width: 50%; height: 50%;"></div>
-    <div class="drop-slot" id="slot2" style="position: absolute; top: 0; left: 50%; width: 50%; height: 50%;"></div>
-    <div class="drop-slot" id="slot3" style="position: absolute; top: 50%; left: 0; width: 50%; height: 50%;"></div>
-    <div class="drop-slot" id="slot4" style="position: absolute; top: 50%; left: 50%; width: 50%; height: 50%;"></div>
-</section>
-
+      <section
+        class="puzzle-drop-area"
+        id="puzzle-drop-area"
+        style="position: relative; width: 400px; height: 300px"
+      >
+        <div
+          class="drop-slot"
+          id="slot1"
+          style="position: absolute; top: 0; left: 0; width: 50%; height: 50%"
+        ></div>
+        <div
+          class="drop-slot"
+          id="slot2"
+          style="position: absolute; top: 0; left: 50%; width: 50%; height: 50%"
+        ></div>
+        <div
+          class="drop-slot"
+          id="slot3"
+          style="position: absolute; top: 50%; left: 0; width: 50%; height: 50%"
+        ></div>
+        <div
+          class="drop-slot"
+          id="slot4"
+          style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 50%;
+          "
+        ></div>
+      </section>
 
       <section id="puzzle-section" class="puzzle-container">
         <!-- Las imágenes del puzle se cargarán dinámicamente aquí con JavaScript -->
       </section>
 
-
-
-       <section class="buttons">
+      <section class="buttons">
         <img src="/images/sonido.png" class="sonido" onclick="playSound()" />
-        <a href="/levels/level-3/index.html"><img
-          src="/images/reiniciar.png"
-          class="reiniciar"
-          onclick="reloadPage()"
+        <a href="/levels/level-3/index.html"
+          ><img
+            src="/images/reiniciar.png"
+            class="reiniciar"
+            onclick="reloadPage()"
         /></a>
         <img src="/images/check.png" class="check" onclick="check()" />
       </section>
 
+      <div id="win-message">
+        <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+          ¡ Has Guanyat !
+        </h1>
+        <a href="/levels/level-4/index.html"
+          ><button onclick="nextLevel()">Següent nivell</button></a
+        >
+        <a href=""><button>Repetir nivell</button></a>
+      </div>
 
-
-
-
-  <div id="win-message">
-      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
-        ¡ Has Guanyat !
-      </h1>
-      <a href="/levels/level-4/index.html"><button onclick="nextLevel()">Següent nivell</button></a>
-      <a href=""><button>Repetir nivell</button></a>
-    </div>
-
-<div id="error-message">
-  <p id="error-text"></p>
-  <button onclick="hideMessages()">OK</button>
-</div>
-
-
+      <div id="error-message">
+        <p id="error-text"></p>
+        <button onclick="hideMessages()">OK</button>
+      </div>
     </main>
 
-
-
-
-
-<script src="/levels/level-3/script.js"></script>
-    
+    <script src="/levels/level-3/script.js"></script>
+    <script src="/custom.js"></script>
   </body>
 </html>

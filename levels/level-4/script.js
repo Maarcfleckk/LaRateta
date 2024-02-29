@@ -94,6 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function showWinMessage() {
     const winMessage = document.getElementById("win-message");
     winMessage.style.display = "block";
+    score += 10; // Incrementa la puntuación en 10 puntos cuando el jugador gana
+    updateScore(); // Actualiza la puntuación en la página
   }
 
   function goTop() {

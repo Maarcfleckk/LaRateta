@@ -75,17 +75,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (isCorrectOrder) {
-      showMessage("¡Ganaste!");
+      showWinMessage("¡Ganaste!");
     } else {
       showError(" Debes colocar las piezas en los slots correctos.");
     }
   }
 
-  function showMessage(message) {
+  function showWinMessage() {
     const winMessage = document.getElementById("win-message");
-    const errorText = document.getElementById("error-text");
-    errorText.textContent = "";
     winMessage.style.display = "block";
+    score += 10; // Incrementa la puntuación en 10 puntos cuando el jugador gana
+    updateScore(); // Actualiza la puntuación en la página
   }
 
   function showError(message) {

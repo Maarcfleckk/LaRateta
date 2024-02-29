@@ -1,70 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-html{
-    overflow-x: hidden ;
-    overflow-y: hidden;
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
-body{
-    height: 100vh;
-    width: 100vw;
+body {
+  height: 100vh;
+  width: 100vw;
 }
-h1, h2, h3, h4, h5, h6, a, p{
-    font-family: 'Irish Grover', system-ui;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+div {
+  font-family: "Irish Grover", system-ui;
 }
 .Heading {
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
-.Header{
-    font-size: 70px;
+.Header {
+  font-size: 70px;
 }
-.btn-back{
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: -5px;
-    margin-left: -5px ;
-}
-
-.btn-back img{
-    height: 150px;
+.btn-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -5px;
+  margin-left: -5px;
 }
 
-.levels-grid{
-    width: 100vw;
-    height: 44.8vh;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20vh;
+.btn-back img {
+  height: 150px;
 }
 
-.level1, .level2, .level3, .level4, .level5, .level6{
-    width: 300px;
-    height: 300px;
+.levels-grid {
+  width: 100vw;
+  height: 44.8vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+}
+
+.level1,
+.level2,
+.level3,
+.level4,
+.level5,
+.level6 {
+  width: 300px;
+  height: 300px;
 }
 
 .vibrate img {
-            transition: transform 0.5s ease-in-out;
-        }
+  transition: transform 0.5s ease-in-out;
+}
 
-        .vibrate:hover img {
-            animation: vibrateAnimation 0.5s ease;
-        }
+.vibrate:hover img {
+  animation: vibrateAnimation 0.5s ease;
+}
 
-        @keyframes vibrateAnimation {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(5px) rotate(3deg); }
-            50% { transform: translateX(-5px) rotate(-3deg); }
-            75% { transform: translateX(5px) rotate(3deg); }
-            100% { transform: translateX(-5px) rotate(-3deg); }
-        }
+@keyframes vibrateAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+}
+
+.scoreBox {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 50px;
+}
+
+#score {
+  font-size: 30px;
+  text-transform: uppercase;
+}

@@ -147,3 +147,10 @@ function toggleContent() {
 
   isTextVisible = !isTextVisible;
 }
+
+let score = 0;
+
+function updateScore() {
+  const scoreElement = document.getElementById("score");
+  scoreElement.textContent = "Puntos: " + score;
+}
