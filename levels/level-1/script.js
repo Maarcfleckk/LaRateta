@@ -203,7 +203,22 @@ function closeErrorMessage() {
   const errorMessage = document.getElementById("error-message");
   errorMessage.style.display = "none";
 }
+let score = localStorage.getItem("score")
+  ? parseInt(localStorage.getItem("score"))
+  : 0;
 
+function updateScore() {
+  const scoreElement = document.getElementById("score");
+  if (scoreElement) {
+    scoreElement.textContent = "Puntos: " + score;
+  }
+  localStorage.setItem("score", score);
+}
+
+// Resto del código específico de la página
+
+// Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
+updateScore();
 function showWinMessage() {
   const winMessage = document.getElementById("win-message");
   winMessage.style.display = "block";

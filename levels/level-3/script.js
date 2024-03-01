@@ -80,12 +80,30 @@ document.addEventListener("DOMContentLoaded", () => {
       showError(" Debes colocar las piezas en los slots correctos.");
     }
   }
+  let score = localStorage.getItem("score")
+    ? parseInt(localStorage.getItem("score"))
+    : 0;
 
+  function updateScore() {
+    const scoreElement = document.getElementById("score");
+    if (scoreElement) {
+      scoreElement.textContent = "Puntos: " + score;
+    }
+    localStorage.setItem("score", score);
+  }
+
+  // Resto del código específico de la página
+
+  // Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
+  updateScore();
+  // Resto del código específico de la página
   function showWinMessage() {
     const winMessage = document.getElementById("win-message");
     winMessage.style.display = "block";
-    score += 10; // Incrementa la puntuación en 10 puntos cuando el jugador gana
-    updateScore(); // Actualiza la puntuación en la página
+    console.log("🚀 ~ showWinMessage ~ score:", score);
+    score += 10;
+    console.log("🚀 ~ showWinMessage ~ score:", score);
+    updateScore();
   }
 
   function showError(message) {

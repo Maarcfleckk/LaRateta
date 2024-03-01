@@ -148,9 +148,21 @@ function toggleContent() {
   isTextVisible = !isTextVisible;
 }
 
-let score = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  let score = localStorage.getItem("score")
+    ? parseInt(localStorage.getItem("score"))
+    : 0;
 
-function updateScore() {
-  const scoreElement = document.getElementById("score");
-  scoreElement.textContent = "Puntos: " + score;
-}
+  function updateScore() {
+    const scoreElement = document.getElementById("score");
+    if (scoreElement) {
+      scoreElement.textContent = "Puntos: " + score;
+    }
+    localStorage.setItem("score", score);
+  }
+
+  // Resto del código específico de la página
+
+  // Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
+  updateScore();
+});

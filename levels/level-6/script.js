@@ -1,7 +1,23 @@
+let score = localStorage.getItem("score")
+  ? parseInt(localStorage.getItem("score"))
+  : 0;
+
+function updateScore() {
+  const scoreElement = document.getElementById("score");
+  if (scoreElement) {
+    scoreElement.textContent = "Puntos: " + score;
+  }
+  localStorage.setItem("score", score);
+}
+
+// Resto del código específico de la página
+
+// Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
+updateScore();
 function showWinMessage() {
   const winMessage = document.getElementById("win-message");
   winMessage.style.display = "block";
-  score += 10; // Incrementa la puntuación en 10 puntos cuando el jugador gana
+  score += 30; // Incrementa la puntuación en 10 puntos cuando el jugador gana
   updateScore(); // Actualiza la puntuación en la página
 }
 function openErrorMessage() {
@@ -37,7 +53,9 @@ function matchCards(img1, img2) {
   if (img1 === img2) {
     matched++;
     if (matched == 8) {
-      showWinMessage();
+      setTimeout(() => {
+        showWinMessage();
+      });
     }
     cardOne.removeEventListener("click", flipCard);
     cardTwo.removeEventListener("click", flipCard);
