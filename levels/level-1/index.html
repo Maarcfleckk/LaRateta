@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
     <title>El Joc de la Rateta</title>
   </head>
 
@@ -15,8 +15,8 @@
           <h1 class="Header">NIVELL 1</h1>
         </div>
         <div class="btn-back">
-          <a class="link-back" href="game-screen.html">
-            <img src="images/volver.png" alt="" />
+          <a class="link-back" href="/game-screen.html">
+            <img src="/images/volver.png"  />
           </a>
         </div>
       </section>
@@ -30,7 +30,7 @@
       <div
         class="color-button"
         style="
-          background-image: url(images/color-rojo1.png);
+          background-image: url(/images/color-rojo1.png);
           background-repeat: no-repeat;
           background-size: 100%;
           width: 390%;
@@ -40,7 +40,7 @@
       <div
         class="color-button"
         style="
-          background-image: url(images/color-amarillo.png);
+          background-image: url(/images/color-amarillo.png);
           background-repeat: no-repeat;
           background-size: 100%;
           width: 390%;
@@ -50,7 +50,7 @@
       <div
         class="color-button"
         style="
-          background-image: url(images/color-verde.png);
+          background-image: url(/images/color-verde.png);
           background-repeat: no-repeat;
           background-size: 100%;
           width: 390%;
@@ -60,7 +60,7 @@
       <div
         class="color-button"
         style="
-          background-image: url(images/color-azul.png);
+          background-image: url(/images/color-azul.png);
           background-repeat: no-repeat;
           background-size: 100%;
           width: 390%;
@@ -71,18 +71,18 @@
 
     <img
       class="color-palette-button"
-      src="images/paleta.png"
+      src="/images/paleta.png"
       alt="Mostrar Colores"
       onclick="toggleColorPalette()"
     />
 
     <img
       class="refresh-button"
-      src="images/reiniciar.png"
+      src="/images/reiniciar.png"
       onclick="refreshPage()"
     />
 
-    <img class="check-button" src="images/check.png" onclick="checkColors()" />
+    <img src="/images/check.png" class="check-button"  onclick="checkColors()" />
 
     <button id="next-button" style="display: none" onclick="showNextLevel()">
       Next
@@ -92,11 +92,11 @@
       <h1 class="Header" style="margin-top: 10%; font-size: 360%">
         ¡ Has Guanyat !
       </h1>
-      <a href="levels/level-2/index.html"
+      <a href="/levels/level-2/index.html"
         ><button onclick="nextLevel()">Següent nivell</button></a
       >
       <a href=""><button>Repetir nivell</button></a>
-      <a href="game-screen.html"><button>Tornar a l'inici</button></a>
+      <a href="../../game-screen.html"><button>Tornar a l'inici</button></a>
     </div>
 
     <div id="error-message">
@@ -104,7 +104,6 @@
       <button onclick="closeErrorMessage()">Tancar</button>
     </div>
 
-    <script src="levels/level-1/script.js"></script>
-    <script src="custom.js"></script>
+    <script src="/levels/level-1/script.js"></script>
   </body>
 </html>

@@ -33,8 +33,7 @@ button {
   background-color: transparent;
 }
 /* SECION ESTATICA */
-.Static-page {
-} /* Estilo para .mainButtons */
+
 .mainButtons {
   display: flex;
   justify-content: space-between;
@@ -44,13 +43,35 @@ button {
   height: 99vh;
 }
 
+@keyframes vibrate {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(2px, 2px); }
+  50% { transform: translate(0, 0); }
+  75% { transform: translate(-2px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+
 .Ayuda,
 .Musica,
 .Cuento,
 .Idioma {
   position: absolute;
   margin: 5px;
+   animation: none;
+  /* Transición rápida de 0.1 segundos */
+  /* Aplicar la animación de vibración infinitamente */
 }
+
+/* Agrega una regla específica para detener la vibración cuando tienen la clase "hover" */
+.Ayuda:hover,
+.Musica:hover,
+.Cuento:hover,
+.Idioma:hover {
+  transition: transform 0.1s ease-in-out; 
+  /* Detener la animación al pasar el ratón */
+  animation: vibrate 0.2s infinite; 
+}
+
 
 .Ayuda {
   top: 0;

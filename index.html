@@ -169,27 +169,24 @@
   animation-fill-mode: forwards;*/
     }
 
-    .no-anim,
-    .no-anim:after {
-      animation: none;
-      /* disable animation when page loads */
-    }
-
-    @keyframes flip {
-      to {
-        transform: rotateY(-180deg);
-      }
-    }
-
-    @keyframes unflip {
-      from {
-        transform: rotateY(-180deg);
-      }
-
-      to {
-        transform: rotateY(0deg);
-      }
-    }
+   
+@keyframes vibrateAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+}
 
     .content {
       font-size: 14px;
@@ -199,12 +196,14 @@
   margin-top: 2%;
   padding: 10px 20px;
   font-size: 16px;
-  transition: transform 0.3s ease-in-out;
+      transition: transform 0.5s ease-in-out;
 }
 
 .boton-jugar:hover {
-  transform: scale(1.1);
+  
+     animation: vibrateAnimation 0.5s ease;
 }
+
 
   </style>
 </head>
@@ -317,15 +316,15 @@
                     QUE NO HEM FARÉ DEL DINERET!
                   </h2>
                   <br>
-                  <h2>SI EM COMPRO AVELLANETES! <br>
+                  <h2 style="font-size: 16px;">SI EM COMPRO AVELLANETES! <br>
                     EM CAURAN LES DENTETES!
                   </h2>
                   <br>
-                  <h2>SI EM COMPRO PINYONETS!
+                  <h2 style="font-size: 16px;">SI EM COMPRO PINYONETS!
                     EM CAURAN ELS CAIXALETS!
                   </h2>
                   <br>
-                  <H2>
+                  <H2 style="font-size: 16px;">
                     EM COMPRARE... <br>
                     UN LLAÇET PER LA CUETA!
                   </H2>
@@ -480,7 +479,7 @@
                     KIKIRIKI!
                   </h2>
                   <br>
-                  <h2 style="font-size: 14px;">
+                  <h2 style="font-size: 14px; margin-top:-10px ; ">
                     OI, NO, NO, NO, NO! <br>
                     QUE EM DESPERTARIEU AL MATÍ QUAN CANTARIEU!
                   </h2>
@@ -705,7 +704,7 @@
                     PER AIXO VA DEMANAR AJUDA EN EL GAT
                   </h2>
                   <br>
-                  <h2 style="font-size: 16px;">
+                  <h2 style="font-size: 24px;">
                     AI!, MARIDET!, MARIDET MEU! <br>
                     VAJAM SI M'AJUDEU
                   </h2>
