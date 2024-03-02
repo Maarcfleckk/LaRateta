@@ -1,210 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>El Joc de la Rateta</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
-    <style>
-      *,
-      *:before,
-      *:after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        position: relative;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Joc de la Rateta</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+  <style>
+    *,
+    *:before,
+    *:after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #222;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::selection {
+      background: #222;
+      color: white;
+    }
+
+    ::-moz-selection {
+      background: #222;
+      color: white;
+    }
+
+    body * {
+      transform-style: preserve-3d;
+      /* am i doing this wrong? */
+    }
+
+    body {
+      color: #222;
+      font-family: "Gabriela", serif;
+      perspective: 70em;
+      /*in your face*/
+      overflow-y: hidden;
+    }
+
+    h1,
+    p {
+      margin: 5% 0;
+    }
+
+    .book {
+      height: 80%;
+      max-height: 550px;
+      min-height: 450px;
+      width: 800px;
+      background-image: linear-gradient(90deg,
+          hsla(0, 100%, 50%, 0.6),
+          hsla(0, 97%, 12%, 0.9),
+          hsla(0, 99%, 40%, 0.4) 90%),
+        url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+      position: absolute;
+      top: 340px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      border: 3px solid hsla(30, 10%, 20%, 1);
+      border-radius: 5px;
+      box-shadow: 0 0 150px hsla(170, 0%, 0%, 0.4);
+    }
+
+    .page {
+      height: 100%;
+      width: 50%;
+      line-height: 1.5;
+      border-right: 10px solid transparent;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform-origin: 0 50%;
+      transition: 0.8s;
+      /*animation: unflip .3s linear;*/
+    }
+
+    [class*="side"] {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background-color: hsl(0, 3%, 93%);
+      background-image: url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+      background-size: 100% 100%;
+      backface-visibility: hidden;
+      overflow: auto;
+      padding: 5% 8%;
+    }
+
+    .side-1 {
+      z-index: 2;
+      box-shadow: inset 50px 0 50px rgba(0, 0, 0, 0.5);
+      transition: 0.5s;
+    }
+
+    .side-2 {
+      transform: rotateY(180deg);
+      box-shadow: inset -50px 0 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .flipped>.side-1 {
+      box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.8);
+      transition: 0.6s;
+    }
+
+    .flipped>[class*="side"] {
+      pointer-events: auto;
+    }
+
+    .page:after {
+      width: 100px;
+      height: 50px;
+      background-color: #555;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -100px;
+      margin: auto;
+      color: white;
+      text-shadow: 0 -1px 0 #222;
+      line-height: 50px;
+      text-align: center;
+      font-family: monospace;
+      content: "Següent";
+      animation: hide 0.8s linear;
+    }
+
+    .page.flipped:after {
+      content: "Tornar";
+      transform: rotateY(180deg);
+      pointer-events: auto;
+    }
+
+    /* to hide on flip animation */
+    @keyframes hide {
+      0% {
+        opacity: 0;
       }
 
-      ::-webkit-scrollbar {
-        width: 12px;
+      85% {
+        opacity: 0;
       }
 
-      ::-webkit-scrollbar-thumb {
-        background: #222;
+      100% {
+        opacity: 1;
       }
+    }
 
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      ::selection {
-        background: #222;
-        color: white;
-      }
-
-      ::-moz-selection {
-        background: #222;
-        color: white;
-      }
-
-      body * {
-        transform-style: preserve-3d;
-        /* am i doing this wrong? */
-      }
-
-      body {
-        color: #222;
-        font-family: "Gabriela", serif;
-        perspective: 70em;
-        /*in your face*/
-        overflow-y: hidden;
-      }
-
-      h1,
-      p {
-        margin: 5% 0;
-      }
-
-      .book {
-        height: 80%;
-        max-height: 550px;
-        min-height: 450px;
-        width: 800px;
-        background-image: linear-gradient(
-            90deg,
-            hsla(0, 100%, 50%, 0.6),
-            hsla(0, 97%, 12%, 0.9),
-            hsla(0, 99%, 40%, 0.4) 90%
-          ),
-          url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
-        position: absolute;
-        top: 340px;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        margin: auto;
-        border: 3px solid hsla(30, 10%, 20%, 1);
-        border-radius: 5px;
-        box-shadow: 0 0 150px hsla(170, 0%, 0%, 0.4);
-      }
-
-      .page {
-        height: 100%;
-        width: 50%;
-        line-height: 1.5;
-        border-right: 10px solid transparent;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform-origin: 0 50%;
-        transition: 0.8s;
-        /*animation: unflip .3s linear;*/
-      }
-
-      [class*="side"] {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        background-color: hsl(0, 3%, 93%);
-        background-image: url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
-        background-size: 100% 100%;
-        backface-visibility: hidden;
-        overflow: auto;
-        padding: 5% 8%;
-      }
-
-      .side-1 {
-        z-index: 2;
-        box-shadow: inset 50px 0 50px rgba(0, 0, 0, 0.5);
-        transition: 0.5s;
-      }
-
-      .side-2 {
-        transform: rotateY(180deg);
-        box-shadow: inset -50px 0 50px rgba(0, 0, 0, 0.5);
-      }
-
-      .flipped > .side-1 {
-        box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.8);
-        transition: 0.6s;
-      }
-
-      .flipped > [class*="side"] {
-        pointer-events: auto;
-      }
-
-      .page:after {
-        width: 100px;
-        height: 50px;
-        background-color: #555;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: -100px;
-        margin: auto;
-        color: white;
-        text-shadow: 0 -1px 0 #222;
-        line-height: 50px;
-        text-align: center;
-        font-family: monospace;
-        content: "next-page";
-        animation: hide 0.8s linear;
-      }
-
-      .page.flipped:after {
-        content: "prev-page";
-        transform: rotateY(180deg);
-        pointer-events: auto;
-      }
-
-      /* to hide on flip animation */
-      @keyframes hide {
-        0% {
-          opacity: 0;
-        }
-
-        85% {
-          opacity: 0;
-        }
-
-        100% {
-          opacity: 1;
-        }
-      }
-
-      .flipped {
-        transform: rotateY(-180deg);
-        pointer-events: none;
-        /*animation: flip .3s linear;
+    .flipped {
+      transform: rotateY(-180deg);
+      pointer-events: none;
+      /*animation: flip .3s linear;
   animation-fill-mode: forwards;*/
+    }
+
+    .no-anim,
+    .no-anim:after {
+      animation: none;
+      /* disable animation when page loads */
+    }
+
+    @keyframes flip {
+      to {
+        transform: rotateY(-180deg);
+      }
+    }
+
+    @keyframes unflip {
+      from {
+        transform: rotateY(-180deg);
       }
 
-      .no-anim,
-      .no-anim:after {
-        animation: none;
-        /* disable animation when page loads */
+      to {
+        transform: rotateY(0deg);
       }
+    }
 
-      @keyframes flip {
-        to {
-          transform: rotateY(-180deg);
-        }
-      }
+    .content {
+      font-size: 14px;
+      /* Ajusta el tamaño de fuente según tus necesidades */
+    }
+.boton-jugar {
+  margin-top: 2%;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: transform 0.3s ease-in-out;
+}
 
-      @keyframes unflip {
-        from {
-          transform: rotateY(-180deg);
-        }
+.boton-jugar:hover {
+  transform: scale(1.1);
+}
 
-        to {
-          transform: rotateY(0deg);
-        }
-      }
+  </style>
+</head>
 
-      .content {
-        font-size: 14px;
-        /* Ajusta el tamaño de fuente según tus necesidades */
-      }
-
-      .boton-jugar {
-        margin-top: 2%;
-      }
-    </style>
-  </head>
-
-  <body>
-    <main>
+<body>
+  <main>
     <section class="Static-page">
       <div class="Heading">
         <h1 class="Header">
@@ -269,209 +275,547 @@
           </div>
 
           <div class="book">
-              <div id="page-1" class="page no-anim">
-                <div class="side-1" id="p1">
-                  <div class="content">
-                    <img
-                      src="images/llibre/portada.png"
-                      style="height: 90%; width: 90%"
-                    />
-                  </div>
-                  <!-- .content -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/titulo.png"
+                    style="height: 100%; width: 100%; margin-top:120px; margin-left: 10px;  " />
                 </div>
-                <!-- .side-1 -->
-                <div class="side-2" id="p2">
-                  <div class="content">
-                    <img
-                      src="images/llibre/cuento-0.png"
-                      style="height: 90%; width: 90%"
-                    />
-                  </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+
+
+                  <h2 style="margin-top: 50%;">UNA VEGADA I HAVIA UNA RATETA
+                    QUE ESCOMBRAVA L'ESCALETA
+                  </h2>
+
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/conte-0.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <br>
+                  <h2 style="font-size: 19px;">VA TROBAR UN DINERET I VA DIR... <br>
+                    <br>
+                    QUE HEM FARÉ!
+                    QUE NO HEM FARÉ DEL DINERET!
+                  </h2>
+                  <br>
+                  <h2>SI EM COMPRO AVELLANETES! <br>
+                    EM CAURAN LES DENTETES!
+                  </h2>
+                  <br>
+                  <h2>SI EM COMPRO PINYONETS!
+                    EM CAURAN ELS CAIXALETS!
+                  </h2>
+                  <br>
+                  <H2>
+                    EM COMPRARE... <br>
+                    UN LLAÇET PER LA CUETA!
+                  </H2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/conte-1.jpg" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+
+                  <h2 style="margin-top: 50%; margin-left: 10%;">
+                    I AIXÍ TOTA MUDADA VA <br> SORTIR A LA FINESTRETA.
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/cuento-2.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 18px;">
+                    QUAN ESTAVA A LA FINESTRETA <br>
+                    VA PASSAR UN GOS I LI VA DIR...
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 25px;">
+                    BOOF! BOOF! <br>
+                    RATETA! RATETA!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    TU QUE ETS TAN BONIQUETA <br>
+                    QUE ET VOLDRIES CASAR AMB MI?
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    OH VEJAM QUINA VEU FEU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 34px;">
+                    BOOF! BOOF!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    OI, NO, NO, NO, NO <br>
+                    M'AGRADEUAMB AQUESTA RONCA VEU!
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/cuento-3.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 16px;">
+                    DESPRÉS VA PASSAR UN RUC <br>
+                    I EN VEURE LA RATETA LI VA DIR...
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 20px;">
+                    HI HO! HI HO! <br>
+                    RATETA! RATETA!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    TU QUE ETS TAN BONIQUETA <br>
+                    QUE ET VOLDRIES CASAR <br>
+                    AMB MI JO SÓC DE L'EMPERADRIU.
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    OH VEJAM QUINA VEU FEU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 30px;">
+                    HI HO! HI HO!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    OI, NO, NO, NO, NO! <br>
+                    M'AGRADEU AMB AQUESTA FORTA VEU!
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/conte-4.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 14px;">
+                    VA PASSAR UN GALL MOLT TRIBAT <br> AMB LA CRESTA DALT DEL CAP <br>
+                    I AMB VEURE LA RATETA ABOCADA A LA FINESTRETA LI VA DIR...
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 20px;">
+                    KIKIRIKI! <br>
+                    RATETA! RATETA!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    TU QUE ETS TAN BONIQUETA QUE VOLDRIES CASARTE AMB MI?
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    OH VEJAM QUINA VEU FEU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 25px;">
+                    KIKIRIKI!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    OI, NO, NO, NO, NO! <br>
+                    QUE EM DESPERTARIEU AL MATÍ QUAN CANTARIEU!
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/conte-5.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 14px;">
+                    VA ARRIBAR UN BOU <br>
+                    I EN VEURE LA RATETA LI VA DIR...
+                  </h2>
+                  <br>
+                  <h2>
+                    MOUUUUU! <br> RATETA! RATETA! MMM!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    TU QUE ETS TAN BONIQUETA <br>
+                    QUE ET VOLDRIES CASAR <br>
+                    AMB MIIIII!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    OH VEJAM QUINA VEU FEU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 25px;">
+                    MUUUUUUU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    Oi, NOO! <br>
+                    QUE EM ESPANTEU AMB AQUESTA GROSSA VEU!
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/cuento-7.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 14px;">
+                    PASSAVA LES HORES UN ÀNEC PRESUMIT <br>
+                    QUE EN VEURE LA RATETA LI VA DIR...
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 19px;">
+                    CUAC! CUAC! <br>
+                    RATETA! RATETA!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    TU QUE ETS TAN BONIQUETA <br>
+                    ET VOLDRIES CASAR AMB MI?
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    OH VEJAM QUINA VEU FEU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 25px;">
+                    CUAC! CUAC! CUAC!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    Ai, Ai, NO!, NO!, NO! <br>
+                    MARXEU!, MARXEU! ON ANEU AMB AQUESTA VEU!
+                  </h2>
+
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/conte-7.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 14px;">
+                    I PASSAVA UN BE <br>
+                    QUE EN VEURE LA RATETA COM TOTS NOMÉS SAP DIR...
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 19px;">
+                    BEHEHE! BEHEHE! <br>
+                    RATETA! RATETA!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    TU QUE ETS TAN BONIQUETA <br>
+                    ET VOLDRIES CASAR AMB MI?
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    OH VEJAM QUINA VEU FEU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 25px;">
+                    BEHEHE! BEHEHE!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    OH, NO!, NO!, NO! <br>
+                    NO M'AGRADEU AMB AQUESTA TRISTA VEU!
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/obeja.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 14px;">
+                    HEUS AQUÍ QUE PASSA EL GAT MOLT POLIT I ENCLENXINAT <br>
+                    QUE EN VEURE LA RATETA LI DIU...
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 19px;">
+                    RATETA! RATETA! <br>
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    TU QUE ETS TAN BONIQUETA <br>
+                    ET VOLDRIES CASAR AMB MI?
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    MMM! VEJAM QUINA VEU FEU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 25px;">
+                    MEUU! MEUU!
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 14px;">
+                    OH, SI!, SI!, SI! <br>
+                    QUE M'AGRADEU AMB AQUESTA VEU TAN FINA!
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/gat.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="margin-top: 50%;">
+                    I AIXÍ VA SER COM EL GAT VA ENTRAR
+                    A LA CASA DE LA RATETA I ES VAN CASAR.
+                  </h2>
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/gat2.png" style="height: 90%; width: 90%" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+                  <h2 style="font-size: 16px;">
+                    LA RATETA TENI L'OLLA POSADA AL FOC,
+                    PRO COM ERA MOLT PETITETA NO ARRIVABA A REMANARLA
+                    PER AIXO VA DEMANAR AJUDA EN EL GAT
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    AI!, MARIDET!, MARIDET MEU! <br>
+                    VAJAM SI M'AJUDEU
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    DE SOPTE, EL GAT EL VA EMPANTAR TAN I TAN LA VA ENPANTAR
+                    QUE DINS L'OLLA LA VA TIRAR
+                  </h2>
+                  <br>
+                  <h2 style="font-size: 16px;">
+                    I EN CAURE DINS L'OLLETA ES VA COURE LA RATETA
+                    I EL GAT EN VEURE QUE ERA CUITA DEPRESA SEL VA MENJAR
+                  </h2>
+
+                </div>
+
+                <!-- .content -->
+              </div>
+              <!-- .side-2 -->
+            </div>
+            <!-- .page -->
+
+
+            <!-- .page -->
+            <div id="page-1" class="page no-anim">
+              <div class="side-1" id="p1">
+                <div class="content">
+                  <img src="images/llibre/olla.png" style="height: 80%; width: 80%" />
+                    <img src="images/llibre/gato-gordo.png" style="height: 90%; width: 90%; margin-top: -20px; margin-left: 50px;" />
+                </div>
+                <!-- .content -->
+              </div>
+              <!-- .side-1 -->
+              <div class="side-2" id="p2">
+                <div class="content">
+
 
                   <!-- .content -->
                 </div>
                 <!-- .side-2 -->
+                <h2 style="font-size: 150px; margin-top: 30% ; margin-left: 80px;">
+                  FI
+                </h2>
               </div>
               <!-- .page -->
 
-              <div id="page-3" class="page no-anim">
-                <div class="side-1" id="p3">
-                  <div class="content">
-                    <p>
-                      I així ho va fer.<br />
-                      Va anar a la botiga de la senyora conilla i es estar
-                      mirant molts llacets. Finalment es va decidir per un llaç
-                      de setí de color rosa.<br />
-                      -Sí aquest si que m'agrada! Seré l'enveja del barri, segur
-                      que tothom em mirarà - pensava la rateta -Ui, no me
-                      l'emboliqui que me l'emporto posat!<br />
-                      <br />
-                    </p>
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-1 -->
-                <div class="side-2" id="p4">
-                  <div class="content">
-                    <img
-                      src="images/llibre/cuento-1.png"
-                      style="height: 90%; width: 90%"
-                    />
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-2 -->
-              </div>
-              <!-- #page-2 -->
-
-              <div id="page-4" class="page no-anim">
-                <div class="side-1" id="p5">
-                  <div class="content">
-                    <h2>blablabla</h2>
-                    <p>blabla</p>
-                    <p>blabla</p>
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-1 -->
-                <div class="side-2" id="p6">
-                  <div class="content">
-                    <img
-                      src="images/llibre/cuento-2.png"
-                      style="height: 230%; width: 90%; margin-top: 80px"
-                    />
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-2 -->
-              </div>
-              <!-- #page-3 -->
-
-              <div id="page-5" class="page no-anim">
-                <div class="side-1" id="p7">
-                  <div class="content">
-                    <h2>blablabla</h2>
-                    <p>blablabla</p>
-                    <p>blablabla</p>
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-1 -->
-                <div class="side-2" id="p8">
-                  <div class="content">
-                    <img
-                      src="images/llibre/cuento-3.png"
-                      style="height: 230%; width: 90%; margin-top: 80px"
-                    />
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-2 -->
-              </div>
-               <div id="page-6" class="page no-anim">
-                <div class="side-1" id="p5">
-                  <div class="content">
-                    <h2>blablabla</h2>
-                    <p>blabla</p>
-                    <p>blabla</p>
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-1 -->
-                <div class="side-2" id="p6">
-                  <div class="content">
-                    <img
-                      src="images/llibre/conte-4.png"
-                      style="height: 230%; width: 90%; margin-top: 80px"
-                    />
-                  </div>
-                  <!-- .content -->
-                </div>
-              <!-- #page-4 -->
 
 
               
-            </div>
-          <div id="page-7" class="page no-anim">
-                <div class="side-1" id="p5">
-                  <div class="content">
-                    <h2>blablabla</h2>
-                    <p>blabla</p>
-                    <p>blabla</p>
-                  </div>
-                  <!-- .content -->
-                </div>
-                <!-- .side-1 -->
-                <div class="side-2" id="p6">
-                  <div class="content">
-                    <img
-                      src="images/llibre/conte-5.png"
-                      style="height: 230%; width: 90%; margin-top: 80px"
-                    />
-                  </div>
-                  
-                  <!-- .content -->
-                </div>
-                
-                
 
-                
-                
-            <!--asta aqui -->
+
+
+              
+
+              <!--asta aqui -->
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
+    </div>
 
     <div id="modalIdioma" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('modalIdioma')">
-            <img src="images/tancar.png"
-          /></span>
-          <div class="languageBtnGrid">
-            <button class="btnLanguage languageCa" role="button"></button>
-            <button class="btnLanguage languageEs" role="button"></button>
-            <button class="btnLanguage languageEn" role="button"></button>
-            <button class="btnLanguage languageAr" role="button"></button>
-            <p class="textCa">CATALÀ</p>
-            <p class="textEs">CASTELLÀ</p>
-            <p class="textEn">ANGLÈS</p>
-            <p class="textAr">ÀRAB</p>
-          </div>
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalIdioma')">
+          <img src="images/tancar.png" /></span>
+        <div class="languageBtnGrid">
+          <button class="btnLanguage languageCa" role="button"></button>
+          <button class="btnLanguage languageEs" role="button"></button>
+          <button class="btnLanguage languageEn" role="button"></button>
+          <button class="btnLanguage languageAr" role="button"></button>
+          <p class="textCa">CATALÀ</p>
+          <p class="textEs">CASTELLÀ</p>
+          <p class="textEn">ANGLÈS</p>
+          <p class="textAr">ÀRAB</p>
         </div>
       </div>
+    </div>
   </main>
 
-  </body>
+</body>
 
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script>
-    // Wrapping the script in a document ready function
-    $(document).ready(function () {
-      $(".page").click(function () {
-        $(this).removeClass("no-anim").toggleClass("flipped");
-        $(".page > div").click(function (e) {
-          e.stopPropagation();
-        });
-        reorder();
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  // Wrapping the script in a document ready function
+  $(document).ready(function () {
+    $(".page").click(function () {
+      $(this).removeClass("no-anim").toggleClass("flipped");
+      $(".page > div").click(function (e) {
+        e.stopPropagation();
       });
-
-      function reorder() {
-        $(".book").each(function () {
-          var pages = $(this).find(".page");
-          var pages_flipped = $(this).find(".flipped");
-          pages.each(function (i) {
-            $(this).css("z-index", pages.length - i);
-          });
-          pages_flipped.each(function (i) {
-            $(this).css("z-index", i + 1);
-          });
-        });
-      }
-
       reorder();
     });
-  </script>
-  <script src="custom.js"></script>
+
+    function reorder() {
+      $(".book").each(function () {
+        var pages = $(this).find(".page");
+        var pages_flipped = $(this).find(".flipped");
+        pages.each(function (i) {
+          $(this).css("z-index", pages.length - i);
+        });
+        pages_flipped.each(function (i) {
+          $(this).css("z-index", i + 1);
+        });
+      });
+    }
+
+    reorder();
+  });
+</script>
+<script src="custom.js"></script>
+
 </html>
