@@ -244,6 +244,7 @@ p {
 }
 #textoDebajo p{
   font-size: 25px;
+  columns: 2;
 }
 
 .modal1-content {
