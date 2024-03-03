@@ -93,14 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateScore();
+  const audioError = new Audio("../../audio/audio-error.mp3");
+  const audioPass = new Audio("../../audio/audio-check.mp3");
+
   function showWinMessage() {
+    audioPass.play();
     const winMessage = document.getElementById("win-message");
     winMessage.style.display = "block";
     score += 10;
     updateScore();
   }
-
+  
   function showError(message) {
+    audioError.play();
     const errorMessage = document.getElementById("error-message");
     const errorText = document.getElementById("error-text");
     errorText.textContent = message;
