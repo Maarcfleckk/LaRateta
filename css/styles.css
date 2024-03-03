@@ -218,24 +218,24 @@ button {
   z-index: -1;
 }
 .languageCa::after {
-  background-image: url(/images/bandera-cataluña.png);
+  background-image: url("../images/bandera-cataluña.png");
   background-size: 100%;
   background-position-y: center;
   background-position-x: center;
 }
 .languageEs::after {
-  background-image: url(/images/bandera-españa.png);
+  background-image: url("../images/bandera-españa.png");
   background-size: 77%;
   background-position-y: center;
 }
 .languageEn::after {
-  background-image: url(/images/bandera-reinounido.png);
+  background-image: url("../images/bandera-reinounido.png");
   background-size: 117%;
   background-position-y: center;
   background-position-x: center;
 }
 .languageAr::after {
-  background-image: url(/images/bandera-arabiasaudita.png);
+  background-image: url("../images/bandera-arabiasaudita.png");
   background-size: 104%;
   background-position-y: center;
 }
