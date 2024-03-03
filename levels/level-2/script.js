@@ -70,13 +70,16 @@ function updateScore() {
 // Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
 updateScore();
 function showWinMessage() {
+  audioPass.play();
   const winMessage = document.getElementById("win-message");
   winMessage.style.display = "block";
   score += 10; // Incrementa la puntuación en 10 puntos cuando el jugador gana
   updateScore(); // Actualiza la puntuación en la página
 }
-
+const audioError = new Audio("../../audio/audio-error.mp3");
+const audioPass = new Audio("../../audio/audio-check.mp3");
 function showErrorMessage() {
+  audioError.play();
   document.getElementById("error-message").style.display = "block";
 }
 
