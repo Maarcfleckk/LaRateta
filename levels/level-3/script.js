@@ -155,6 +155,7 @@ var textos = [
     3- LES PECES DEL PUZZLE.  <br>
     4- EL CONTENIDOR ON S'HA D'ARROSSEGAR LES PECES. <br>
     5- PER VERIFICAR EL RESULTAT. <br>
+    <strong>FINALITAT DEL JOC:</strong>RECONSTRUIR EL PUZZLE. <br>
     </p>`
 ];
 

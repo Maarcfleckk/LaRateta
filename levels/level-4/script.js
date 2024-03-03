@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const audioError = new Audio("../../audio/audio-error.mp3");
+  const audioPass = new Audio("../../audio/audio-check.mp3");
   const laberinto = document.getElementById("maze");
   const columnas = 11;
   const filas = 8;
@@ -107,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
   updateScore();
   function showWinMessage() {
+    audioPass.play();
     const winMessage = document.getElementById("win-message");
     winMessage.style.display = "block";
     score += 10; // Incrementa la puntuación en 10 puntos cuando el jugador gana
@@ -163,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function refreshPage() {
+
   location.reload();
 }
 
@@ -183,3 +187,56 @@ window.onclick = function (event) {
     event.target.style.display = "none";
   }
 };
+// Array de textos correspondientes a cada imagen
+var textos = [
+
+  `<p> 
+    NIVELL 4 <br>
+    <br> 1- PER TORNAR ENRERE. <br>
+    2- PER MOURE LA RATETA.<br>
+    3- PER TORNAR A COMENÇAR.  <br>
+    4- EL PERSONATGE QUE CONTROLEM. <br>
+    5- L'OBJECTIU ON HEM DE PORTAR LA RATETA. <br>
+    <strong>FINALITAT</strong>: PORTAR LA RATETA A L'OBJECTIU. <br>
+    </p>`
+];
+
+// Función para mostrar el texto correspondiente a la imagen actual
+function mostrarTextoActual() {
+  var indiceActual = getIndiceActual();
+  document.getElementById("textoDebajo").innerHTML = textos[indiceActual];
+}
+
+// Función para cambiar a la diapositiva anterior
+function prevSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual - 1 + slides.length) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para cambiar a la siguiente diapositiva
+function nextSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual + 1) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para obtener el índice de la imagen actual en el carrusel
+function getIndiceActual() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].style.display === "block") {
+      return i;
+    }
+  }
+  return 0;
+}
+
+// Inicializar el texto y el carrusel al cargar la página
+mostrarTextoActual();
