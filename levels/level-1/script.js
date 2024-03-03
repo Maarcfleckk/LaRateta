@@ -162,6 +162,8 @@ hideColorPalette();
 function refreshPage() {
   location.reload();
 }
+const audioError = new Audio("../../audio/audio-error.mp3");
+const audioPass = new Audio("../../audio/audio-check.mp3");
 
 function checkColors() {
   let forma1PintadaCorrectamente = false;
@@ -179,14 +181,12 @@ function checkColors() {
   console.log("Forma 2 pintada correctamente:", forma2PintadaCorrectamente);
 
   if (forma1PintadaCorrectamente && forma2PintadaCorrectamente) {
-    // Muestra el recuadro de mensaje de victoria
+    audioPass.play();
     showWinMessage();
-
-    // Oculta el botón "Check"
     const checkButton = document.querySelector(".check-button");
     checkButton.style.display = "none";
   } else {
-    // Muestra el recuadro de mensaje de error
+    audioError.play();
     const errorMessage = document.getElementById("error-message");
     errorMessage.style.display = "block";
   }
@@ -244,3 +244,56 @@ window.onclick = function (event) {
     event.target.style.display = "none";
   }
 };
+
+var textos = [
+
+  `<p> 
+    NIVELL 1 <br>
+    <br> 1- PER TORNAR ENRERA. <br>
+    2- PER OBRIR Y SELECIONAR DINS DE LA PALETA DE COLORS EL COLOR QUE CORRESPONGUI.<br>
+    3- PER PODER PINTARI SOBRE AMB EL COLOR QUE AJIS SELECIONAT EN LA PALETA DE COLORS.  <br>
+    4- PER BORRAR O RECARGAR. <br>
+    5- PER VERIFICAR SI HAS FET BE EL JOC. <br>
+    <strong>FINALITAT DEL JOC:</strong> PINTAR EL LLAÇ DE LA RATETA DEL COLOR ORIGINAL
+    </p>`
+];
+
+// Función para mostrar el texto correspondiente a la imagen actual
+function mostrarTextoActual() {
+  var indiceActual = getIndiceActual();
+  document.getElementById("textoDebajo").innerHTML = textos[indiceActual];
+}
+
+// Función para cambiar a la diapositiva anterior
+function prevSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual - 1 + slides.length) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para cambiar a la siguiente diapositiva
+function nextSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual + 1) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para obtener el índice de la imagen actual en el carrusel
+function getIndiceActual() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].style.display === "block") {
+      return i;
+    }
+  }
+  return 0;
+}
+
+// Inicializar el texto y el carrusel al cargar la página
+mostrarTextoActual();
