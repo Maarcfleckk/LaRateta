@@ -22,6 +22,16 @@
             <img src="../../images/volver.png" alt="" />
           </a>
         </div>
+        <div class="Ayuda">
+          <button
+            type="button"
+            id="ayuda"
+            class="ayuda"
+            onclick="openModal('modalAyuda')"
+          >
+            <img src="../../images/ayuda.png" alt="Ayuda" height="100px" />
+          </button>
+        </div>
       </section>
 
       <section class="gameBox">
@@ -64,6 +74,14 @@
       <div id="error-message">
         Estas segur? Torna-ho a intentar!
         <button onclick="closeErrorMessage()">Tancar</button>
+      </div>
+      <div id="modalAyuda" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalAyuda')">
+            <img src="../../images/tancar.png" alt="Cerrar" />
+          </span>
+          <h2>AJUDA</h2>  
+        </div>
       </div>
     </main>
     <script src="script.js"></script>

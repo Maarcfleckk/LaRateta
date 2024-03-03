@@ -122,3 +122,20 @@ document.addEventListener("DOMContentLoaded", () => {
     okButton.addEventListener("click", hideMessages);
   }
 });
+
+function openModal(modalId) {
+  var modal = document.getElementById(modalId);
+  modal.style.display = "flex";
+}
+
+function closeModal(modalId) {
+  var modal = document.getElementById(modalId);
+  modal.style.display = "none";
+  stopAudio();
+}
+
+window.onclick = function (event) {
+  if (event.target.className === "modal") {
+    event.target.style.display = "none";
+  }
+};
