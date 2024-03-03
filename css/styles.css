@@ -600,3 +600,7 @@ p {
 .carousel-item img {
   width: 100%; /* Ajusta el ancho de las imágenes al 100% del contenedor */
 }
+
+#textoDebajo p{
+  font-size: 25px;
+}

@@ -184,7 +184,7 @@ button {
   right: 0;
   position: absolute;
 }
-button {
+.Ayuda button {
   border: unset;
   background-color: transparent;
 }
