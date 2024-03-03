@@ -245,3 +245,44 @@ p {
 #textoDebajo p{
   font-size: 25px;
 }
+
+.modal1-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+}
+
+.carousel-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 45vh;
+  /* Altura máxima del carrusel */
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  height: 900px;
+  display: none;
+  /* Ocultar inicialmente todas las imágenes */
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  /* Ajustar automáticamente la altura */
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.carousel-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+}

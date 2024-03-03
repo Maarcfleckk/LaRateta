@@ -5,6 +5,16 @@
   padding: 0;
   overflow-y: clip;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  font-family: "Irish Grover", system-ui;
+}
 .btn-back {
   position: absolute;
   top: 0;

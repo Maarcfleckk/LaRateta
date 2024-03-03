@@ -144,3 +144,56 @@ window.onclick = function (event) {
     event.target.style.display = "none";
   }
 };
+
+// Array de textos correspondientes a cada imagen
+var textos = [
+
+  `<p> 
+    NIVELL 3 <br>
+    <br> 1- PER TORNAR ENRERE. <br>
+    2- PER TORNAR A COMENÇAR .<br>
+    3- LES PECES DEL PUZZLE.  <br>
+    4- EL CONTENIDOR ON S'HA D'ARROSSEGAR LES PECES. <br>
+    5- PER VERIFICAR EL RESULTAT. <br>
+    </p>`
+];
+
+// Función para mostrar el texto correspondiente a la imagen actual
+function mostrarTextoActual() {
+  var indiceActual = getIndiceActual();
+  document.getElementById("textoDebajo").innerHTML = textos[indiceActual];
+}
+
+// Función para cambiar a la diapositiva anterior
+function prevSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual - 1 + slides.length) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para cambiar a la siguiente diapositiva
+function nextSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual + 1) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para obtener el índice de la imagen actual en el carrusel
+function getIndiceActual() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].style.display === "block") {
+      return i;
+    }
+  }
+  return 0;
+}
+
+// Inicializar el texto y el carrusel al cargar la página
+mostrarTextoActual();

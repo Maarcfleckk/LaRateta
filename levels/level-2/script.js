@@ -106,3 +106,57 @@ window.onclick = function (event) {
     event.target.style.display = "none";
   }
 };
+
+// Array de textos correspondientes a cada imagen
+var textos = [
+
+  `<p> 
+    NIVELL 2 <br>
+    <br> 1- PER TORNAR ENRERE. <br>
+    2- PER ESCOLTAR EL NOM DEL PERSONATGE CORRECTE.<br>
+    3- PER RECARGAR EL NOM DEL PERSONATGE CORRECTE.  <br>
+    4- TRIA EL PERSONATGE AL QUE FACI REFERENCIA EL SO REPRODUÏT. <br>
+    5- PER VERIFICAR LA RESPOSTA. <br>
+    <strong>FINALITAT DEL JOC:</strong>CLICAR EL PERSONATGE CORRECTE REFERENT AL SO REPRODUÏT. <br>
+    </p>`
+];
+
+// Función para mostrar el texto correspondiente a la imagen actual
+function mostrarTextoActual() {
+  var indiceActual = getIndiceActual();
+  document.getElementById("textoDebajo").innerHTML = textos[indiceActual];
+}
+
+// Función para cambiar a la diapositiva anterior
+function prevSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual - 1 + slides.length) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para cambiar a la siguiente diapositiva
+function nextSlide() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  var indiceActual = getIndiceActual();
+  slides[indiceActual].style.display = "none";
+  indiceActual = (indiceActual + 1) % slides.length;
+  slides[indiceActual].style.display = "block";
+  mostrarTextoActual();
+}
+
+// Función para obtener el índice de la imagen actual en el carrusel
+function getIndiceActual() {
+  var slides = document.getElementsByClassName("carousel-slide");
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].style.display === "block") {
+      return i;
+    }
+  }
+  return 0;
+}
+
+// Inicializar el texto y el carrusel al cargar la página
+mostrarTextoActual();
