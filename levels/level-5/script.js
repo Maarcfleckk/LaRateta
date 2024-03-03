@@ -5,7 +5,7 @@ let score = localStorage.getItem("score")
 function updateScore() {
   const scoreElement = document.getElementById("score");
   if (scoreElement) {
-    scoreElement.textContent = "Puntos: " + score;
+    scoreElement.textContent = score;
   }
   localStorage.setItem("score", score);
 }

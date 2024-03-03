@@ -156,13 +156,46 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateScore() {
     const scoreElement = document.getElementById("score");
     if (scoreElement) {
-      scoreElement.textContent = "Puntos: " + score;
+      scoreElement.textContent = score;
     }
     localStorage.setItem("score", score);
   }
-
-  // Resto del código específico de la página
-
-  // Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
   updateScore();
+});
+
+// Wrapping the script in a document ready function
+$(document).ready(function () {
+  $(".page").click(function () {
+    $(this).removeClass("no-anim").toggleClass("flipped");
+    $(".page > div").click(function (e) {
+      e.stopPropagation();
+    });
+    reorder();
+  });
+
+  function reorder() {
+    $(".book").each(function () {
+      var pages = $(this).find(".page");
+      var pages_flipped = $(this).find(".flipped");
+      pages.each(function (i) {
+        $(this).css("z-index", pages.length - i);
+      });
+      pages_flipped.each(function (i) {
+        $(this).css("z-index", i + 1);
+      });
+    });
+  }
+
+  reorder();
+});
+$(document).ready(function () {
+  $(".carousel").slick({
+    dots: true, // Muestra los puntos de navegación
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1, // Número de imágenes a mostrar al mismo tiempo
+    adaptiveHeight: true, // Ajusta automáticamente la altura de las imágenes
+    prevArrow: $(".prevBtn"), // Utiliza el botón personalizado "Prev"
+    nextArrow: $(".nextBtn"), // Utiliza el botón personalizado "Next"
+  });
 });

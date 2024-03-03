@@ -79,7 +79,7 @@ button {
 .Idioma:hover {
   transition: transform 0.1s ease-in-out;
   /* Detener la animación al pasar el ratón */
-  animation: vibrate 0.2s infinite;
+  animation: vibrate 0.5s;
 }
 
 .Ayuda {
@@ -396,4 +396,207 @@ button {
   width: 90px;
   left: 61%;
   top: 15%;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::selection {
+  background: #222;
+  color: white;
+}
+
+::-moz-selection {
+  background: #222;
+  color: white;
+}
+
+body * {
+  transform-style: preserve-3d;
+  /* am i doing this wrong? */
+}
+
+body {
+  color: #222;
+  font-family: "Gabriela", serif;
+  perspective: 70em;
+  /*in your face*/
+  overflow-y: hidden;
+}
+
+h1,
+p {
+  margin: 5% 0;
+}
+
+.book {
+  height: 80%;
+  max-height: 550px;
+  min-height: 450px;
+  width: 800px;
+  background-image: linear-gradient(
+      90deg,
+      hsla(0, 100%, 50%, 0.6),
+      hsla(0, 97%, 12%, 0.9),
+      hsla(0, 99%, 40%, 0.4) 90%
+    ),
+    url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+  position: absolute;
+  top: 340px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  border: 3px solid hsla(30, 10%, 20%, 1);
+  border-radius: 5px;
+  box-shadow: 0 0 150px hsla(170, 0%, 0%, 0.4);
+}
+
+.page {
+  height: 100%;
+  width: 50%;
+  line-height: 1.5;
+  border-right: 10px solid transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform-origin: 0 50%;
+  transition: 0.8s;
+  /*animation: unflip .3s linear;*/
+}
+
+[class*="side"] {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: hsl(0, 3%, 93%);
+  background-image: url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+  background-size: 100% 100%;
+  backface-visibility: hidden;
+  overflow: auto;
+  padding: 5% 8%;
+}
+
+.side-1 {
+  z-index: 2;
+  box-shadow: inset 50px 0 50px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+}
+
+.side-2 {
+  transform: rotateY(180deg);
+  box-shadow: inset -50px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.flipped > .side-1 {
+  box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.8);
+  transition: 0.6s;
+}
+
+.flipped > [class*="side"] {
+  pointer-events: auto;
+}
+
+.page:after {
+  width: 100px;
+  height: 50px;
+  background-color: #555;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -100px;
+  margin: auto;
+  color: white;
+  text-shadow: 0 -1px 0 #222;
+  line-height: 50px;
+  text-align: center;
+  font-family: monospace;
+  content: "Següent";
+  animation: hide 0.8s linear;
+}
+
+.page.flipped:after {
+  content: "Tornar";
+  transform: rotateY(180deg);
+  pointer-events: auto;
+}
+
+/* to hide on flip animation */
+@keyframes hide {
+  0% {
+    opacity: 0;
+  }
+
+  85% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.flipped {
+  transform: rotateY(-180deg);
+  pointer-events: none;
+  /*animation: flip .3s linear;
+  animation-fill-mode: forwards;*/
+}
+
+@keyframes vibrateAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+}
+
+.content {
+  font-size: 14px;
+  /* Ajusta el tamaño de fuente según tus necesidades */
+}
+.boton-jugar {
+  margin-top: 2%;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.boton-jugar:hover {
+  animation: vibrateAnimation 0.5s ease;
+}
+
+.carousel {
+  width: 100%;
+}
+.carousel-item img {
+  width: 100%; /* Ajusta el ancho de las imágenes al 100% del contenedor */
 }

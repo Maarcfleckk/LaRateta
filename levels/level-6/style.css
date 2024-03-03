@@ -83,7 +83,7 @@
 }
 
 #win-message button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #fff;
   color: #4caf50; /* color de texto verde */
   border: none;

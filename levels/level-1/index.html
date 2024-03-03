@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="../../images/favicon.png"
+      type="image/x-icon"
+    />
     <title>El Joc de la Rateta</title>
   </head>
 
@@ -15,95 +19,83 @@
           <h1 class="Header">NIVELL 1</h1>
         </div>
         <div class="btn-back">
-          <a class="link-back" href="/game-screen.html">
-            <img src="/images/volver.png"  />
+          <a class="link-back" href="../../game-screen.html">
+            <img src="../../images/volver.png" />
           </a>
+        </div>
+      </section>
+      <section class="gameBox">
+        <div id="canvas-container">
+          <canvas id="canvas" width="600" height="400"></canvas>
+        </div>
+
+        <div id="color-palette">
+          <div
+            class="color-button"
+            style="background-image: url(../../images/color-rojo1.png)"
+            onclick="selectColor(1)"
+          ></div>
+          <div
+            class="color-button"
+            style="background-image: url(../../images/color-amarillo.png)"
+            onclick="selectColor(2)"
+          ></div>
+          <div
+            class="color-button"
+            style="background-image: url(../../images/color-verde.png)"
+            onclick="selectColor(3)"
+          ></div>
+          <div
+            class="color-button"
+            style="background-image: url(../../images/color-azul.png)"
+            onclick="selectColor(4)"
+          ></div>
+        </div>
+        <div class="gameControls">
+          <img
+            class="color-palette-button"
+            src="../../images/paleta.png"
+            alt="Mostrar Colores"
+            onclick="toggleColorPalette()"
+          />
+          <img
+            class="refresh-button"
+            src="../../images/reiniciar.png"
+            onclick="refreshPage()"
+          />
+          <img
+            src="../../images/check.png"
+            class="check-button"
+            onclick="checkColors()"
+          />
+        </div>
+
+        <button
+          id="next-button"
+          style="display: none"
+          onclick="showNextLevel()"
+        >
+          Next
+        </button>
+
+        <div id="win-message">
+          <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+            ¡ Has Guanyat !
+          </h1>
+          <a href="../../levels/level-2/index.html"
+            ><button onclick="nextLevel()">Següent nivell</button></a
+          >
+          <a href=""><button>Repetir nivell</button></a>
+          <a href="../../game-screen.html"><button>Tornar a l'inici</button></a>
+        </div>
+
+        <div id="error-message">
+          Algunes formes no estan pintades correctament.
+          <button onclick="closeErrorMessage()">Tancar</button>
         </div>
       </section>
     </main>
 
-    <div id="canvas-container">
-      <canvas id="canvas" width="600" height="400"></canvas>
-    </div>
-
-    <div id="color-palette">
-      <div
-        class="color-button"
-        style="
-          background-image: url(/images/color-rojo1.png);
-          background-repeat: no-repeat;
-          background-size: 100%;
-          width: 390%;
-        "
-        onclick="selectColor(1)"
-      ></div>
-      <div
-        class="color-button"
-        style="
-          background-image: url(/images/color-amarillo.png);
-          background-repeat: no-repeat;
-          background-size: 100%;
-          width: 390%;
-        "
-        onclick="selectColor(2)"
-      ></div>
-      <div
-        class="color-button"
-        style="
-          background-image: url(/images/color-verde.png);
-          background-repeat: no-repeat;
-          background-size: 100%;
-          width: 390%;
-        "
-        onclick="selectColor(3)"
-      ></div>
-      <div
-        class="color-button"
-        style="
-          background-image: url(/images/color-azul.png);
-          background-repeat: no-repeat;
-          background-size: 100%;
-          width: 390%;
-        "
-        onclick="selectColor(4)"
-      ></div>
-    </div>
-
-    <img
-      class="color-palette-button"
-      src="/images/paleta.png"
-      alt="Mostrar Colores"
-      onclick="toggleColorPalette()"
-    />
-
-    <img
-      class="refresh-button"
-      src="/images/reiniciar.png"
-      onclick="refreshPage()"
-    />
-
-    <img src="/images/check.png" class="check-button"  onclick="checkColors()" />
-
-    <button id="next-button" style="display: none" onclick="showNextLevel()">
-      Next
-    </button>
-
-    <div id="win-message">
-      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
-        ¡ Has Guanyat !
-      </h1>
-      <a href="/levels/level-2/index.html"
-        ><button onclick="nextLevel()">Següent nivell</button></a
-      >
-      <a href=""><button>Repetir nivell</button></a>
-      <a href="../../game-screen.html"><button>Tornar a l'inici</button></a>
-    </div>
-
-    <div id="error-message">
-      Algunes formes no estan pintades correctament.
-      <button onclick="closeErrorMessage()">Tancar</button>
-    </div>
-
-    <script src="/levels/level-1/script.js"></script>
+    <script src="../../levels/level-1/script.js"></script>
   </body>
 </html>

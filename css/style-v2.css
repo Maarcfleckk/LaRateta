@@ -97,6 +97,15 @@ div {
   right: 0;
   top: 0;
   padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+img.scoreImg {
+  height: 50px;
+  width: auto;
+  margin: 0 10px;
 }
 
 #score {

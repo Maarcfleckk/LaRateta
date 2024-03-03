@@ -34,28 +34,6 @@ body {
   cursor: crosshair;
 }
 
-#color-palette {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.color-button {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.color-button span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-
 .Heading {
   position: absolute;
   top: 0;
@@ -93,17 +71,14 @@ body {
 
 #color-palette {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 120px;
-
-  margin-right: -10px; /* Ajusta el margen según tus preferencias */
+  flex-direction: row;
+  position: absolute;
+  margin-top: 70px;
 }
 
 .color-button {
-  position: relative;
-  width: 30px;
-  height: 30px;
+  height: 40px;
+  width: 45px;
   margin: 0 5px;
   cursor: pointer;
 }
@@ -117,9 +92,6 @@ body {
 }
 
 .color-palette-button {
-  position: absolute;
-  bottom: 18px;
-  left: 460px;
   cursor: pointer;
 }
 
@@ -132,9 +104,6 @@ h1 {
 }
 
 .refresh-button {
-  position: absolute;
-  bottom: 10px; /* Ajusta la posición inferior según tus preferencias */
-  left: 700px; /* Ajusta la posición izquierda según tus preferencias */
   padding: 10px;
   color: #fff;
   border: none;
@@ -142,9 +111,6 @@ h1 {
 }
 
 .check-button {
-  position: absolute;
-  bottom: 10px; /* Ajusta la posición inferior según tus preferencias */
-  left: 990px; /* Ajusta la posición izquierda según tus preferencias */
   padding: 10px;
   color: #fff;
   border: none;
@@ -154,11 +120,11 @@ h1 {
 #error-message {
   display: none;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 102%;
+  left: 13%;
   transform: translate(78%, -150%);
   padding: 20px;
-  background-color: #ff4444; /* color de fondo rojo */
+  background-color: #ff4444;
   color: white;
   text-align: center;
   border-radius: 10px;
@@ -192,7 +158,7 @@ h1 {
 }
 
 #win-message button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #fff;
   color: #4caf50; /* color de texto verde */
   border: none;
@@ -202,4 +168,10 @@ h1 {
   width: 12%;
   height: 10vh;
   margin-top: 222px;
+}
+
+.gameControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

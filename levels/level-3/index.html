@@ -1,10 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="../../images/favicon.png"
+      type="image/x-icon"
+    />
+
     <title>El Joc de la Rateta</title>
   </head>
 
@@ -15,8 +20,8 @@
           <h1 class="Header">NIVELL 3</h1>
         </div>
         <div class="btn-back">
-          <a class="link-back" href="/game-screen.html">
-            <img src="/images/volver.png" alt="" />
+          <a class="link-back" href="../../game-screen.html">
+            <img src="../../images/volver.png" alt="" />
           </a>
         </div>
       </section>
@@ -53,26 +58,23 @@
         ></div>
       </section>
 
-      <section id="puzzle-section" class="puzzle-container">
-        <!-- Las imágenes del puzle se cargarán dinámicamente aquí con JavaScript -->
-      </section>
+      <section id="puzzle-section" class="puzzle-container"></section>
 
       <section class="buttons">
-        <img src="/images/sonido.png" class="sonido" onclick="playSound()" />
-        <a href="/levels/level-3/index.html"
+        <a href="../../levels/level-3/index.html"
           ><img
-            src="/images/reiniciar.png"
+            src="../../images/reiniciar.png"
             class="reiniciar"
             onclick="reloadPage()"
         /></a>
-        <img src="/images/check.png" class="check" onclick="check()" />
+        <img src="../../images/check.png" class="check" onclick="check()" />
       </section>
 
       <div id="win-message">
         <h1 class="Header" style="margin-top: 10%; font-size: 360%">
           ¡ Has Guanyat !
         </h1>
-        <a href="/levels/level-4/index.html"
+        <a href="../../levels/level-4/index.html"
           ><button onclick="nextLevel()">Següent nivell</button></a
         >
         <a href=""><button>Repetir nivell</button></a>
@@ -85,7 +87,7 @@
       </div>
     </main>
 
-    <script src="/levels/level-3/script.js"></script>
-    <script src="/custom.js"></script>
+    <script src="../../levels/level-3/script.js"></script>
+    <script src="../../custom.js"></script>
   </body>
 </html>

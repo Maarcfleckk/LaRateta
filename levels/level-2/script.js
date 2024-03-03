@@ -47,7 +47,7 @@ function selectCharacter(character) {
   });
 
   var selectedElement = document.querySelector(
-    '.vibrate[data-character="' + character + '"]'
+    '.vibrate[data-character="' + character + '"]',
   );
   if (selectedElement) {
     selectedElement.classList.add("active");
@@ -60,7 +60,7 @@ let score = localStorage.getItem("score")
 function updateScore() {
   const scoreElement = document.getElementById("score");
   if (scoreElement) {
-    scoreElement.textContent = "Puntos: " + score;
+    scoreElement.textContent = score;
   }
   localStorage.setItem("score", score);
 }

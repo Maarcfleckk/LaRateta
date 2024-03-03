@@ -1,22 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/levels/level-2/style.css" />
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="../../images/favicon.png"
+      type="image/x-icon"
+    />
     <title>El Joc de la Rateta</title>
   </head>
 
   <body>
     <main>
-      <section class="topSide">
+      <section class="topSide" style="height: 0">
         <div class="Heading">
           <h1 class="Header">NIVELL 2</h1>
         </div>
         <div class="btn-back">
-          <a class="link-back" href="/game-screen.html">
-            <img src="/images/volver.png" alt="" />
+          <a class="link-back" href="../../game-screen.html">
+            <img src="../../images/volver.png" alt="" />
           </a>
         </div>
       </section>
@@ -29,7 +33,7 @@
             data-character="rata"
           >
             <img
-              src="/images/rata.png"
+              src="../../images/rata.png"
               height="210px"
               alt=""
               style="margin-top: 40%; margin-left: -50%"
@@ -43,7 +47,7 @@
             data-character="burra"
           >
             <img
-              src="/images/burra.png"
+              src="../../images/burra.png"
               height="240px"
               style="margin-top: 30%"
             />
@@ -56,7 +60,7 @@
             data-character="perrito"
           >
             <img
-              src="/images/perrito.png"
+              src="../../images/perrito.png"
               height="150px"
               style="margin-top: 60%; padding-left: 40%"
             />
@@ -65,13 +69,17 @@
       </section>
 
       <section class="buttons">
-        <img src="/images/sonido.png" class="sonido" onclick="playSound()" />
         <img
-          src="/images/reiniciar.png"
+          src="../../images/sonido.png"
+          class="sonido"
+          onclick="playSound()"
+        />
+        <img
+          src="../../images/reiniciar.png"
           class="reiniciar"
           onclick="reloadPage()"
         />
-        <img src="/images/check.png" class="check" onclick="check()" />
+        <img src="../../images/check.png" class="check" onclick="check()" />
       </section>
     </main>
 
@@ -79,7 +87,7 @@
       <h1 class="Header" style="margin-top: 10%; font-size: 360%">
         ¡ Has Guanyat !
       </h1>
-      <a href="/levels/level-3/index.html"
+      <a href="../../levels/level-3/index.html"
         ><button onclick="nextLevel()">Següent nivell</button></a
       >
       <a href=""><button>Repetir nivell</button></a>
@@ -87,11 +95,11 @@
     </div>
 
     <div id="error-message">
-      ¡Te equivocaste de personje!
+      T'has equivocat, torna-ho a intentar!
       <button onclick="closeErrorMessage()">OK</button>
     </div>
 
-    <script src="/levels/level-2/script.js"></script>
-    <script src="/custom.js"></script>
+    <script src="script.js"></script>
+    <script src="../../custom.js"></script>
   </body>
 </html>

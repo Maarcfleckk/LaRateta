@@ -67,7 +67,7 @@
 }
 
 #win-message button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #fff;
   color: #4caf50; /* color de texto verde */
   border: none;
@@ -122,8 +122,8 @@ input[type="number"] {
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  top: 20%;
-  left: 34%;
+  top: 97%;
+  left: 54%;
 }
 
 #error-message button {

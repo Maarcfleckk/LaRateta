@@ -175,7 +175,7 @@ h1 {
   margin-top: 10px;
 }
 
-     #win-message {
+#win-message {
   display: none;
   position: fixed;
   top: 0;
@@ -192,7 +192,7 @@ h1 {
 }
 
 #win-message button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #fff;
   color: #4caf50; /* color de texto verde */
   border: none;
@@ -204,70 +204,68 @@ h1 {
   margin-top: 222px;
 }
 
+.puzzle-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  align-items: baseline;
+  margin-left: 110%;
+  margin-top: -70%;
+  float: left;
+}
 
+.puzzle-piece {
+  width: 50px;
+  height: 37.5px;
+  cursor: grab;
+  transition:
+    transform 0.5s ease-out,
+    width 0.5s ease-out,
+    height 0.5s ease-out;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
 
-      .puzzle-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 5px;
-        align-items: baseline;
-        margin-left: 110%;
-        margin-top: -70%;
-        float: left;
-      }
+.puzzle-piece:active {
+  cursor: grabbing;
+  transform: scale(1.333);
+  width: 150px;
+  height: 112.5px;
+}
 
-      .puzzle-piece {
-        width: 50px;
-        height: 37.5px;
-        cursor: grab;
-        transition: transform 0.5s ease-out, width 0.5s ease-out,
-          height 0.5s ease-out;
-        border: 2px solid black;
-        box-sizing: border-box;
-      }
+.puzzle-drop-area {
+  width: 620px;
+  height: 470px;
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-      .puzzle-piece:active {
-        cursor: grabbing;
-        transform: scale(1.333);
-        width: 150px;
-        height: 112.5px;
-      }
+.drop-slot {
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
 
-      .puzzle-drop-area {
-        width: 620px;
-        height: 470px;
-        position: relative;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .drop-slot {
-        width: 150px;
-        height: 150px;
-        border: 2px solid black;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 5px;
-      }
-
-
-   .buttons {
-    display: flex;
-    justify-content:center;
-    margin-top: 113px;
-    margin-left: 20%;
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 113px;
+  margin-left: 20%;
 }
 
 .sonido,
 .reiniciar {
-    padding: 0 20%; /* Puedes ajustar el valor según tus necesidades */
+  padding: 0 20%; /* Puedes ajustar el valor según tus necesidades */
 }
 
 .check {
-    padding: 0 30%; /* Puedes ajustar el valor según tus necesidades */
+  padding: 0 30%; /* Puedes ajustar el valor según tus necesidades */
 }
-

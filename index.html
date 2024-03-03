@@ -1,863 +1,651 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Joc de la Rateta</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Joc de la Rateta</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
-  <style>
-    *,
-    *:before,
-    *:after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      position: relative;
-    }
-
-    ::-webkit-scrollbar {
-      width: 12px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #222;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    ::selection {
-      background: #222;
-      color: white;
-    }
-
-    ::-moz-selection {
-      background: #222;
-      color: white;
-    }
-
-    body * {
-      transform-style: preserve-3d;
-      /* am i doing this wrong? */
-    }
-
-    body {
-      color: #222;
-      font-family: "Gabriela", serif;
-      perspective: 70em;
-      /*in your face*/
-      overflow-y: hidden;
-    }
-
-    h1,
-    p {
-      margin: 5% 0;
-    }
-
-    .book {
-      height: 80%;
-      max-height: 550px;
-      min-height: 450px;
-      width: 800px;
-      background-image: linear-gradient(90deg,
-          hsla(0, 100%, 50%, 0.6),
-          hsla(0, 97%, 12%, 0.9),
-          hsla(0, 99%, 40%, 0.4) 90%),
-        url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
-      position: absolute;
-      top: 340px;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      margin: auto;
-      border: 3px solid hsla(30, 10%, 20%, 1);
-      border-radius: 5px;
-      box-shadow: 0 0 150px hsla(170, 0%, 0%, 0.4);
-    }
-
-    .page {
-      height: 100%;
-      width: 50%;
-      line-height: 1.5;
-      border-right: 10px solid transparent;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform-origin: 0 50%;
-      transition: 0.8s;
-      /*animation: unflip .3s linear;*/
-    }
-
-    [class*="side"] {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      background-color: hsl(0, 3%, 93%);
-      background-image: url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
-      background-size: 100% 100%;
-      backface-visibility: hidden;
-      overflow: auto;
-      padding: 5% 8%;
-    }
-
-    .side-1 {
-      z-index: 2;
-      box-shadow: inset 50px 0 50px rgba(0, 0, 0, 0.5);
-      transition: 0.5s;
-    }
-
-    .side-2 {
-      transform: rotateY(180deg);
-      box-shadow: inset -50px 0 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .flipped>.side-1 {
-      box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.8);
-      transition: 0.6s;
-    }
-
-    .flipped>[class*="side"] {
-      pointer-events: auto;
-    }
-
-    .page:after {
-      width: 100px;
-      height: 50px;
-      background-color: #555;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: -100px;
-      margin: auto;
-      color: white;
-      text-shadow: 0 -1px 0 #222;
-      line-height: 50px;
-      text-align: center;
-      font-family: monospace;
-      content: "Següent";
-      animation: hide 0.8s linear;
-    }
-
-    .page.flipped:after {
-      content: "Tornar";
-      transform: rotateY(180deg);
-      pointer-events: auto;
-    }
-
-    /* to hide on flip animation */
-    @keyframes hide {
-      0% {
-        opacity: 0;
-      }
-
-      85% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    .flipped {
-      transform: rotateY(-180deg);
-      pointer-events: none;
-      /*animation: flip .3s linear;
-  animation-fill-mode: forwards;*/
-    }
-
-   
-@keyframes vibrateAnimation {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(5px) rotate(3deg);
-  }
-  50% {
-    transform: translateX(-5px) rotate(-3deg);
-  }
-  75% {
-    transform: translateX(5px) rotate(3deg);
-  }
-  100% {
-    transform: translateX(-5px) rotate(-3deg);
-  }
-}
-
-    .content {
-      font-size: 14px;
-      /* Ajusta el tamaño de fuente según tus necesidades */
-    }
-.boton-jugar {
-  margin-top: 2%;
-  padding: 10px 20px;
-  font-size: 16px;
-      transition: transform 0.5s ease-in-out;
-}
-
-.boton-jugar:hover {
-  
-     animation: vibrateAnimation 0.5s ease;
-}
-
-
-
-   .carousel {
-      width: 100%;
-    }
-    .carousel-item img {
-      width: 100%; /* Ajusta el ancho de las imágenes al 100% del contenedor */
-    }
-
-  </style>
-</head>
-
-<body>
-  <main>
-    <section class="Static-page">
-      <div class="Heading">
-        <h1 class="Header">
-          <img class="headerImage" src="images/titulo.png" alt="" srcset="" />
-        </h1>
-      </div>
-      <div class="mainButtons">
-        <div class="Ayuda">
-          <button type="button" id="ayuda" class="ayuda" onclick="openModal('modalAyuda')">
-            <img src="images/ayuda.png" alt="Ayuda" height="150px" />
-          </button>
+  <body>
+    <main>
+      <section class="Static-page">
+        <div class="Heading">
+          <h1 class="Header">
+            <img class="headerImage" src="images/titulo.png" alt="" srcset="" />
+          </h1>
         </div>
-        <div class="Musica">
-          <button type="button" id="music" class="music" onclick="toggleMusic()">
-            <img src="images/musica.png" alt="Música" height="150px" />
-            <div class="imgAfter"></div>
-          </button>
-        </div>
-        <div class="Cuento">
-          <button type="button" id="cuento" class="cuento" onclick="openModal('modalCuento')">
-            <img src="images/llegir el conta.png" alt="Cuento" height="150px" />
-          </button>
-        </div>
-        <div class="Idioma">
-          <button type="button" id="idioma" class="idioma" onclick="openModal('modalIdioma')">
-            <img src="images/idioma.png" alt="Idioma" height="150px" />
-          </button>
-        </div>
-      </div>
-      <div class="Juego">
-        <a href="game-screen.html">
-          <img class="boton-jugar" src="images/boton.png" alt="Jugar" />
-        </a>
-      </div>
-    </section>
-
-<div id="modalAyuda" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modalAyuda')">
-      <img src="images/tancar.png" alt="Cerrar"/>
-    </span>
-    <h2>AJUDA</h2>
-    <!-- Agrega el contenedor del carrusel -->
-    <div id="carousel" class="carousel">
-      <div class="carousel-item">
-        <img src="images/bandera-cataluña.png" alt="Bandera de Cataluña">
-      </div>
-      <div class="carousel-item">
-        <img src="images/bandera-españa.png" alt="Bandera de España">
-      </div>
-      <div class="carousel-item">
-        <img src="images/bandera-arabiasaudita.png" alt="Bandera de Arabia Saudita">
-      </div>
-    </div>
-
-    <!-- Botones de "Prev" y "Next" -->
-    <div style="text-align: center; margin-top: 20px;">
-      <button class="prevBtn">Prev</button>
-      <button class="nextBtn">Next</button>
-    </div>
-  </div>
-</div>
-
-    <div id="modalCuento" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('modalCuento')">
-          <img src="images/tancar.png" />
-        </span>
-        <div class="content">
-          <div class="topBar">
-            <button id="playButton" onclick="toggleAudio()">
-              <img id="playPauseIcon" src="images/play.png" alt="musicImage" />
-              <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
-            </button>
-            <button id="stopButton" onclick="stopAudio()">
-              <img src="images/pausa.png" alt="musicImage" />
-              <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
+        <div class="mainButtons">
+          <div class="Ayuda">
+            <button
+              type="button"
+              id="ayuda"
+              class="ayuda"
+              onclick="openModal('modalAyuda')"
+            >
+              <img src="images/ayuda.png" alt="Ayuda" height="150px" />
             </button>
           </div>
+          <div class="Musica">
+            <button
+              type="button"
+              id="music"
+              class="music"
+              onclick="toggleMusic()"
+            >
+              <img src="images/musica.png" alt="Música" height="150px" />
+              <div class="imgAfter"></div>
+            </button>
+          </div>
+          <div class="Cuento">
+            <button
+              type="button"
+              id="cuento"
+              class="cuento"
+              onclick="openModal('modalCuento')"
+            >
+              <img
+                src="images/llegir el conta.png"
+                alt="Cuento"
+                height="150px"
+              />
+            </button>
+          </div>
+          <div class="Idioma">
+            <button
+              type="button"
+              id="idioma"
+              class="idioma"
+              onclick="openModal('modalIdioma')"
+            >
+              <img src="images/idioma.png" alt="Idioma" height="150px" />
+            </button>
+          </div>
+        </div>
+        <div class="Juego">
+          <a href="game-screen.html">
+            <img class="boton-jugar" src="images/boton.png" alt="Jugar" />
+          </a>
+        </div>
+      </section>
 
-          <div class="book">
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/titulo.png"
-                    style="height: 100%; width: 100%; margin-top:120px; margin-left: 10px;  " />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-
-
-                  <h2 style="margin-top: 50%;">UNA VEGADA I HAVIA UNA RATETA
-                    QUE ESCOMBRAVA L'ESCALETA
-                  </h2>
-
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
+      <div id="modalAyuda" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalAyuda')">
+            <img src="images/tancar.png" alt="Cerrar" />
+          </span>
+          <h2>AJUDA</h2>
+          <!-- Agrega el contenedor del carrusel -->
+          <div id="carousel" class="carousel">
+            <div class="carousel-item">
+              <img
+                src="images/bandera-cataluña.png"
+                alt="Bandera de Cataluña"
+              />
             </div>
-            <!-- .page -->
-
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/conte-0.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <br>
-                  <h2 style="font-size: 19px;">VA TROBAR UN DINERET I VA DIR... <br>
-                    <br>
-                    QUE HEM FARÉ!
-                    QUE NO HEM FARÉ DEL DINERET!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">SI EM COMPRO AVELLANETES! <br>
-                    EM CAURAN LES DENTETES!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">SI EM COMPRO PINYONETS!
-                    EM CAURAN ELS CAIXALETS!
-                  </h2>
-                  <br>
-                  <H2 style="font-size: 16px;">
-                    EM COMPRARE... <br>
-                    UN LLAÇET PER LA CUETA!
-                  </H2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
+            <div class="carousel-item">
+              <img src="images/bandera-españa.png" alt="Bandera de España" />
             </div>
-            <!-- .page -->
-
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/conte-1.jpg" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-
-                  <h2 style="margin-top: 50%; margin-left: 10%;">
-                    I AIXÍ TOTA MUDADA VA <br> SORTIR A LA FINESTRETA.
-                  </h2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
+            <div class="carousel-item">
+              <img
+                src="images/bandera-arabiasaudita.png"
+                alt="Bandera de Arabia Saudita"
+              />
             </div>
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/cuento-2.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 18px;">
-                    QUAN ESTAVA A LA FINESTRETA <br>
-                    VA PASSAR UN GOS I LI VA DIR...
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 25px;">
-                    BOOF! BOOF! <br>
-                    RATETA! RATETA!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    TU QUE ETS TAN BONIQUETA <br>
-                    QUE ET VOLDRIES CASAR AMB MI?
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    OH VEJAM QUINA VEU FEU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 34px;">
-                    BOOF! BOOF!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    OI, NO, NO, NO, NO <br>
-                    M'AGRADEUAMB AQUESTA RONCA VEU!
-                  </h2>
-                </div>
+          </div>
 
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
+          <!-- Botones de "Prev" y "Next" -->
+          <div style="text-align: center; margin-top: 20px">
+            <button class="prevBtn">Prev</button>
+            <button class="nextBtn">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="modalCuento" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalCuento')">
+            <img src="images/tancar.png" />
+          </span>
+          <div class="content">
+            <div class="topBar">
+              <button id="playButton" onclick="toggleAudio()">
+                <img
+                  id="playPauseIcon"
+                  src="images/play.png"
+                  alt="musicImage"
+                />
+                <h2 id="topBarHeading" class="audioBtn">INICIAR AUDIO</h2>
+              </button>
+              <button id="stopButton" onclick="stopAudio()">
+                <img src="images/pausa.png" alt="musicImage" />
+                <h2 id="topBarHeading" class="audioBtn">REINICIAR AUDIO</h2>
+              </button>
             </div>
-            <!-- .page -->
 
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/cuento-3.png" style="height: 90%; width: 90%" />
+            <div class="book">
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/titulo.png"
+                      style="
+                        height: 100%;
+                        width: 100%;
+                        margin-top: 120px;
+                        margin-left: 10px;
+                      "
+                    />
+                  </div>
+                  <!-- .content -->
                 </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 16px;">
-                    DESPRÉS VA PASSAR UN RUC <br>
-                    I EN VEURE LA RATETA LI VA DIR...
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 20px;">
-                    HI HO! HI HO! <br>
-                    RATETA! RATETA!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    TU QUE ETS TAN BONIQUETA <br>
-                    QUE ET VOLDRIES CASAR <br>
-                    AMB MI JO SÓC DE L'EMPERADRIU.
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    OH VEJAM QUINA VEU FEU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 30px;">
-                    HI HO! HI HO!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    OI, NO, NO, NO, NO! <br>
-                    M'AGRADEU AMB AQUESTA FORTA VEU!
-                  </h2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/conte-4.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 14px;">
-                    VA PASSAR UN GALL MOLT TRIBAT <br> AMB LA CRESTA DALT DEL CAP <br>
-                    I AMB VEURE LA RATETA ABOCADA A LA FINESTRETA LI VA DIR...
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 20px;">
-                    KIKIRIKI! <br>
-                    RATETA! RATETA!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    TU QUE ETS TAN BONIQUETA QUE VOLDRIES CASARTE AMB MI?
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    OH VEJAM QUINA VEU FEU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 25px;">
-                    KIKIRIKI!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px; margin-top:-10px ; ">
-                    OI, NO, NO, NO, NO! <br>
-                    QUE EM DESPERTARIEU AL MATÍ QUAN CANTARIEU!
-                  </h2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/conte-5.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 14px;">
-                    VA ARRIBAR UN BOU <br>
-                    I EN VEURE LA RATETA LI VA DIR...
-                  </h2>
-                  <br>
-                  <h2>
-                    MOUUUUU! <br> RATETA! RATETA! MMM!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    TU QUE ETS TAN BONIQUETA <br>
-                    QUE ET VOLDRIES CASAR <br>
-                    AMB MIIIII!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    OH VEJAM QUINA VEU FEU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 25px;">
-                    MUUUUUUU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    Oi, NOO! <br>
-                    QUE EM ESPANTEU AMB AQUESTA GROSSA VEU!
-                  </h2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/cuento-7.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 14px;">
-                    PASSAVA LES HORES UN ÀNEC PRESUMIT <br>
-                    QUE EN VEURE LA RATETA LI VA DIR...
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 19px;">
-                    CUAC! CUAC! <br>
-                    RATETA! RATETA!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    TU QUE ETS TAN BONIQUETA <br>
-                    ET VOLDRIES CASAR AMB MI?
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    OH VEJAM QUINA VEU FEU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 25px;">
-                    CUAC! CUAC! CUAC!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    Ai, Ai, NO!, NO!, NO! <br>
-                    MARXEU!, MARXEU! ON ANEU AMB AQUESTA VEU!
-                  </h2>
-
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/conte-7.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 14px;">
-                    I PASSAVA UN BE <br>
-                    QUE EN VEURE LA RATETA COM TOTS NOMÉS SAP DIR...
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 19px;">
-                    BEHEHE! BEHEHE! <br>
-                    RATETA! RATETA!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    TU QUE ETS TAN BONIQUETA <br>
-                    ET VOLDRIES CASAR AMB MI?
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    OH VEJAM QUINA VEU FEU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 25px;">
-                    BEHEHE! BEHEHE!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    OH, NO!, NO!, NO! <br>
-                    NO M'AGRADEU AMB AQUESTA TRISTA VEU!
-                  </h2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/obeja.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 14px;">
-                    HEUS AQUÍ QUE PASSA EL GAT MOLT POLIT I ENCLENXINAT <br>
-                    QUE EN VEURE LA RATETA LI DIU...
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 19px;">
-                    RATETA! RATETA! <br>
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    TU QUE ETS TAN BONIQUETA <br>
-                    ET VOLDRIES CASAR AMB MI?
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    MMM! VEJAM QUINA VEU FEU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 25px;">
-                    MEUU! MEUU!
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 14px;">
-                    OH, SI!, SI!, SI! <br>
-                    QUE M'AGRADEU AMB AQUESTA VEU TAN FINA!
-                  </h2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/gat.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="margin-top: 50%;">
-                    I AIXÍ VA SER COM EL GAT VA ENTRAR
-                    A LA CASA DE LA RATETA I ES VAN CASAR.
-                  </h2>
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/gat2.png" style="height: 90%; width: 90%" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-                  <h2 style="font-size: 16px;">
-                    LA RATETA TENI L'OLLA POSADA AL FOC,
-                    PRO COM ERA MOLT PETITETA NO ARRIVABA A REMANARLA
-                    PER AIXO VA DEMANAR AJUDA EN EL GAT
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 24px;">
-                    AI!, MARIDET!, MARIDET MEU! <br>
-                    VAJAM SI M'AJUDEU
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    DE SOPTE, EL GAT EL VA EMPANTAR TAN I TAN LA VA ENPANTAR
-                    QUE DINS L'OLLA LA VA TIRAR
-                  </h2>
-                  <br>
-                  <h2 style="font-size: 16px;">
-                    I EN CAURE DINS L'OLLETA ES VA COURE LA RATETA
-                    I EL GAT EN VEURE QUE ERA CUITA DEPRESA SEL VA MENJAR
-                  </h2>
-
-                </div>
-
-                <!-- .content -->
-              </div>
-              <!-- .side-2 -->
-            </div>
-            <!-- .page -->
-
-
-            <!-- .page -->
-            <div id="page-1" class="page no-anim">
-              <div class="side-1" id="p1">
-                <div class="content">
-                  <img src="images/llibre/olla.png" style="height: 80%; width: 80%" />
-                    <img src="images/llibre/gato-gordo.png" style="height: 90%; width: 90%; margin-top: -20px; margin-left: 50px;" />
-                </div>
-                <!-- .content -->
-              </div>
-              <!-- .side-1 -->
-              <div class="side-2" id="p2">
-                <div class="content">
-
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="margin-top: 50%">
+                      UNA VEGADA HI HAVIA UNA RATETA QUE ESCOMBRAVA L'ESCALETA
+                    </h2>
+                  </div>
 
                   <!-- .content -->
                 </div>
                 <!-- .side-2 -->
-                <h2 style="font-size: 150px; margin-top: 30% ; margin-left: 80px;">
-                  FI
-                </h2>
               </div>
               <!-- .page -->
 
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-0.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <br />
+                    <h2 style="font-size: 19px">
+                      VA TROBAR UN DINERET I VA DIR... <br />
+                      <br />
+                      QUE EN FARÉ! QUE NO EN FARÉ DEL DINERET!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      SI EM COMPRO AVELLANETES! <br />
+                      EM CAURAN LES DENTETES!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      SI EM COMPRO PINYONETS! EM CAURAN ELS CAIXALETS!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      EM COMPRARE... <br />
+                      UN LLAÇET PER LA CUETA!
+                    </h2>
+                  </div>
 
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
 
-              
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-1.jpg"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="margin-top: 50%; margin-left: 10%">
+                      I AIXÍ TOTA MUDADA VA <br />
+                      SORTIR A LA FINESTRETA.
+                    </h2>
+                  </div>
 
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-2.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 18px">
+                      QUAN ESTAVA A LA FINESTRETA <br />
+                      VA PASSAR UN GOS I LI VA DIR...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 25px">
+                      BOOF! BOOF! <br />
+                      RATETA! RATETA!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      TU QUE ETS TAN BONIQUETA <br />
+                      QUE ET VOLDRIES CASAR AMB MI?
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">OH VEJAM QUINA VEU FEU!</h2>
+                    <br />
+                    <h2 style="font-size: 34px">BOOF! BOOF!</h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      OI, NO, NO, NO, NO <br />
+                      M'AGRADEUAMB AQUESTA RONCA VEU!
+                    </h2>
+                  </div>
 
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
 
-              
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-3.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 16px">
+                      DESPRÉS VA PASSAR UN RUC <br />
+                      I EN VEURE LA RATETA LI VA DIR...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 20px">
+                      HI HO! HI HO! <br />
+                      RATETA! RATETA!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      TU QUE ETS TAN BONIQUETA <br />
+                      QUE ET VOLDRIES CASAR <br />
+                      AMB MI JO SÓC DE L'EMPERADRIU.
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">OH VEJAM QUINA VEU FEU!</h2>
+                    <br />
+                    <h2 style="font-size: 30px">HI HO! HI HO!</h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      OI, NO, NO, NO, NO! <br />
+                      M'AGRADEU AMB AQUESTA FORTA VEU!
+                    </h2>
+                  </div>
 
-              <!--asta aqui -->
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-4.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      VA PASSAR UN GALL MOLT TRIBAT <br />
+                      AMB LA CRESTA DALT DEL CAP <br />
+                      I AMB VEURE LA RATETA ABOCADA A LA FINESTRETA LI VA DIR...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 20px">
+                      KIKIRIKI! <br />
+                      RATETA! RATETA!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      TU QUE ETS TAN BONIQUETA QUE VOLDRIES CASARTE AMB MI?
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">OH VEJAM QUINA VEU FEU!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">KIKIRIKI!</h2>
+                    <br />
+                    <h2 style="font-size: 14px; margin-top: -10px">
+                      OI, NO, NO, NO, NO! <br />
+                      QUE EM DESPERTARIEU AL MATÍ QUAN CANTARIEU!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-5.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      VA ARRIBAR UN BOU <br />
+                      I EN VEURE LA RATETA LI VA DIR...
+                    </h2>
+                    <br />
+                    <h2>
+                      MOUUUUU! <br />
+                      RATETA! RATETA! MMM!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      TU QUE ETS TAN BONIQUETA <br />
+                      QUE ET VOLDRIES CASAR <br />
+                      AMB MIIIII!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">OH VEJAM QUINA VEU FEU!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">MUUUUUUU!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      Oi, NOO! <br />
+                      QUE EM ESPANTEU AMB AQUESTA GROSSA VEU!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-7.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      PASSAVA LES HORES UN ÀNEC PRESUMIT <br />
+                      QUE EN VEURE LA RATETA LI VA DIR...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 19px">
+                      CUAC! CUAC! <br />
+                      RATETA! RATETA!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      TU QUE ETS TAN BONIQUETA <br />
+                      ET VOLDRIES CASAR AMB MI?
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">OH VEJAM QUINA VEU FEU!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">CUAC! CUAC! CUAC!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      Ai, Ai, NO!, NO!, NO! <br />
+                      MARXEU!, MARXEU! ON ANEU AMB AQUESTA VEU!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-7.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      I PASSAVA UN BE <br />
+                      QUE EN VEURE LA RATETA COM TOTS NOMÉS SAP DIR...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 19px">
+                      BEHEHE! BEHEHE! <br />
+                      RATETA! RATETA!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      TU QUE ETS TAN BONIQUETA <br />
+                      ET VOLDRIES CASAR AMB MI?
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">OH VEJAM QUINA VEU FEU!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">BEHEHE! BEHEHE!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      OH, NO!, NO!, NO! <br />
+                      NO M'AGRADEU AMB AQUESTA TRISTA VEU!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/obeja.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      HEUS AQUÍ QUE PASSA EL GAT MOLT POLIT I ENCLENXINAT <br />
+                      QUE EN VEURE LA RATETA LI DIU...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 19px">RATETA! RATETA! <br /></h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      TU QUE ETS TAN BONIQUETA <br />
+                      ET VOLDRIES CASAR AMB MI?
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">MMM! VEJAM QUINA VEU FEU!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">MEUU! MEUU!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      OH, SI!, SI!, SI! <br />
+                      QUE M'AGRADEU AMB AQUESTA VEU TAN FINA!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/gat.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="margin-top: 50%">
+                      I AIXÍ VA SER COM EL GAT VA ENTRAR A LA CASA DE LA RATETA
+                      I ES VAN CASAR.
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/gat2.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 16px">
+                      LA RATETA TENI L'OLLA POSADA AL FOC, PRO COM ERA MOLT
+                      PETITETA NO ARRIVABA A REMANARLA PER AIXO VA DEMANAR AJUDA
+                      EN EL GAT
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 24px">
+                      AI!, MARIDET!, MARIDET MEU! <br />
+                      VAJAM SI M'AJUDEU
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      DE SOPTE, EL GAT EL VA EMPANTAR TAN I TAN LA VA ENPANTAR
+                      QUE DINS L'OLLA LA VA TIRAR
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      I EN CAURE DINS L'OLLETA ES VA COURE LA RATETA I EL GAT EN
+                      VEURE QUE ERA CUITA DEPRESA SEL VA MENJAR
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/olla.png"
+                      style="height: 80%; width: 80%"
+                    />
+                    <img
+                      src="images/llibre/gato-gordo.png"
+                      style="
+                        height: 90%;
+                        width: 90%;
+                        margin-top: -20px;
+                        margin-left: 50px;
+                      "
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <!-- .content -->
+                  </div>
+                  <!-- .side-2 -->
+                  <h2
+                    style="font-size: 150px; margin-top: 30%; margin-left: 80px"
+                  >
+                    FI
+                  </h2>
+                </div>
+                <!-- .page -->
+                <!--asta aqui -->
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
-
-    <div id="modalIdioma" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('modalIdioma')">
-          <img src="images/tancar.png" /></span>
-        <div class="languageBtnGrid">
-          <button class="btnLanguage languageCa" role="button"></button>
-          <button class="btnLanguage languageEs" role="button"></button>
-          <button class="btnLanguage languageEn" role="button"></button>
-          <button class="btnLanguage languageAr" role="button"></button>
-          <p class="textCa">CATALÀ</p>
-          <p class="textEs">CASTELLÀ</p>
-          <p class="textEn">ANGLÈS</p>
-          <p class="textAr">ÀRAB</p>
+      <div id="modalIdioma" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalIdioma')">
+            <img src="images/tancar.png"
+          /></span>
+          <div class="languageBtnGrid">
+            <button class="btnLanguage languageCa" role="button"></button>
+            <button class="btnLanguage languageEs" role="button"></button>
+            <button class="btnLanguage languageEn" role="button"></button>
+            <button class="btnLanguage languageAr" role="button"></button>
+            <p class="textCa">CATALÀ</p>
+            <p class="textEs">CASTELLÀ</p>
+            <p class="textEn">ANGLÈS</p>
+            <p class="textAr">ÀRAB</p>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-
-</body>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-  // Wrapping the script in a document ready function
-  $(document).ready(function () {
-    $(".page").click(function () {
-      $(this).removeClass("no-anim").toggleClass("flipped");
-      $(".page > div").click(function (e) {
-        e.stopPropagation();
-      });
-      reorder();
-    });
-
-    function reorder() {
-      $(".book").each(function () {
-        var pages = $(this).find(".page");
-        var pages_flipped = $(this).find(".flipped");
-        pages.each(function (i) {
-          $(this).css("z-index", pages.length - i);
-        });
-        pages_flipped.each(function (i) {
-          $(this).css("z-index", i + 1);
-        });
-      });
-    }
-
-    reorder();
-  });
-</script>
-<script src="custom.js"></script>
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="slick/slick.min.js"></script>
-
-<!-- Configura el carrusel usando jQuery -->
-<script>
-  $(document).ready(function(){
-    $('.carousel').slick({
-      dots: true, // Muestra los puntos de navegación
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1, // Número de imágenes a mostrar al mismo tiempo
-      adaptiveHeight: true, // Ajusta automáticamente la altura de las imágenes
-      prevArrow: $('.prevBtn'), // Utiliza el botón personalizado "Prev"
-      nextArrow: $('.nextBtn') // Utiliza el botón personalizado "Next"
-    });
-  });
-</script>
+    </main>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="custom.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
 </html>

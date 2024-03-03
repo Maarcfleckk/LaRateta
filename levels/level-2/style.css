@@ -1,129 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-html{
-    overflow-x: hidden ;
-    overflow-y: hidden;
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
-body{
-    height: 100vh;
-    width: 100vw;
+body {
+  height: 100vh;
+  width: 100vw;
 }
-h1, h2, h3, h4, h5, h6, a, p{
-    font-family: 'Irish Grover', system-ui;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  font-family: "Irish Grover", system-ui;
 }
 .Heading {
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
-.Header{
-    font-size: 70px;
+.Header {
+  font-size: 70px;
 }
-.btn-back{
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: -5px;
-    margin-left: -5px ;
-}
-
-.btn-back img{
-    height: 150px;
+.btn-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -5px;
+  margin-left: -5px;
 }
 
-.levels-grid{
-    width: 100vw;
-    height: 44.8vh;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20vh;
+.btn-back img {
+  height: 150px;
 }
 
-.level1, .level2, .level3, .level4, .level5, .level6{
-    width: 300px;
-    height: 300px;
+.levels-grid {
+  width: 100vw;
+  height: 44.8vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+}
+
+.level1,
+.level2,
+.level3,
+.level4,
+.level5,
+.level6 {
+  width: 300px;
+  height: 300px;
 }
 
 .vibrate img {
-            transition: transform 0.5s ease-in-out;
-        }
+  transition: transform 0.5s ease-in-out;
+}
 
-        .vibrate:hover img {
-            animation: vibrateAnimation 0.5s ease infinite;
-        }
+.vibrate:hover img {
+  animation: vibrateAnimation 0.5s ease infinite;
+}
 
-        @keyframes vibrateAnimation {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(5px) rotate(3deg); }
-            50% { transform: translateX(-5px) rotate(-3deg); }
-            75% { transform: translateX(5px) rotate(3deg); }
-            100% { transform: translateX(-5px) rotate(-3deg); }
-        }
-
-
+@keyframes vibrateAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+}
 
 .vibrate img {
-        transition: transform 0.5s ease-in-out;
-      }
+  transition: transform 0.5s ease-in-out;
+}
 
-      .vibrate.clicked img {
-        transform: scale(1.2);
-        /* Puedes ajustar el valor para el agrandamiento */
-      }
+.vibrate.clicked img {
+  transform: scale(1.2);
+  /* Puedes ajustar el valor para el agrandamiento */
+}
 
 .vibrate img {
-            transition: transform 0.5s ease-in-out;
-        }
+  transition: transform 0.5s ease-in-out;
+}
 
-        .vibrate:hover img {
-            animation: vibrateAnimation 0.5s ease;
-        }
+.vibrate:hover img {
+  animation: vibrateAnimation 0.5s ease;
+}
 
-        @keyframes vibrateAnimation {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(5px) rotate(3deg); }
-            50% { transform: translateX(-5px) rotate(-3deg); }
-            75% { transform: translateX(5px) rotate(3deg); }
-            100% { transform: translateX(-5px) rotate(-3deg); }
-        }
+@keyframes vibrateAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+}
 
-      #error-message {
-        display: none;
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(78%, -150%);
-        padding: 20px;
-        background-color: #ff4444;
-        /* color de fondo rojo */
-        color: white;
-        text-align: center;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
+#error-message {
+  display: none;
+  position: absolute;
+  top: 94%;
+  left: 60%;
+  transform: translate(78%, -150%);
+  padding: 20px;
+  background-color: #ff4444;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-      #error-message button {
-        padding: 10px;
-        background-color: #fff;
-        color: #ff4444;
-        /* color de texto rojo */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-      }
+#error-message button {
+  padding: 10px;
+  background-color: #fff;
+  color: #ff4444;
+  /* color de texto rojo */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
-      #win-message {
+#win-message {
   display: none;
   position: fixed;
   top: 0;
@@ -140,7 +168,7 @@ h1, h2, h3, h4, h5, h6, a, p{
 }
 
 #win-message button {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #fff;
   color: #4caf50; /* color de texto verde */
   border: none;
@@ -152,21 +180,20 @@ h1, h2, h3, h4, h5, h6, a, p{
   margin-top: 222px;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 123px;
+}
 
-      .buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 123px;
-      }
+.sonido {
+  margin-left: 27%; /* Reducido de 2% a 1% */
+}
 
-      .sonido {
-        margin-left: 27%; /* Reducido de 2% a 1% */
-      }
+.reiniciar {
+  margin-right: 0.5%; /* Reducido de 1% a 0.5% */
+}
 
-      .reiniciar {
-        margin-right: 0.5%; /* Reducido de 1% a 0.5% */
-      }
-
-      .check {
-        margin-right: 27%; /* Reducido de 2% a 1% */
-      }
+.check {
+  margin-right: 27%; /* Reducido de 2% a 1% */
+}

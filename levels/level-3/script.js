@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropSlots = document.querySelectorAll(".drop-slot");
   const puzzlePieces = [];
   const imageURLs = [
-    "/images/puzle1.png",
-    "/images/puzle3.png",
-    "/images/puzle2.png",
-    "/images/puzle4.png",
+    "../../images/puzle1.png",
+    "../../images/puzle3.png",
+    "../../images/puzle2.png",
+    "../../images/puzle4.png",
   ];
 
   function loadImages() {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       piece.dataset.piece = index + 1;
       piece.draggable = true;
       piece.addEventListener("dragstart", (event) =>
-        handleDragStart(event, piece)
+        handleDragStart(event, piece),
       );
       puzzleSection.appendChild(piece);
       puzzlePieces.push(piece);
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   puzzleDropArea.addEventListener("dragover", (event) =>
-    event.preventDefault()
+    event.preventDefault(),
   );
 
   dropSlots.forEach((slot) => {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       const droppedPieceNumber = event.dataTransfer.getData("text/plain");
       const droppedPiece = puzzlePieces.find(
-        (piece) => piece.dataset.piece === droppedPieceNumber
+        (piece) => piece.dataset.piece === droppedPieceNumber,
       );
 
       droppedPiece.style.width = "200px";
@@ -59,10 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const slots = document.querySelectorAll(".drop-slot");
 
     const correctOrderForSlots = {
-      slot1: 1, // Asigna el número de la pieza correcta para el slot1
-      slot2: 2, // Asigna el número de la pieza correcta para el slot2
-      slot3: 4, // Asigna el número de la pieza correcta para el slot3
-      slot4: 3, // Asigna el número de la pieza correcta para el slot4
+      slot1: 1,
+      slot2: 2,
+      slot3: 4,
+      slot4: 3,
     };
 
     const isCorrectOrder = Array.from(slots).every((slot) => {
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isCorrectOrder) {
       showWinMessage("¡Ganaste!");
     } else {
-      showError(" Debes colocar las piezas en los slots correctos.");
+      showError("Assegurat que has posat les peces on toquen!");
     }
   }
   let score = localStorage.getItem("score")
@@ -87,22 +87,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateScore() {
     const scoreElement = document.getElementById("score");
     if (scoreElement) {
-      scoreElement.textContent = "Puntos: " + score;
+      scoreElement.textContent = score;
     }
     localStorage.setItem("score", score);
   }
 
-  // Resto del código específico de la página
-
-  // Al final de tu script, llama a updateScore para asegurarte de que el marcador se actualice
   updateScore();
-  // Resto del código específico de la página
   function showWinMessage() {
     const winMessage = document.getElementById("win-message");
     winMessage.style.display = "block";
-    console.log("🚀 ~ showWinMessage ~ score:", score);
     score += 10;
-    console.log("🚀 ~ showWinMessage ~ score:", score);
     updateScore();
   }
 
