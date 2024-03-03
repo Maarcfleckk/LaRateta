@@ -206,8 +206,12 @@
 
 
 
-
-    
+   .carousel {
+      width: 100%;
+    }
+    .carousel-item img {
+      width: 100%; /* Ajusta el ancho de las imágenes al 100% del contenedor */
+    }
 
   </style>
 </head>
@@ -250,15 +254,32 @@
       </div>
     </section>
 
-    <div id="modalAyuda" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('modalAyuda')">
-          <img src="images/tancar.png" />
-        </span>
-        <h2>AJUDA</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit...</p>
+<div id="modalAyuda" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modalAyuda')">
+      <img src="images/tancar.png" alt="Cerrar"/>
+    </span>
+    <h2>AJUDA</h2>
+    <!-- Agrega el contenedor del carrusel -->
+    <div id="carousel" class="carousel">
+      <div class="carousel-item">
+        <img src="images/bandera-cataluña.png" alt="Bandera de Cataluña">
+      </div>
+      <div class="carousel-item">
+        <img src="images/bandera-españa.png" alt="Bandera de España">
+      </div>
+      <div class="carousel-item">
+        <img src="images/bandera-arabiasaudita.png" alt="Bandera de Arabia Saudita">
       </div>
     </div>
+
+    <!-- Botones de "Prev" y "Next" -->
+    <div style="text-align: center; margin-top: 20px;">
+      <button class="prevBtn">Prev</button>
+      <button class="nextBtn">Next</button>
+    </div>
+  </div>
+</div>
 
     <div id="modalCuento" class="modal">
       <div class="modal-content">
@@ -821,4 +842,22 @@
 </script>
 <script src="custom.js"></script>
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+
+<!-- Configura el carrusel usando jQuery -->
+<script>
+  $(document).ready(function(){
+    $('.carousel').slick({
+      dots: true, // Muestra los puntos de navegación
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1, // Número de imágenes a mostrar al mismo tiempo
+      adaptiveHeight: true, // Ajusta automáticamente la altura de las imágenes
+      prevArrow: $('.prevBtn'), // Utiliza el botón personalizado "Prev"
+      nextArrow: $('.nextBtn') // Utiliza el botón personalizado "Next"
+    });
+  });
+</script>
 </html>

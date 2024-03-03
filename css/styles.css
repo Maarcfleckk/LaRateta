@@ -44,11 +44,21 @@ button {
 }
 
 @keyframes vibrate {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(2px, 2px); }
-  50% { transform: translate(0, 0); }
-  75% { transform: translate(-2px, -2px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2px, 2px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 .Ayuda,
@@ -57,7 +67,7 @@ button {
 .Idioma {
   position: absolute;
   margin: 5px;
-   animation: none;
+  animation: none;
   /* Transición rápida de 0.1 segundos */
   /* Aplicar la animación de vibración infinitamente */
 }
@@ -67,11 +77,10 @@ button {
 .Musica:hover,
 .Cuento:hover,
 .Idioma:hover {
-  transition: transform 0.1s ease-in-out; 
+  transition: transform 0.1s ease-in-out;
   /* Detener la animación al pasar el ratón */
-  animation: vibrate 0.2s infinite; 
+  animation: vibrate 0.2s infinite;
 }
-
 
 .Ayuda {
   top: 0;
@@ -118,10 +127,10 @@ button {
   justify-content: center;
   align-items: center;
   position: fixed;
-     top: -20px;
-    left: 0;
-    width: 100%;
-    height: 110%;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 110%;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -210,12 +219,14 @@ button {
 }
 .languageCa::after {
   background-image: url(/images/bandera-cataluña.png);
-  background-size: 87%;
+  background-size: 100%;
   background-position-y: center;
+  background-position-x: center;
 }
 .languageEs::after {
   background-image: url(/images/bandera-españa.png);
   background-size: 77%;
+  background-position-y: center;
 }
 .languageEn::after {
   background-image: url(/images/bandera-reinounido.png);
@@ -231,19 +242,19 @@ button {
 
 .textCa {
   top: 42%;
-  left: 15%;
+  left: 17%;
 }
 .textEs {
   top: 42%;
-     right: 10%;
+  right: 15%;
 }
 .textEn {
-  top: 77%;
-  left: 10%;
+  top: 93%;
+  left: 15%;
 }
 .textAr {
-  top: 77%;
-  right: 12%;
+  top: 93%;
+  right: 18%;
 }
 .textCa,
 .textEs,
@@ -252,7 +263,7 @@ button {
   position: absolute;
   color: white;
   font-size: 40px;
-    margin-top: -120px;
+  margin-top: -120px;
   opacity: 0;
   transition: opacity 0.2s;
 }
