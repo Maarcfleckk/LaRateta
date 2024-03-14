@@ -110,15 +110,15 @@ window.onclick = function (event) {
 // Array de textos correspondientes a cada imagen
 var textos = [
 
-  `<p> 
-    NIVELL 2 <br>
-    <br> 1- PER TORNAR ENRERE. <br>
-    2- PER ESCOLTAR EL NOM DEL PERSONATGE CORRECTE.<br>
-    3- PER RECARGAR EL NOM DEL PERSONATGE CORRECTE.  <br>
-    4- TRIA EL PERSONATGE AL QUE FACI REFERENCIA EL SO REPRODUÏT. <br>
-    5- PER VERIFICAR LA RESPOSTA. <br>
-    <strong>FINALITAT DEL JOC:</strong>CLICAR EL PERSONATGE CORRECTE REFERENT AL SO REPRODUÏT. <br>
-    </p>`
+  `<p>
+     NIVEL 2 <br>
+     <br> 1- PARA VOLVER ATRÁS. <br>
+     2- PARA ESCUCHAR EL NOMBRE DEL PERSONAJE CORRECTO.<br>
+     3- PARA RECARGAR EL NOMBRE DEL PERSONAJE CORRECTO. <br>
+     4- ELIGE EL PERSONAJE A LO QUE HACE REFERENCIA EL SONIDO REPRODUCIDO. <br>
+     5- PARA VERIFICAR LA RESPUESTA. <br>
+     <strong>FINALIDAD DEL JUEGO:</strong>CLICAR EL PERSONAJE CORRECTO REFERENTE AL SONIDO REPRODUCIDO. <br>
+     </p>`
 ];
 
 // Función para mostrar el texto correspondiente a la imagen actual

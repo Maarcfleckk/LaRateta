@@ -148,15 +148,15 @@ window.onclick = function (event) {
 // Array de textos correspondientes a cada imagen
 var textos = [
 
-  `<p> 
-    NIVELL 3 <br>
-    <br> 1- PER TORNAR ENRERE. <br>
-    2- PER TORNAR A COMENÇAR .<br>
-    3- LES PECES DEL PUZZLE.  <br>
-    4- EL CONTENIDOR ON S'HA D'ARROSSEGAR LES PECES. <br>
-    5- PER VERIFICAR EL RESULTAT. <br>
-    <strong>FINALITAT DEL JOC:</strong>RECONSTRUIR EL PUZZLE. <br>
-    </p>`
+`<ص>
+     المستوى 3<br>
+     <br> 1- العودة. <ر>
+     2- للبدء من جديد .<br>
+     3- قطع اللغز. <ر>
+     4- الحاوية التي سيتم سحب الأجزاء إليها. <ر>
+     5- للتحقق من النتيجة. <ر>
+     <strong>الهدف من اللعبة:</strong>إعادة بناء اللغز. <ر>
+     </p>`
 ];
 
 // Función para mostrar el texto correspondiente a la imagen actual

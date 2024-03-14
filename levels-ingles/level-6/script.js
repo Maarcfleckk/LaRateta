@@ -133,12 +133,12 @@ window.onclick = function (event) {
     // Array de textos correspondientes a cada imagen
     var textos = [
 
-      `<p> 
-        NIVELL 6 <br>
-        <br> 1- PER TORNAR ENRERE. <br>
-        2- JOPC TIPUS MEMORY.<br>
-        <strong>FINALITAT DEL JOC:<strong> COMPLETAR TOTES LES PARELLES DE IMATGES
-        </p>`      
+     `<p>
+         LEVEL 6 <br>
+         <br> 1- TO GO BACK. <br>
+         2- MEMORY TYPE JOPC.<br>
+         <strong>AIM OF THE GAME:<strong> COMPLETE ALL PAIRS OF PICTURES
+         </p>`     
     ];
 
     // Función para mostrar el texto correspondiente a la imagen actual

@@ -247,15 +247,15 @@ window.onclick = function (event) {
 
 var textos = [
 
-  `<p> 
-    NIVELL 1 <br>
-    <br> 1- PER TORNAR ENRERE. <br>
-    2- PER OBRIR I SELECIONAR DINS LA PALETA DE COLORS EL COLOR QUE CORRESPONGUI.<br>
-    3- PER PODER PINTAR SOBRE AMB EL COLOR SELECIONAT A PALETA DE COLORS.<br>
-    4- PER TORNARA COMENÇAR <br>
-    5- PER VERIFICAR LA RESPOSTA. <br>
-    <strong>FINALITAT DEL JOC:</strong> PINTAR EL LLAÇ DE LA RATETA DEL COLOR ORIGINAL
-    </p>`
+`<ص>
+     المستوى 1<br>
+     <br> 1- العودة. <ر>
+     2- لفتح واختيار اللون المقابل ضمن لوحة الألوان.<br>
+     3- القدرة على الرسم بالألوان المختارة من لوحة الألوان.<br>
+     4- للبدء من جديد <br>
+     5- للتحقق من الإجابة. <ر>
+     <strong>الهدف من اللعبة:</strong> طلاء قوس الجرذ باللون الأصلي
+     </p>`
 ];
 
 // Función para mostrar el texto correspondiente a la imagen actual

@@ -98,17 +98,17 @@ window.onclick = function (event) {
     // Array de textos correspondientes a cada imagen
     var textos = [
 
-      `<p> 
-        NIVELL 5 <br>
-        <br> 1- PER TORNAR ENRERE. <br>
-        2- PER TORNAR A COMENÇAR.<br>
-        3- PER DISMINUIR EL VALOR.  <br>
-        4- EL VALOR QUE ESTAS POSANT. <br>
-        5- PER INCREMENTAR EL VALOR. <br>
-        6- LA QUANTITAT D'OBJECTES QUE HAS DE CONTAR. <br>
-        7- VERIFICAR EL RESULTAT. <br>
-        <strong>FINALITAT DEL JOC: </strong> CONTAR EL NUMERO DE OBJECTES QUE HI HA<br>
-        </p>`
+     `<p>
+         LEVEL 5 <br>
+         <br> 1- TO GO BACK. <br>
+         2- TO START AGAIN.<br>
+         3- TO DECREASE THE VALUE. <br>
+         4- THE VALUE YOU ARE PUTTING. <br>
+         5- TO INCREASE THE VALUE. <br>
+         6- THE QUANTITY OF OBJECTS YOU MUST COUNT. <br>
+         7- CHECK THE RESULT. <br>
+         <strong>AIM OF THE GAME: </strong> COUNT THE NUMBER OF OBJECTS THERE<br>
+         </p>`
     ];
 
     // Función para mostrar el texto correspondiente a la imagen actual

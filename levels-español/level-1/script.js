@@ -247,15 +247,15 @@ window.onclick = function (event) {
 
 var textos = [
 
-  `<p> 
-    NIVELL 1 <br>
-    <br> 1- PER TORNAR ENRERE. <br>
-    2- PER OBRIR I SELECIONAR DINS LA PALETA DE COLORS EL COLOR QUE CORRESPONGUI.<br>
-    3- PER PODER PINTAR SOBRE AMB EL COLOR SELECIONAT A PALETA DE COLORS.<br>
-    4- PER TORNARA COMENÇAR <br>
-    5- PER VERIFICAR LA RESPOSTA. <br>
-    <strong>FINALITAT DEL JOC:</strong> PINTAR EL LLAÇ DE LA RATETA DEL COLOR ORIGINAL
-    </p>`
+ `<p>
+     NIVEL 1 <br>
+     <br> 1- PARA VOLVER ATRÁS. <br>
+     2- PARA ABRIR Y SELECIONAR DENTRO DE LA PALETA DE COLORES EL COLOR QUE CORRESPONDA.<br>
+     3- PARA PODER PINTAR SOBRE CON EL COLOR SELECIONADO EN PALETA DE COLORES.<br>
+     4- POR VOLVER EMPEZAR <br>
+     5- PARA VERIFICAR LA RESPUESTA. <br>
+     <strong>FINALIDAD DEL JUEGO:</strong> PINTAR EL LAZO DE LA RATILLA DEL COLOR ORIGINAL
+     </p>`
 ];
 
 // Función para mostrar el texto correspondiente a la imagen actual

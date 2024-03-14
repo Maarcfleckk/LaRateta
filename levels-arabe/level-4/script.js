@@ -190,15 +190,15 @@ window.onclick = function (event) {
 // Array de textos correspondientes a cada imagen
 var textos = [
 
-  `<p> 
-    NIVELL 4 <br>
-    <br> 1- PER TORNAR ENRERE. <br>
-    2- PER MOURE LA RATETA.<br>
-    3- PER TORNAR A COMENÇAR.  <br>
-    4- EL PERSONATGE QUE CONTROLEM. <br>
-    5- L'OBJECTIU ON HEM DE PORTAR LA RATETA. <br>
-    <strong>FINALITAT</strong>: PORTAR LA RATETA A L'OBJECTIU. <br>
-    </p>`
+`<ص>
+     المستوى 4<br>
+     <br> 1- العودة. <ر>
+     2- لتحريك الجرذ.<br>
+     3- للبدء من جديد. <ر>
+     4- الشخصية التي نتحكم فيها. <ر>
+     5- الهدف الذي يجب أن نأخذ فيه الجرذ. <ر>
+     <strong>الهدف</strong>: خذ الجرذ نحو الهدف. <ر>
+     </p>`
 ];
 
 // Función para mostrar el texto correspondiente a la imagen actual
