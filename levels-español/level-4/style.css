@@ -1,0 +1,233 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow-y: clip;
+}
+h1, h2, h3, h4, h5, h6, a, p, div {
+  font-family: "Irish Grover", system-ui;
+}
+.d-none {
+  visibility: hidden;
+}
+.Heading {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.Header {
+  font-size: 70px;
+}
+.btn-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+.btn-back img {
+  height: 150px;
+}
+
+.gameBox {
+  width: 80vw;
+  height: 80vh;
+  margin: 0 auto;
+  margin-top: 10vh;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.gameControls {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+}
+.maze {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(50px * 11);
+  height: calc(50px * 8);
+  border: 1px solid black;
+}
+.celda {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+}
+
+.jugador {
+  background-image: url(../../images/level4/personatge-laberint.png);
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.meta {
+  background-image: url(../../images/level4/objectiu-laberint.png);
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.pared {
+  background-color: black;
+}
+
+#win-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(76, 175, 80, 2.8);
+  color: white;
+  font-size: 250%;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+#win-message button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #4caf50; /* color de texto verde */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 60%;
+  width: 12%;
+  height: 10vh;
+  margin-top: 222px;
+}
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.btn-up {
+  border-color: transparent transparent #ccc transparent;
+}
+
+.btn-left {
+  border-color: transparent #ccc transparent transparent;
+}
+
+.btn-down {
+  border-color: #ccc transparent transparent transparent;
+}
+
+.btn-right {
+  border-color: transparent transparent transparent #ccc;
+}
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -2%;
+  margin-right: -2%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}
+.Ayuda {
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+.Ayuda button {
+  border: unset;
+  background-color: transparent;
+}
+#textoDebajo p{
+  font-size: 25px;
+}
+.modal1-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+}
+
+.carousel-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 45vh;
+  /* Altura máxima del carrusel */
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  height: 900px;
+  display: none;
+  /* Ocultar inicialmente todas las imágenes */
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  /* Ajustar automáticamente la altura */
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.carousel-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لعبة راتيتا</title>
+    <link rel="stylesheet" href="css/styles-arabe.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <style>
+  .modal1-content {
+      background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 80%;
+  }
+
+  .carousel-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-height: 200px; /* Altura máxima del carrusel */
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+        height: 900px;
+    display: none; /* Ocultar inicialmente todas las imágenes */
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: auto; /* Ajustar automáticamente la altura */
+  }
+
+  .carousel-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .carousel-buttons button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
+  </head>
+
+  <body>
+    <main>
+      <section class="Static-page">
+        <div class="Heading">
+          <h1 class="Header">
+            <img class="headerImage" src="images/titulo-arabe.png" alt="" style="margin-top: -3%;" />
+          </h1>
+        </div>
+        <div class="mainButtons">
+          <div class="Ayuda">
+            <button
+              type="button"
+              id="ayuda"
+              class="ayuda"
+              onclick="openModal('modalAyuda')"
+            >
+              <img src="images/ayuda-arabe.jpg" alt="Ayuda" height="150px" />
+            </button>
+          </div>
+          <div class="Musica">
+            <button
+              type="button"
+              id="music"
+              class="music"
+              onclick="toggleMusic()"
+            >
+              <img src="images/musica-arabe.jpg" alt="Música" height="150px" />
+              <div class="imgAfter"></div>
+            </button>
+          </div>
+          <div class="Cuento">
+            <button
+              type="button"
+              id="cuento"
+              class="cuento"
+              onclick="openModal('modalCuento')"
+            >
+              <img
+                src="images/llegir el conta-arabe.png .png"
+                alt="Cuento"
+                height="150px"
+              />
+            </button>
+          </div>
+          <div class="Idioma">
+            <button
+              type="button"
+              id="idioma"
+              class="idioma"
+              onclick="openModal('modalIdioma')"
+            >
+              <img src="images/idioma-arabe.png .png" alt="Idioma" height="150px" />
+            </button>
+          </div>
+        </div>
+        <div class="Juego">
+          <a href="game-screen-arabe.html">
+            <img class="boton-jugar" src="images/boton-arabe.png" alt="Jugar" />
+          </a>
+        </div>
+      </section>
+
+      
+
+
+      <div id="modalAyuda" class="modal">
+  <div class="modal1-content">
+    <span class="close" onclick="closeModal('modalAyuda')">
+      <img src="images/tancar.png" alt="Cerrar" />
+    </span>
+    <h2>AJUDA</h2>
+
+    <!-- Contenedor del carrusel -->
+    <div class="carousel-container">
+      <div class="carousel-slide">
+        <img src="images/ayuda-conte.png" alt="Imagen 1" style="width: 150px; height: auto; margin-left: 35%;" />
+      </div>
+      <div class="carousel-slide">
+        <img src="images/ayuda-conte-1.jpg" alt="Imagen 2" style="width: 450px; height: auto; margin-left: 30%;"/>
+      </div>
+      <div class="carousel-slide">
+        <img src="images/idiomas-ayuda.jpg" alt="Imagen 3" style="width: 350px; height: auto; margin-left: 30%;"/>
+      </div>
+    </div>
+
+      <div id="textoDebajo">
+      <p></p>
+    </div>
+    <!-- Botones de navegación -->
+    <div class="carousel-buttons">
+      <button style="background-color: #888; color: #fefefe;" onclick="prevSlide()">يعود</button>
+      <button style="background-color: #888; color: #fefefe;"onclick="nextSlide()">التالي</button>
+    </div>
+  </div>
+</div>
+
+
+      <div id="modalCuento" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalCuento')">
+            <img src="images/tancar.png" />
+          </span>
+          <div class="content">
+            <div class="topBar">
+              <button id="playButton" onclick="toggleAudio()">
+                <img
+                  id="playPauseIcon"
+                  src="images/play.png"
+                  alt="musicImage"
+                />
+                <h2 id="topBarHeading" class="audioBtn">بدء الصوت</h2>
+              </button>
+              <button id="stopButton" onclick="stopAudio()">
+                <img src="images/pausa.png" alt="musicImage" />
+                <h2 id="topBarHeading" class="audioBtn">إعادة تشغيل الصوت</h2>
+              </button>
+            </div>
+
+            <div class="book">
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/titulo-arabe.png"
+                      style="
+                        height: 100%;
+                        width: 100%;
+                        margin-top: 120px;
+                        margin-left: 10px;
+                      "
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="margin-top: 50%">
+                    ذات مرة كان هناك فأر كان يكتسح السلم
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-0.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <br />
+                    <h2 style="font-size: 19px">
+                     وجد المال وقال... <br />
+                      <br />
+                      ماذا سأفعل به! أنني لن أكسب المال!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                     إذا اشتريت البندق! <br />
+                     أسناني تتساقط!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                     إذا قمت بشراء أجنحة! صناديقي تتساقط!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                     اشتريني...<br />
+                     القوس للذيل!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-1.jpg"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="margin-top: 50%; margin-left: 10%">
+                     وهذه هي الطريقة التي تسير بها كل خطوة<br />
+                      اخرج من النافذة.
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-2.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 18px">
+                     عندما كنت عند النافذة <br />
+                    مر كلب وقال...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 25px">
+                      بوف! بوف! <br />
+                      فأر! فأر!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      أنت رائعة الجمال<br />
+                      هل تريد الزواج مني؟
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">أوه دعونا نرى ما هو الصوت الذي تصدره!</h2>
+                    <br />
+                    <h2 style="font-size: 34px">بوف! بوف!</h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      صحيح، لا، لا، لا، لا<br />
+                      أشكرك على هذا الصوت المروع!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-3.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 16px">
+                    ثم حدث حمار<br />
+                      ورؤية الفأر يقول...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 20px">
+                      مرحبًا! مرحبًا! <br />
+                     فأر! فأر!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      أنت رائعة الجمال <br />
+                      أنك ترغب في الزواج <br />
+                      معي أنا الإمبراطورة.
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">أوه دعونا نرى ما هو الصوت الذي تصدره!</h2>
+                    <br />
+                    <h2 style="font-size: 30px">مرحبًا! مرحبًا!</h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      صحيح، لا، لا، لا، لا! <br />
+                      أحبك بهذا الصوت القوي!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-4.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                     لقد حدث حدث سيء للغاية <br />
+                      مع الشعار فوق الرأس <br />
+                      ورأى الفأر يخرج من النافذة فقال...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 20px">
+                      الفول السوداني! <br />
+                     فأر! فأر!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      هل أنت جميلة جدًا لدرجة أنك تريد الزواج بي؟
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">أوه دعونا نرى ما هو الصوت الذي تصدره!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">الفول السوداني!</h2>
+                    <br />
+                    <h2 style="font-size: 14px; margin-top: -10px">
+                      صحيح، لا، لا، لا، لا! <br />
+                     أنك توقظني في الصباح عندما تغني!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-5.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      جاء الثور <br />
+                      ورؤية الفأر يقول...
+                    </h2>
+                    <br />
+                    <h2>
+                      يتحرك!<br />
+                     فأر! فأر! ط ط!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                     أنت رائعة الجمال <br />
+                      أنك ترغب في الزواج<br />
+                      مع الثالث!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">أوه دعونا نرى ما هو الصوت الذي تصدره!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">أوه، لا!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      أوه، لا! <br />
+                    لقد أخافني بهذا الصوت العالي!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/cuento-7.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                     بطة حامل مرت ساعات<br />
+                      ماذا قال له الفأر عندما رأى...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 19px">
+                      قف! قف! <br />
+                      فأر! فأر!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      أنت رائعة الجمال <br />
+                     هل تريد الزواج مني؟
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">أوه دعونا نرى ما هو الصوت الذي تصدره!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">قف! قف! قف!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                     أوه، أوه، لا!، لا!، لا! <br />
+                      انطلق!، انطلق! إلى أين أنت ذاهب بهذا الصوت!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/conte-7.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      وكان وقتا طيبا <br />
+                      ماذا عن رؤية الفأر حيث أن الجميع يعرف فقط كيف يقول...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 19px">
+                      بيهيهي! بيهيهي! <br />
+                      فأر! فأر!
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      أنت رائعة الجمال <br />
+                      هل تريد الزواج مني؟
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">أوه دعونا نرى ما هو الصوت الذي تصدره!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">بيهيهي! بيهيهي!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                     أوه لا!، لا!، لا! <br />
+                      لا يرجى لي مع هذا الصوت الحزين!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/obeja.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 14px">
+                      هناك قطة مصقولة للغاية هنا <br />
+                      ماذا يقول الفأر...
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 19px">فأر! فأر! <br /></h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                      أنت رائعة الجمال <br />
+                     هل تريد الزواج مني؟
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 14px">ط ط! دعونا نرى ما هو الصوت الذي تصنعه!</h2>
+                    <br />
+                    <h2 style="font-size: 25px">لي! لي!</h2>
+                    <br />
+                    <h2 style="font-size: 14px">
+                     أوه نعم!، نعم!، نعم! <br />
+                      أحبك بهذا الصوت الجميل!
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/gat.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="margin-top: 50%">
+                      وهكذا دخلت القطة إلى منزل الجرذ
+                     وكانا متزوجين.
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/gat2.png"
+                      style="height: 90%; width: 90%"
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <h2 style="font-size: 16px">
+                      لقد وضع الفأر القدر على النار، لذا كان الأمر كثيرًا
+                       لم تتمكن بيتيتيتا من إزالتها لذا طلبت المساعدة
+                       في القطة
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 24px">
+                      أوه!، ماريديت!، ماريديت!<br />
+                     تعال إذا كنت تساعدني
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      فجأة، أخافته القطة لدرجة أنها ألقت بها في الوعاء
+                    </h2>
+                    <br />
+                    <h2 style="font-size: 16px">
+                      وعندما سقطا في الوعاء، احترق الفأر والقطة
+                       عندما رأى أنه تم طهيه بسرعة، أكله
+                    </h2>
+                  </div>
+
+                  <!-- .content -->
+                </div>
+                <!-- .side-2 -->
+              </div>
+              <!-- .page -->
+
+              <!-- .page -->
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/llibre/olla.png"
+                      style="height: 80%; width: 80%"
+                    />
+                    <img
+                      src="images/llibre/gato-gordo.png"
+                      style="
+                        height: 90%;
+                        width: 90%;
+                        margin-top: -20px;
+                        margin-left: 50px;
+                      "
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+                <div class="side-2" id="p2">
+                  <div class="content">
+                    <!-- .content -->
+                  </div>
+                  <!-- .side-2 -->
+                  <h2
+                    style="font-size: 100px; margin-top: 30%; margin-left: 80px"
+                  >
+                  نهاية
+                  </h2>
+                </div>
+                <!-- .page -->
+                <!--asta aqui -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="modalIdioma" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalIdioma')">
+            <img src="images/tancar.png"
+          /></span>
+          <div class="languageBtnGrid">
+          <a href="index.html" class="btnLanguage languageCa" role="button"> </a>
+          <a href="index-español.html" class="btnLanguage languageEs" role="button"> </a>
+      <a href="index-ingles.html" class="btnLanguage languageEn" role="button"> </a>
+        
+            <button class="btnLanguage languageAr" role="button"></button>
+            <p class="textCa">الكاتالونية</p>
+            <p class="textEs">الأسبانية</p>
+            <p class="textEn">إنجليزي</p>
+            <p class="textAr">عرب</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="custom-arabe.js"></script>
+
+<script>
+    // Array de textos correspondientes a cada imagen
+     var textos = [
+      
+      `<p> 
+        MUSICA <br>
+        <br> 1- ES PER ATURAR LA MUSICA. <br>
+        2- ES PER ESCOLTAR I ATURAR LA MUSICA. </p>`,
+
+    `<p>
+      ESCOLTAR EL CONTE <br>
+      <br> 1- ÉS PER INICIAR I ATURAR SO DEL CONTE. <br>
+     2- ÉS PER REINICIAR EL SO. <br>
+     3- ÉS PER ANAR A LA PAGINA SEGÜENT. <br>
+     4- ÉS PER ANAR A LA PÀGINA ANTERIOR. <br>
+     5- ÉS PER SORTIR. </p>`,
+
+       `<p>
+        IDIOMA
+        <br> <br>1- ES PER CANVIAR EL IDIOMA A CATALÀ. <br>
+     2- ES PER CANVIAR EL IDIOMA AL CASTELLA. <br>
+     3- ES PER CANVIAR EL IDIOMA AL ANGLES. <br>
+     4- ES PER CANVIAR EL IDIOMA AL ARAB. <br>
+     5- ÉS PER SORTIR. </p>`
+     
+
+  ];
+
+    // Función para mostrar el texto correspondiente a la imagen actual
+    function mostrarTextoActual() {
+      var indiceActual = getIndiceActual();
+      document.getElementById("textoDebajo").innerHTML = textos[indiceActual];
+    }
+
+    // Función para cambiar a la diapositiva anterior
+    function prevSlide() {
+      var slides = document.getElementsByClassName("carousel-slide");
+      var indiceActual = getIndiceActual();
+      slides[indiceActual].style.display = "none";
+      indiceActual = (indiceActual - 1 + slides.length) % slides.length;
+      slides[indiceActual].style.display = "block";
+      mostrarTextoActual();
+    }
+
+    // Función para cambiar a la siguiente diapositiva
+    function nextSlide() {
+      var slides = document.getElementsByClassName("carousel-slide");
+      var indiceActual = getIndiceActual();
+      slides[indiceActual].style.display = "none";
+      indiceActual = (indiceActual + 1) % slides.length;
+      slides[indiceActual].style.display = "block";
+      mostrarTextoActual();
+    }
+
+    // Función para obtener el índice de la imagen actual en el carrusel
+    function getIndiceActual() {
+      var slides = document.getElementsByClassName("carousel-slide");
+      for (var i = 0; i < slides.length; i++) {
+        if (slides[i].style.display === "block") {
+          return i;
+        }
+      }
+      return 0;
+    }
+
+    // Inicializar el texto y el carrusel al cargar la página
+    mostrarTextoActual();
+  </script>
+
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>لعبة راتيتا</title>
+</head>
+<body>
+    <main>
+    <section class="topSide">
+        <div class="Heading">
+            <h1 class="Header">
+                مستوى 4
+            </h1>
+        </div>
+        <div class="btn-back">
+            <a class="link-back " href="../../game-screen-arabe.html">
+                <img src="../../images/volver.png" alt="" />
+            </a>
+        </div>
+        <div class="Ayuda">
+            <button
+              type="button"
+              id="ayuda"
+              class="ayuda"
+              onclick="openModal('modalAyuda')"
+            >
+              <img src="../../images/ayuda-arabe.jpg" alt="Ayuda" height="100px" />
+            </button>
+          </div>
+    </section>
+    <section class="gameBox">
+        <section id="maze" class="maze">
+      
+        </section>
+        <section class="gameControls">
+            <div class="controls">
+                <button class="d-none"></button>
+                <button id="up" class="btn-up" onclick="goTop()">↑</button>
+                <button class="d-none"></button>
+                <button id="left" class="btn-left" onclick="goLeft()">←</button>
+                <button id="down" class="btn-down" onclick="goBot()">↓</button>
+                <button id="right" class="btn-right" onclick="goRight()">→</button>
+            </div>
+            <div class="btns">
+                <img
+                    class="refresh-button"
+                    src="../../images/reiniciar-arabe.png"
+                    onclick="refreshPage()"
+                />
+            </div>
+    </section>
+    <section id="win-message">
+      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+        لقد فزت!
+      </h1>
+      <a href="../../levels-arabe/level-5/index.html"><button>المرحلة التالية</button></a>
+      <a href=""><button>كرر المستوى</button></a>      
+      <a href="../../game-screen-arabe.html"><button>العودة إلى البداية</button></a>
+
+    </section>
+        <div id="modalAyuda" class="modal">
+      <div class="modal1-content">
+        <span class="close" onclick="closeModal('modalAyuda')">
+          <img src="../../images/tancar.png" alt="Cerrar" />
+        </span>
+        <h2>يساعد</h2>
+
+        <!-- Contenedor del carrusel -->
+        <div class="carousel-container">
+        
+            <img src="../../images/nivel4-ayuda.png" alt="Imagen 1" style="width: 450px; height: 300px; margin-left: 35%;" />
+       
+        </div>
+
+        <div id="textoDebajo">
+          <p></p>
+        </div>
+        <!-- Botones de navegación -->
+      
+      </div>
+    </div>
+  </main> 
+  <script src="script.js"></script>
+  <script src="../../custom.js"></script>
+</body>
+</html>

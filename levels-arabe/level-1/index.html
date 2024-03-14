@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon" />
+  <title>لعبة راتيتا</title>
+</head>
+
+<body>
+  <main>
+    <section class="topSide">
+      <div class="Heading">
+        <h1 class="Header">المستوى 1</h1>
+      </div>
+      <div class="btn-back">
+        <a class="link-back" href="../../game-screen-arabe.html">
+          <img src="../../images/volver.png" />
+        </a>
+      </div>
+      <div class="Ayuda">
+        <button type="button" id="ayuda" class="ayuda" onclick="openModal('modalAyuda')">
+          <img src="../../images/ayuda-arabe.jpg" alt="Ayuda" height="100px" />
+        </button>
+      </div>
+    </section>
+    <section class="gameBox">
+      <div id="canvas-container">
+        <canvas id="canvas" width="600" height="400"></canvas>
+      </div>
+
+      <div id="color-palette">
+        <div class="color-button" style="background-image: url(../../images/color-rojo1.png)" onclick="selectColor(1)">
+        </div>
+        <div class="color-button" style="background-image: url(../../images/color-amarillo.png)"
+          onclick="selectColor(2)"></div>
+        <div class="color-button" style="background-image: url(../../images/color-verde.png)" onclick="selectColor(3)">
+        </div>
+        <div class="color-button" style="background-image: url(../../images/color-azul.png)" onclick="selectColor(4)">
+        </div>
+      </div>
+      <div class="gameControls">
+        <img class="color-palette-button" src="../../images/paleta-arabe.png" alt="Mostrar Colores"
+          onclick="toggleColorPalette()" />
+        <img class="refresh-button" src="../../images/reiniciar-arabe.png" onclick="refreshPage()" />
+        <img src="../../images/check-arabe.png" class="check-button" onclick="checkColors()" />
+      </div>
+
+      <button id="next-button" style="display: none" onclick="showNextLevel()">
+     التالي
+      </button>
+
+      <div id="win-message">
+        <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+        لقد فزت!
+        </h1>
+        <a href="../../levels-arabe/level-2/index.html"><button onclick="nextLevel()">المرحلة التالية</button></a>
+        <a href=""><button>كرر المستوى</button></a>
+        <a href="../../game-screen-arabe.html"><button>العودة إلى البداية</button></a>
+      </div>
+
+      <div id="error-message">
+        لم يتم رسم بعض الأشكال بشكل صحيح.
+        <button onclick="closeErrorMessage()">يغلق</button>
+      </div>
+    </section>
+
+    <div id="modalAyuda" class="modal">
+      <div class="modal1-content">
+        <span class="close" onclick="closeModal('modalAyuda')">
+          <img src="../../images/tancar.png" alt="Cerrar" />
+        </span>
+        <h2>يساعد</h2>
+
+        <!-- Contenedor del carrusel -->
+        <div class="carousel-container">
+        
+            <img src="../../images/nivel1-ayuda.jpg" alt="Imagen 1" style="width: 450px; height: 300px; margin-left: 35%;" />
+       
+        </div>
+
+        <div id="textoDebajo">
+          <p></p>
+        </div>
+        <!-- Botones de navegación -->
+      
+      </div>
+    </div>
+  </main>
+
+  <script src="../../levels/level-1/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../../images/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>The Rateta Game</title>
+  </head>
+  <body>
+    <main>
+      <section class="topSide">
+        <div class="Heading">
+          <h1 class="Header">LEVEL 6</h1>
+        </div>
+        <div class="btn-back">
+          <a class="link-back" href="../../game-screen-ingles.html">
+            <img src="../../images/volver.png" alt="" />
+          </a>
+        </div>
+        <div class="Ayuda">
+          <button
+            type="button"
+            id="ayuda"
+            class="ayuda"
+            onclick="openModal('modalAyuda')"
+          >
+            <img src="../../images/ayuda-ingles.png" alt="Ayuda" height="100px" />
+          </button>
+        </div>
+      </section>
+
+      <section class="gameBox">
+        <div class="memory-container">
+          <div class="memory-title"></div>
+          <div class="wrapper">
+            <ul class="cards">
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/level5/lazo.PNG" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/f" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/gatito.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/rata.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/level5/moneda.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/gallito.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/burra.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/casa.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/f" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/level5/moneda.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/gatito.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/burra.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/casa.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/gallito.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/level5/moneda.png" alt="card-img" />
+                </div>
+              </li>
+
+              <li class="card">
+                <div class="view front-view">
+                  <img src="images/que_icon.svg" alt="icon" />
+                </div>
+                <div class="view back-view">
+                  <img src="../../images/rata.png" alt="card-img" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="win-message">
+        <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+   You have won!
+        </h1>
+        <a href="../../levels-ingles/level-6/index.html"
+          ><button>next level</button></a
+        >
+        <a href=""><button>Repeat level</button></a>
+        <a href="../../game-screen.html"><button>Back to start</button></a>
+      </section>
+      <div id="modalAyuda" class="modal">
+      <div class="modal1-content">
+        <span class="close" onclick="closeModal('modalAyuda')">
+          <img src="../../images/tancar.png" alt="Cerrar" />
+        </span>
+        <h2>HELP</h2>
+
+        <!-- Contenedor del carrusel -->
+        <div class="carousel-container">
+        
+            <img src="../../images/nivel6-ayuda.png" alt="Imagen 1" style="width: 450px; height: 300px; margin-left: 35%;" />
+       
+        </div>
+
+        <div id="textoDebajo">
+          <p></p>
+        </div>
+        <!-- Botones de navegación -->
+      
+      </div>
+    </div>
+    </main>
+    <script src="script.js"></script>
+    <script src="../../custom.js"></script>
+  </body>
+</html>

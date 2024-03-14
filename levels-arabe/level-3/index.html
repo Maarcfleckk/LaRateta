@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="../../images/favicon.png"
+      type="image/x-icon"
+    />
+
+    <title>لعبة راتيتا</title>
+  </head>
+
+  <body>
+    <main>
+      <section class="topSide">
+        <div class="Heading">
+          <h1 class="Header">مستوى 3</h1>
+        </div>
+        <div class="btn-back">
+          <a class="link-back" href="../../game-screen-arabe.html">
+            <img src="../../images/volver.png" alt="" />
+          </a>
+        </div>
+        <div class="Ayuda">
+          <button
+            type="button"
+            id="ayuda"
+            class="ayuda"
+            onclick="openModal('modalAyuda')"
+          >
+            <img src="../../images/ayuda-arabe.jpg" alt="Ayuda" height="100px" />
+          </button>
+        </div>
+      </section>
+      <section
+        class="puzzle-drop-area"
+        id="puzzle-drop-area"
+        style="position: relative; width: 400px; height: 300px"
+      >
+        <div
+          class="drop-slot"
+          id="slot1"
+          style="position: absolute; top: 0; left: 0; width: 50%; height: 50%"
+        ></div>
+        <div
+          class="drop-slot"
+          id="slot2"
+          style="position: absolute; top: 0; left: 50%; width: 50%; height: 50%"
+        ></div>
+        <div
+          class="drop-slot"
+          id="slot3"
+          style="position: absolute; top: 50%; left: 0; width: 50%; height: 50%"
+        ></div>
+        <div
+          class="drop-slot"
+          id="slot4"
+          style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 50%;
+          "
+        ></div>
+      </section>
+
+      <section id="puzzle-section" class="puzzle-container"></section>
+
+      <section class="buttons">
+        <a href="../../levels-arabe/level-3/index.html"
+          ><img
+            src="../../images/reiniciar-arabe.png"
+            class="reiniciar"
+            onclick="reloadPage()"
+        /></a>
+        <img src="../../images/check-arabe.png" class="check" onclick="check()" />
+      </section>
+
+      <div id="win-message">
+        <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+          لقد فزت!
+        </h1>
+        <a href="../../levels-arabe/level-4/index.html"
+          ><button onclick="nextLevel()">المرحلة التالية</button></a
+        >
+        <a href=""><button>كرر المستوى</button></a>
+        <a href="../../game-screen-arabe.html"><button>العودة إلى البداية</button></a>
+      </div>
+
+      <div id="error-message">
+        <p id="error-text"></p>
+        <button onclick="hideMessages()">تمام</button>
+      </div>
+            <div id="modalAyuda" class="modal">
+      <div class="modal1-content">
+        <span class="close" onclick="closeModal('modalAyuda')">
+          <img src="../../images/tancar.png" alt="Cerrar" />
+        </span>
+        <h2>يساعد</h2>
+
+        <!-- Contenedor del carrusel -->
+        <div class="carousel-container">
+        
+            <img src="../../images/nivel3-ayuda.png" alt="Imagen 1" style="width: 450px; height: 300px; margin-left: 35%;" />
+       
+        </div>
+
+        <div id="textoDebajo">
+          <p></p>
+        </div>
+        <!-- Botones de navegación -->
+      
+      </div>
+    </div>
+    </main>
+
+    <script src="../../levels/level-3/script.js"></script>
+    <script src="../../custom.js"></script>
+  </body>
+</html>

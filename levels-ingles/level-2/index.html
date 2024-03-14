@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="../../images/favicon.png"
+      type="image/x-icon"
+    />
+    <title>The Rateta Game</title>
+  </head>
+
+  <body>
+    <main>
+      <section class="topSide" style="height: 0">
+        <div class="Heading">
+          <h1 class="Header">LEVEL 2</h1>
+        </div>
+        <div class="btn-back">
+          <a class="link-back" href="../../game-screen-ingles.html">
+            <img src="../../images/volver.png" alt="" />
+          </a>
+        </div>
+        <div class="Ayuda">
+          <button
+            type="button"
+            id="ayuda"
+            class="ayuda"
+            onclick="openModal('modalAyuda')"
+          >
+            <img src="../../images/ayuda-ingles.png" alt="Ayuda" height="100px" />
+          </button>
+        </div>
+      </section>
+
+      <section class="levels-grid">
+        <div class="level">
+          <a
+            class="vibrate"
+            onclick="selectCharacter('rata', this)"
+            data-character="rata"
+          >
+            <img
+              src="../../images/rata.png"
+              height="210px"
+              alt=""
+              style="margin-top: 40%; margin-left: 0%"
+            />
+          </a>
+        </div>
+        <div class="level">
+          <a
+            class="vibrate"
+            onclick="selectCharacter('burra', this)"
+            data-character="burra"
+          >
+            <img
+              src="../../images/burra.png"
+              height="240px"
+              style="margin-top: 30%"
+            />
+          </a>
+        </div>
+        <div class="level">
+          <a
+            class="vibrate"
+            onclick="selectCharacter('perrito', this)"
+            data-character="perrito"
+          >
+            <img
+              src="../../images/perrito.png"
+              height="150px"
+              style="margin-top: 60%; padding-left: 0%"
+            />
+          </a>
+        </div>
+      </section>
+
+      <section class="buttons">
+        <img
+          src="../../images/sonido-ingles.png"
+          class="sonido"
+          onclick="playSound()"
+        />
+        <img
+          src="../../images/reiniciar-ingles.png"
+          class="reiniciar"
+          onclick="reloadPage()"
+        />
+        <img src="../../images/check-ingles.png" class="check" onclick="check()" />
+      </section>
+       <div id="modalAyuda" class="modal">
+      <div class="modal1-content">
+        <span class="close" onclick="closeModal('modalAyuda')">
+          <img src="../../images/tancar.png" alt="Cerrar" />
+        </span>
+        <h2>HELP</h2>
+
+        <!-- Contenedor del carrusel -->
+        <div class="carousel-container">
+        
+            <img src="../../images/nivel2-ayuda.png" alt="Imagen 1" style="width: 450px; height: 300px; margin-left: 35%;" />
+       
+        </div>
+
+        <div id="textoDebajo">
+          <p></p>
+        </div>
+        <!-- Botones de navegación -->
+      
+      </div>
+    </div>
+    </main>
+
+    <div id="win-message">
+      <h1 class="Header" style="margin-top: 10%; font-size: 360%">
+      You have won!
+      </h1>
+      <a href="../../levels-ingles/level-3/index.html"
+        ><button onclick="nextLevel()">next level</button></a
+      >
+      <a href=""><button>Repeat level</button></a>
+      <a href="../../game-screen-ingles.html"><button>Back to start</button></a>
+    </div>
+
+    <div id="error-message">
+     You made a mistake, try again!
+      <button onclick="closeErrorMessage()">OK</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="../../custom.js"></script>
+  </body>
+</html>

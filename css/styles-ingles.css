@@ -1,0 +1,606 @@
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  /* background-image: url("../images/background.PNG"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Irish Grover", system-ui;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  font-family: "Irish Grover", system-ui;
+}
+button {
+  border: unset;
+  background-color: transparent;
+}
+/* SECION ESTATICA */
+
+.mainButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  margin: 10px;
+  height: 99vh;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2px, 2px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.Ayuda,
+.Musica,
+.Cuento,
+.Idioma {
+  position: absolute;
+  margin: 5px;
+  animation: none;
+  /* Transición rápida de 0.1 segundos */
+  /* Aplicar la animación de vibración infinitamente */
+}
+
+/* Agrega una regla específica para detener la vibración cuando tienen la clase "hover" */
+.Ayuda:hover,
+.Musica:hover,
+.Cuento:hover,
+.Idioma:hover {
+  transition: transform 0.1s ease-in-out;
+  /* Detener la animación al pasar el ratón */
+  animation: vibrate 0.5s;
+}
+
+.Ayuda {
+  top: 0;
+  left: 0;
+}
+
+.Musica {
+  top: 0;
+  right: 0;
+}
+
+.Cuento {
+  bottom: 0;
+  left: 0;
+}
+
+.Idioma {
+  bottom: 0;
+  right: 0;
+}
+
+.Heading {
+  position: absolute;
+  top: 1%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.Juego {
+  position: absolute;
+  bottom: 45%;
+  display: flex;
+  justify-content: center;
+  height: 10%;
+  width: 100%;
+}
+.Juego input {
+  scale: 0.8;
+}
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -2%;
+  margin-right: -2%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}
+
+.playButton img,
+.stopButton img {
+  scale: 0.2;
+}
+
+/* IDIOMAS */
+#modalIdioma .languageBtnGrid {
+  height: 100%;
+  width: 80%;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  margin: auto;
+}
+#modalIdioma .modal-content h2 {
+  text-align: center;
+}
+.btnLanguage {
+  appearance: button;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.btnLanguage:after {
+  background-position-x: center;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+.languageCa::after {
+  background-image: url("../images/bandera-cataluña.png");
+  background-size: 100%;
+  background-position-y: center;
+  background-position-x: center;
+}
+.languageEs::after {
+  background-image: url("../images/bandera-españa.png");
+  background-size: 77%;
+  background-position-y: center;
+}
+.languageEn::after {
+  background-image: url("../images/bandera-reinounido.png");
+  background-size: 117%;
+  background-position-y: center;
+  background-position-x: center;
+}
+.languageAr::after {
+  background-image: url("../images/bandera-arabiasaudita.png");
+  background-size: 104%;
+  background-position-y: center;
+}
+
+.textCa {
+  top: 42%;
+  left: 17%;
+}
+.textEs {
+  top: 42%;
+  right: 15%;
+}
+.textEn {
+  top: 93%;
+  left: 15%;
+}
+.textAr {
+  top: 93%;
+  right: 18%;
+}
+.textCa,
+.textEs,
+.textEn,
+.textAr {
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  margin-top: -120px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.languageCa:hover ~ .textCa,
+.languageEs:hover ~ .textEs,
+.languageEn:hover ~ .textEn,
+.languageAr:hover ~ .textAr {
+  opacity: 1;
+}
+
+.btnLanguage:active,
+.btnLanguage:focus {
+  user-select: auto;
+}
+
+.btnLanguage:hover {
+  filter: brightness(0.5);
+}
+
+.btnLanguage:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+/* ESCOLTAR LLIBRE */
+.topBar img {
+  display: none;
+}
+.topBar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.topBar button {
+  background-color: #821d1d;
+  color: white;
+  letter-spacing: 3px;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.scrollableText {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+}
+.bottomText {
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  text-transform: uppercase;
+  margin-top: 30px;
+  font-size: 30px;
+}
+/* ESCOLTAR MUSICA */
+
+/* CARRUSSEL */
+.carousel-container {
+  position: relative;
+  width: 30%;
+  max-height: 500px;
+  margin: auto;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+.carousel-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  max-height: 100%; /* Ajusta la altura máxima del carrusel según sea necesario */
+}
+
+.carousel-slider img {
+  width: auto;
+  height: 100%;
+  max-width: 100%; /* Ajusta el ancho máximo de las imágenes */
+  object-fit: contain; /* Ajusta el comportamiento de escalado */
+}
+
+.carousel-container button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+#prevBtn,
+#nextBtn {
+  font-size: 0; /* Oculta el texto de los botones */
+}
+
+#prevBtn {
+  left: 0;
+}
+
+#nextBtn {
+  right: 0;
+}
+
+.carousel-container button:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#prevBtn:before {
+  border-width: 10px 15px 10px 0;
+  border-color: transparent #821d1d transparent transparent;
+  margin-right: 5px; /* Ajusta el margen entre el botón y el carrusel */
+}
+
+#nextBtn:before {
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #821d1d;
+  margin-left: 5px; /* Ajusta el margen entre el botón y el carrusel */
+}
+
+.imgAfter {
+  content: "";
+  clip-path: polygon(0 25%, 0 0, 100% 75%, 100% 100%);
+  background-color: #821d1d;
+  position: absolute;
+  height: 105px;
+  width: 90px;
+  left: 61%;
+  top: 15%;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::selection {
+  background: #222;
+  color: white;
+}
+
+::-moz-selection {
+  background: #222;
+  color: white;
+}
+
+body * {
+  transform-style: preserve-3d;
+  /* am i doing this wrong? */
+}
+
+body {
+  color: #222;
+  font-family: "Gabriela", serif;
+  perspective: 70em;
+  /*in your face*/
+  overflow-y: hidden;
+}
+
+h1,
+p {
+  margin: 5% 0;
+}
+
+.book {
+  height: 80%;
+  max-height: 550px;
+  min-height: 450px;
+  width: 800px;
+  background-image: linear-gradient(
+      90deg,
+      hsla(0, 100%, 50%, 0.6),
+      hsla(0, 97%, 12%, 0.9),
+      hsla(0, 99%, 40%, 0.4) 90%
+    ),
+    url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+  position: absolute;
+  top: 340px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  border: 3px solid hsla(30, 10%, 20%, 1);
+  border-radius: 5px;
+  box-shadow: 0 0 150px hsla(170, 0%, 0%, 0.4);
+}
+
+.page {
+  height: 100%;
+  width: 50%;
+  line-height: 1.5;
+  border-right: 10px solid transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform-origin: 0 50%;
+  transition: 0.8s;
+  /*animation: unflip .3s linear;*/
+}
+
+[class*="side"] {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: hsl(0, 3%, 93%);
+  background-image: url("http://inspirationhut3.inspirationhut.netdna-cdn.com/wp-content/uploads/2012/11/Old-Paper-Texture-3.jpg");
+  background-size: 100% 100%;
+  backface-visibility: hidden;
+  overflow: auto;
+  padding: 5% 8%;
+}
+
+.side-1 {
+  z-index: 2;
+  box-shadow: inset 50px 0 50px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+}
+
+.side-2 {
+  transform: rotateY(180deg);
+  box-shadow: inset -50px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.flipped > .side-1 {
+  box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.8);
+  transition: 0.6s;
+}
+
+.flipped > [class*="side"] {
+  pointer-events: auto;
+}
+
+.page:after {
+  width: 100px;
+  height: 50px;
+  background-color: #555;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -100px;
+  margin: auto;
+  color: white;
+  text-shadow: 0 -1px 0 #222;
+  line-height: 50px;
+  text-align: center;
+  font-family: monospace;
+  content: "NEXT";
+  animation: hide 0.8s linear;
+}
+
+.page.flipped:after {
+  content: "BACK";
+  transform: rotateY(180deg);
+  pointer-events: auto;
+}
+
+/* to hide on flip animation */
+@keyframes hide {
+  0% {
+    opacity: 0;
+  }
+
+  85% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.flipped {
+  transform: rotateY(-180deg);
+  pointer-events: none;
+  /*animation: flip .3s linear;
+  animation-fill-mode: forwards;*/
+}
+
+@keyframes vibrateAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+}
+
+.content {
+  font-size: 14px;
+  /* Ajusta el tamaño de fuente según tus necesidades */
+}
+.boton-jugar {
+  margin-top: 2%;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.boton-jugar:hover {
+  animation: vibrateAnimation 0.5s ease;
+}
+
+.carousel {
+  width: 100%;
+}
+.carousel-item img {
+  width: 100%; /* Ajusta el ancho de las imágenes al 100% del contenedor */
+}
+
+#textoDebajo p{
+  font-size: 25px;
+}

@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Rateta Game</title>
+    <link rel="stylesheet" href="css/styles-ingles.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <style>
+  .modal1-content {
+      background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 80%;
+  }
+
+  .carousel-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-height: 200px; /* Altura máxima del carrusel */
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+        height: 900px;
+    display: none; /* Ocultar inicialmente todas las imágenes */
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: auto; /* Ajustar automáticamente la altura */
+  }
+
+  .carousel-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .carousel-buttons button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
+  </head>
+
+  <body>
+    <main>
+      <section class="Static-page">
+        <div class="Heading">
+          <h1 class="Header">
+            <img class="headerImage" src="images/titulo-ingles.png" alt="" srcset="" />
+          </h1>
+        </div>
+        <div class="mainButtons">
+          <div class="Ayuda">
+            <button
+              type="button"
+              id="ayuda"
+              class="ayuda"
+              onclick="openModal('modalAyuda')"
+            >
+              <img src="images/ayuda-ingles.png" alt="Ayuda" height="150px" />
+            </button>
+          </div>
+          <div class="Musica">
+            <button
+              type="button"
+              id="music"
+              class="music"
+              onclick="toggleMusic()"
+            >
+              <img src="images/musica-ingles.png" alt="Música" height="150px" />
+              <div class="imgAfter"></div>
+            </button>
+          </div>
+          <div class="Cuento">
+            <button
+              type="button"
+              id="cuento"
+              class="cuento"
+              onclick="openModal('modalCuento')"
+            >
+              <img
+                src="images/llegir el conta-ingles.png"
+                alt="Cuento"
+                height="150px"
+              />
+            </button>
+          </div>
+          <div class="Idioma">
+            <button
+              type="button"
+              id="idioma"
+              class="idioma"
+              onclick="openModal('modalIdioma')"
+            >
+              <img src="images/idioma-ingles.png" alt="Idioma" height="150px" />
+            </button>
+          </div>
+        </div>
+        <div class="Juego">
+          <a href="game-screen-ingles.html">
+            <img class="boton-jugar" src="images/boton-ingles.png" alt="Jugar" />
+          </a>
+        </div>
+      </section>
+
+      
+
+
+      <div id="modalAyuda" class="modal">
+  <div class="modal1-content">
+    <span class="close" onclick="closeModal('modalAyuda')">
+      <img src="images/tancar.png" alt="Cerrar" />
+    </span>
+    <h2>HELP</h2>
+
+    <!-- Contenedor del carrusel -->
+    <div class="carousel-container">
+      <div class="carousel-slide">
+        <img src="images/ayuda-conte.png" alt="Imagen 1" style="width: 150px; height: auto; margin-left: 35%;" />
+      </div>
+      <div class="carousel-slide">
+        <img src="images/ayuda-conte-1.jpg" alt="Imagen 2" style="width: 450px; height: auto; margin-left: 30%;"/>
+      </div>
+      <div class="carousel-slide">
+        <img src="images/idiomas-ayuda.jpg" alt="Imagen 3" style="width: 350px; height: auto; margin-left: 30%;"/>
+      </div>
+    </div>
+
+      <div id="textoDebajo">
+      <p></p>
+    </div>
+    <!-- Botones de navegación -->
+    <div class="carousel-buttons">
+      <button style="background-color: #888; color: #fefefe;" onclick="prevSlide()">BACK</button>
+      <button style="background-color: #888; color: #fefefe;"onclick="nextSlide()">NEXT</button>
+    </div>
+  </div>
+</div>
+
+
+      <div id="modalCuento" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalCuento')">
+            <img src="images/tancar.png" />
+          </span>
+          <div class="content">
+            <div class="topBar">
+              <button id="playButton" onclick="toggleAudio()">
+                <img
+                  id="playPauseIcon"
+                  src="images/play.png"
+                  alt="musicImage"
+                />
+                <h2 id="topBarHeading" class="audioBtn">START AUDIO</h2>
+              </button>
+              <button id="stopButton" onclick="stopAudio()">
+                <img src="images/pausa.png" alt="musicImage" />
+                <h2 id="topBarHeading" class="audioBtn">RESET AUDIO</h2>
+              </button>
+            </div>
+
+            <div class="book">
+              <div id="page-1" class="page no-anim">
+                <div class="side-1" id="p1">
+                  <div class="content">
+                    <img
+                      src="images/titulo-ingles.png"
+                      style="
+                        height: 100%;
+                        width: 100%;
+                        margin-top: 120px;
+                        margin-left: 10px;
+                      "
+                    />
+                  </div>
+                  <!-- .content -->
+                </div>
+                <!-- .side-1 -->
+            <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="margin-top: 50%">
+                       ONCE UPON A TIME THERE WAS A RAT THAT WAS SWEEPING THE LADDER
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/conte-0.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <br />
+                     <h2 style="font-size: 19px">
+                       HE FOUND A MONEY AND SAID... <br />
+                       <br />
+                       WHAT WILL I DO WITH IT! THAT I WILL NOT MAKE MONEY!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       IF I BUY HAZELNUTS! <br />
+                       MY TEETH IS FALLING OUT!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       IF I BUY PINIONETS! MY BOXES WILL FALL!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       I WILL BUY... <br />
+                       A BOW FOR THE TAIL!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/conte-1.jpg"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="margin-top: 50%; margin-left: 10%">
+                       AND THAT'S HOW EVERY MOVEMENT GOES <br />
+                       GO OUT THE WINDOW.
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/cuento-2.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 18px">
+                       WHEN I WAS AT THE WINDOW <br />
+                       A DOG PASSED BY AND SAID...
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 25px">
+                       BOOF! BOOF! <br />
+                       RAT! RAT!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       YOU ARE SO BEAUTIFUL <br />
+                       WOULD YOU WANT TO MARRY ME?
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">OH LET'S SEE WHAT VOICE YOU MAKE!</h2>
+                     <br />
+                     <h2 style="font-size: 34px">BOOF! BOOF!</h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       RIGHT, NO, NO, NO, NO <br />
+                       I THANK YOU FOR THIS HORRIFIC VOICE!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+
+          <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/cuento-3.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 16px">
+                       THEN A DONKEY HAPPENED <br />
+                       AND SEEING THE RAT SAID...
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 20px">
+                       HEY HEY! HEY HEY! <br />
+                       RAT! RAT!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       YOU ARE SO BEAUTIFUL <br />
+                       THAT YOU WOULD LIKE TO MARRY <br />
+                       WITH ME I AM OF THE EMPRESS.
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">OH LET'S SEE WHAT VOICE YOU MAKE!</h2>
+                     <br />
+                     <h2 style="font-size: 30px">HERE! HEY!</h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       RIGHT, NO, NO, NO, NO! <br />
+                       I LOVE YOU WITH THIS STRONG VOICE!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/conte-4.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 14px">
+                       A VERY TROUBLE HAPPENED <br />
+                       WITH THE CREST ABOVE THE HEAD <br />
+                       AND SEEING THE RAT POURED OUT THE WINDOW HE SAID...
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 20px">
+                       PEANUTS! <br />
+                       RAT! RAT!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       YOU ARE SO BEAUTIFUL THAT YOU WANT TO MARRY ME?
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">OH LET'S SEE WHAT VOICE YOU MAKE!</h2>
+                     <br />
+                     <h2 style="font-size: 25px">KIKIRIKI!</h2>
+                     <br />
+                     <h2 style="font-size: 14px; margin-top: -10px">
+                       RIGHT, NO, NO, NO, NO! <br />
+                       THAT YOU WAKE ME UP IN THE MORNING WHEN YOU SING!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+
+           <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/conte-5.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 14px">
+                       AN OX ARRIVED <br />
+                       AND SEEING THE RAT SAID...
+                     </h2>
+                     <br />
+                     <h2>
+                       MOVE! <br />
+                       RAT! RAT! Mmm!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       YOU ARE SO BEAUTIFUL <br />
+                       THAT YOU WOULD LIKE TO MARRY <br />
+                       WITH MIIIIII!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">OH LET'S SEE WHAT VOICE YOU MAKE!</h2>
+                     <br />
+                     <h2 style="font-size: 25px">MUUUUUUU!</h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       Oh, NOOO! <br />
+                       SCARED ME WITH THIS LOUD VOICE!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/cuento-7.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 14px">
+                       A PRESUMED DUCK WENT THE HOURS <br />
+                       WHAT DID THE RAT SAY TO HIM WHEN HE SAW...
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 19px">
+                       WHOA! WHOA! <br />
+                       RAT! RAT!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       YOU ARE SO BEAUTIFUL <br />
+                       WOULD YOU WANT TO MARRY ME?
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 14px">OH LET'S SEE WHAT VOICE YOU MAKE!</h2>
+                     <br />
+                     <h2 style="font-size: 25px">WHAT! WHOA! WHACK!</h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       Oh, Oh, NO!, NO!, NO! <br />
+                       GO!, GO! WHERE ARE YOU GOING WITH THIS VOICE!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/conte-7.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 14px">
+                       AND IT HAPPENED TO BE <br />
+                       WHAT ABOUT SEEING THE RAT AS EVERYONE ONLY KNOWS HOW TO SAY...
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 19px">
+                       BEHEHE! BEHEHE! <br />
+                       RAT! RAT!
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       YOU ARE SO BEAUTIFUL <br />
+                       WOULD YOU WANT TO MARRY ME?
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 14px">OH LET'S SEE WHAT VOICE YOU MAKE!</h2>
+                     <br />
+                     <h2 style="font-size: 25px">BEHEHE! BEHEHE!</h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       OH NO!, NO!, NO! <br />
+                       DON'T PLEASE ME WITH THIS SAD VOICE!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+           <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/obeja.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 14px">
+                       THERE'S A VERY POLISHED CAT HERE. <br />
+                       WHAT DOES THE RAT SAY...
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 19px">RATT! RAT! <br /></h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       YOU ARE SO BEAUTIFUL <br />
+                       WOULD YOU WANT TO MARRY ME?
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 14px">MMM! LET'S SEE WHAT VOICE YOU MAKE!</h2>
+                     <br />
+                     <h2 style="font-size: 25px">WOW! MEW!</h2>
+                     <br />
+                     <h2 style="font-size: 14px">
+                       OH YES!, YES!, YES! <br />
+                       I LOVE YOU WITH THIS FINE VOICE!
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/gat.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="margin-top: 50%">
+                       AND THAT'S HOW THE CAT ENTERED THE RAT'S HOUSE
+                       AND THEY WERE MARRIED.
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/gat2.png"
+                       style="height: 90%; width: 90%"
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <h2 style="font-size: 16px">
+                       THE RAT HAS THE POT PUT ON THE FIRE, SO IT WAS A LOT
+                       PETITETA COULD NOT REMOVE HER SO SHE ASKED FOR HELP
+                       IN THE CAT
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 24px">
+                       OH!, MARIDET!, MY MARIDET! <br />
+                       COME ON IF YOU HELP ME
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       SUDDENLY, THE CAT PUSHED HIM SO MUCH AND SO PUSHED HER
+                       THAT INSIDE THE POT HE THROWN IT
+                     </h2>
+                     <br />
+                     <h2 style="font-size: 16px">
+                       AND FALLING INTO THE POT, THE RAT AND THE CAT BURNED
+                       SEEING IT WAS COOKED QUICKLY HE ATE IT
+                     </h2>
+                   </div>
+
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-2 -->
+               </div>
+               <!-- .page -->
+             <!-- .page -->
+               <div id="page-1" class="non-anim page">
+                 <div class="side-1" id="p1">
+                   <div class="content">
+                     <img
+                       src="images/llibre/olla.png"
+                       style="height: 80%; width: 80%"
+                     />
+                     <img
+                       src="images/llibre/gato-gordo.png"
+                       style="
+                         height: 90%;
+                         width: 90%;
+                         margin-top: -20px;
+                         margin-left: 50px;
+                       "
+                     />
+                   </div>
+                   <!-- .content -->
+                 </div>
+                 <!-- .side-1 -->
+                 <div class="side-2" id="p2">
+                   <div class="content">
+                     <!-- .content -->
+                   </div>
+                   <!-- .side-2 -->
+                   <h2
+                     style="font-size: 50px; margin-top: 50%; margin-left: 80px"
+                   >
+                     THE END
+                   </h2>
+                 </div>
+                <!-- .page -->
+                <!--asta aqui -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="modalIdioma" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modalIdioma')">
+            <img src="images/tancar.png"
+          /></span>
+          <div class="languageBtnGrid">
+            <a href="index.html" class="btnLanguage languageCa" role="button"> </a>
+            <a href="index-español.html" class="btnLanguage languageEs" role="button"> </a>
+            <a href="" class="btnLanguage languageEn" role="button" ></a>
+            <a href="index-arab.html"  class="btnLanguage languageAr" role="button"></a>
+
+            <p class="textCa">CATALAN</p>
+            <p class="textEs">SPANISH</p>
+            <p class="textEn">ENGLIHS</p>
+            <p class="textAr">ARAB</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="custom-ingles.js"></script>
+
+<script>
+    // Array de textos correspondientes a cada imagen
+     var textos = [
+      
+     `<p>
+         <br>MUSIC
+         <br> 1- IT IS TO STOP THE MUSIC. <br>
+         2- IT IS TO LISTEN AND STOP THE MUSIC. </p>`,
+
+     `<p>
+       LISTEN TO THE STORY <br>
+       <br> 1- IT IS TO START AND STOP SOUND OF THE STORY. <br>
+      2- IT IS TO RESET THE SOUND. <br>
+      3- IT IS TO GO TO THE NEXT PAGE. <br>
+      4- IT IS TO GO TO THE PREVIOUS PAGE. <br>
+      5- IT'S TO GO OUT. </p>`,
+
+        `<p>
+         LANGUAGE
+         <br> <br>1- IT IS TO CHANGE THE LANGUAGE TO CATALAN. <br>
+      2- IT IS TO CHANGE THE LANGUAGE TO SPANISH. <br>
+      3- IT IS TO CHANGE THE LANGUAGE TO ENGLISH. <br>
+      4- IT IS TO CHANGE THE LANGUAGE TO ARABIC. <br>
+      5- IT'S TO GO OUT. </p>`
+     
+
+  ];
+
+    // Función para mostrar el texto correspondiente a la imagen actual
+    function mostrarTextoActual() {
+      var indiceActual = getIndiceActual();
+      document.getElementById("textoDebajo").innerHTML = textos[indiceActual];
+    }
+
+    // Función para cambiar a la diapositiva anterior
+    function prevSlide() {
+      var slides = document.getElementsByClassName("carousel-slide");
+      var indiceActual = getIndiceActual();
+      slides[indiceActual].style.display = "none";
+      indiceActual = (indiceActual - 1 + slides.length) % slides.length;
+      slides[indiceActual].style.display = "block";
+      mostrarTextoActual();
+    }
+
+    // Función para cambiar a la siguiente diapositiva
+    function nextSlide() {
+      var slides = document.getElementsByClassName("carousel-slide");
+      var indiceActual = getIndiceActual();
+      slides[indiceActual].style.display = "none";
+      indiceActual = (indiceActual + 1) % slides.length;
+      slides[indiceActual].style.display = "block";
+      mostrarTextoActual();
+    }
+
+    // Función para obtener el índice de la imagen actual en el carrusel
+    function getIndiceActual() {
+      var slides = document.getElementsByClassName("carousel-slide");
+      for (var i = 0; i < slides.length; i++) {
+        if (slides[i].style.display === "block") {
+          return i;
+        }
+      }
+      return 0;
+    }
+
+    // Inicializar el texto y el carrusel al cargar la página
+    mostrarTextoActual();
+  </script>
+
+</html>
+
