@@ -180,3 +180,30 @@ window.onclick = function (event) {
 
     // Inicializar el texto y el carrusel al cargar la página
     mostrarTextoActual();
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   var audio = new Audio("../../audio/conte-la-rateta-que-escombrava-lescaleta.mp3");
+//   var isPlaying = false;
+
+//   function toggleAudio() {
+//     if (isPlaying) {
+//       audio.pause();
+//       document.getElementById("playPauseIcon").src = "./images/pausa.png";
+//       document.getElementById("topBarHeading").innerText = "INICIAR AUDIO";
+//     } else {
+//       audio.play();
+//       document.getElementById("playPauseIcon").src = "./images/pausa.png";
+//       document.getElementById("topBarHeading").innerText = "PAUSAR AUDIO";
+//     }
+//     isPlaying = !isPlaying;
+//   }
+
+//   function stopAudio() {
+//     audio.pause();
+//     audio.currentTime = 0;
+//     document.getElementById("playPauseIcon").src = "./images/play.png";
+//     isPlaying = false;
+//     document.getElementById("topBarHeading").innerText = "INICIAR AUDIO";
+//   }
+//   toggleAudio();
+// });

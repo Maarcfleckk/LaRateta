@@ -15,29 +15,68 @@ window.onclick = function (event) {
   }
 };
 
+// var audio = new Audio("./audio/conte-la-rateta-que-escombrava-lescaleta.mp3");
+// var isPlaying = false;
+
+// function toggleAudio() {
+//   if (isPlaying) {
+//     audio.pause();
+//     document.getElementById("playPauseIcon").src = "./images/pausa.png";
+//     document.getElementById("topBarHeading").innerText = "INICIAR AUDIO";
+//   } else {
+//     audio.play();
+//     document.getElementById("playPauseIcon").src = "./images/pausa.png";
+//     document.getElementById("topBarHeading").innerText = "PAUSAR AUDIO";
+//   }
+//   isPlaying = !isPlaying;
+// }
+
+// function stopAudio() {
+//   audio.pause();
+//   audio.currentTime = 0;
+//   document.getElementById("playPauseIcon").src = "./images/play.png";
+//   isPlaying = false;
+//   document.getElementById("topBarHeading").innerText = "INICIAR AUDIO";
+// }
+
 var audio = new Audio("./audio/conte-la-rateta-que-escombrava-lescaleta.mp3");
-var isPlaying = false;
 
 function toggleAudio() {
-  if (isPlaying) {
+  if (localStorage.getItem("isPlaying") === "true") {
     audio.pause();
     document.getElementById("playPauseIcon").src = "./images/pausa.png";
     document.getElementById("topBarHeading").innerText = "INICIAR AUDIO";
+    localStorage.setItem("isPlaying", "false");
   } else {
     audio.play();
     document.getElementById("playPauseIcon").src = "./images/pausa.png";
     document.getElementById("topBarHeading").innerText = "PAUSAR AUDIO";
+    localStorage.setItem("isPlaying", "true");
   }
-  isPlaying = !isPlaying;
 }
 
 function stopAudio() {
   audio.pause();
   audio.currentTime = 0;
   document.getElementById("playPauseIcon").src = "./images/play.png";
-  isPlaying = false;
+  localStorage.setItem("isPlaying", "false");
   document.getElementById("topBarHeading").innerText = "INICIAR AUDIO";
 }
+
+// Verificar y establecer el estado de reproducción al cargar la página
+window.addEventListener("load", function() {
+  if (localStorage.getItem("isPlaying") === null) {
+    localStorage.setItem("isPlaying", "false");
+  } else if (localStorage.getItem("isPlaying") === "true") {
+    toggleAudio(); // Reproducir audio automáticamente al cargar la página si isPlaying es true
+  }
+});
+
+var maxSize = 200;
+var minSize = 10;
+
+// Resto de tu código aquí...
+
 
 var maxSize = 200;
 var minSize = 10;
